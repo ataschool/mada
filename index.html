@@ -31,7 +31,6 @@
         .nav-icon { transition: all 0.25s ease; display: inline-block; font-size: 1.4rem; color: var(--color-primary); cursor: pointer; }
         .nav-icon:hover { transform: scale(1.15); color: var(--color-gold); }
         .nav-icon.active { color: var(--color-gold); }
-        /* Icônes professionnelles unifiées */
         .icon-pro {
             transition: all 0.25s ease; display: inline-flex; align-items: center; justify-content: center;
             color: var(--color-primary); cursor: pointer; width: 40px; height: 40px; border-radius: 12px;
@@ -48,18 +47,13 @@
         #backToTop:hover { background-color: var(--color-gold); color: var(--color-primary); transform: scale(1.1); }
         .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-        /* Swiper amélioré */
         .swiper { width: 100%; padding-top: 50px; padding-bottom: 70px; }
         .swiper-slide { background-position: center; background-size: cover; width: 320px; height: 430px; border-radius: 1rem; overflow: hidden; box-shadow: 0 15px 35px rgba(16, 27, 59, 0.15); background: white; border: 1px solid rgba(201, 160, 61, 0.2); transition: border-color 0.3s; }
         .swiper-slide-active { border-color: var(--color-gold); }
-        .swiper-button-next, .swiper-button-prev {
-            color: var(--color-gold); background: white; width: 45px; height: 45px; border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.25s ease;
-        }
+        .swiper-button-next, .swiper-button-prev { color: var(--color-gold); background: white; width: 45px; height: 45px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: all 0.25s ease; }
         .swiper-button-next:hover, .swiper-button-prev:hover { transform: scale(1.15); color: var(--color-gold); }
         .swiper-button-next:after, .swiper-button-prev:after { font-size: 16px; font-weight: bold; }
         .swiper-pagination-bullet-active { background: var(--color-gold) !important; }
-        /* Modale */
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100;
             display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
@@ -72,7 +66,6 @@
         .custom-checkbox { accent-color: var(--color-gold); }
         .profile-pic-upload { cursor: pointer; transition: opacity 0.2s; }
         .profile-pic-upload:hover { opacity: 0.8; }
-        /* Dashboard admin */
         .glass-card { background: white; border: 1px solid #e2e8f0; border-radius: 1rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .glass-card:hover { transform: translateY(-2px); box-shadow: 0 12px 20px -5px rgba(16, 27, 59, 0.08); border-color: rgba(201, 160, 61, 0.3); }
         .btn-gold { background: linear-gradient(135deg, #c9a03d, #b0872c); color: white; transition: all 0.2s; }
@@ -98,25 +91,22 @@
         .dark .bg-gray-50, .dark .bg-slate-50 { background-color: #1e293b !important; }
         .dark input, .dark select, .dark textarea { background-color: #1e293b !important; color: #f1f5f9 !important; border-color: #334155 !important; }
         .dark .bg-gradient-to-br { background-image: linear-gradient(to bottom right, #0f172a, #1e293b) !important; }
+        .dark .btn-premium { background-color: #101b3b !important; color: white !important; border-color: var(--color-gold) !important; }
+        .dark .btn-premium:hover { background-color: var(--color-gold) !important; color: #101b3b !important; }
+        .dark .btn-gold-outline { background: #1e293b !important; color: var(--color-gold) !important; border-color: var(--color-gold); }
+        .dark .btn-gold-outline:hover { background-color: var(--color-gold) !important; color: #101b3b !important; }
     </style>
 </head>
 <body>
 
 <div id="app">
-    <!-- Loader -->
     <div id="pageLoader" class="fixed inset-0 z-[200] flex items-center justify-center hidden" style="background: rgba(0,0,0,0.2); backdrop-filter: blur(4px);">
-        <div class="text-center">
-            <div class="w-12 h-12 border-4 border-[var(--color-gold)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p class="text-sm text-gray-600">Chargement...</p>
-        </div>
+        <div class="text-center"><div class="w-12 h-12 border-4 border-[var(--color-gold)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div><p class="text-sm text-gray-600">Chargement...</p></div>
     </div>
 
-    <!-- Header -->
     <header id="mainHeader" class="w-full sticky top-0 z-50 border-b border-gray-100/60">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center">
-                <span class="serif-title text-lg tracking-wider text-[#101b3b]">ATA <span class="text-[#c9a03d]">SCHOOL</span></span>
-            </div>
+            <div class="flex items-center"><span class="serif-title text-lg tracking-wider text-[#101b3b]">ATA <span class="text-[#c9a03d]">SCHOOL</span></span></div>
             <nav class="hidden md:flex items-center gap-6 ml-auto">
                 <a href="#" onclick="navigateTo('home')" class="nav-icon" data-page="home"><i class="fa-solid fa-building-columns"></i></a>
                 <a href="#" onclick="navigateTo('courses')" class="nav-icon" data-page="courses"><i class="fa-solid fa-chalkboard-user"></i></a>
@@ -128,10 +118,8 @@
         </div>
     </header>
 
-    <!-- Contenu principal -->
     <div id="mainContent"></div>
 
-    <!-- Modale Auth -->
     <div id="authModal" class="modal">
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-12 w-full max-w-4xl min-h-[580px] relative">
             <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-[#101b3b] text-xl z-10 icon-pro"><i class="fa-solid fa-xmark"></i></button>
@@ -140,12 +128,19 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer id="mainFooter" class="bg-[#0b1122] text-gray-400 pt-16 pb-8 border-t-2 border-[var(--color-gold)]">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
             <div class="flex flex-col gap-4"><div><span class="inline-block bg-[#101b3b] text-[var(--color-gold)] font-bold px-5 py-2 rounded text-sm tracking-widest border border-gray-800">ATA</span></div><p class="text-sm text-gray-400 mt-2 max-w-sm leading-relaxed">Plateforme éducative d'excellence, cours et ressources pour tous.</p></div>
             <div><h3 class="text-white font-bold text-sm tracking-wider uppercase mb-6 relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-6 after:h-[2px] after:bg-[var(--color-gold)]">Liens rapides</h3><ul class="space-y-3 text-sm"><li><a href="#" class="hover:text-[var(--color-gold)] transition flex items-center gap-2">Accueil</a></li><li><a href="#" class="hover:text-[var(--color-gold)] transition flex items-center gap-2">Cours</a></li><li><a href="#" class="hover:text-[var(--color-gold)] transition flex items-center gap-2">Vidéos</a></li><li><a href="#" class="hover:text-[var(--color-gold)] transition flex items-center gap-2">Téléchargements</a></li></ul></div>
-            <div><h3 class="text-white font-bold text-sm tracking-wider uppercase mb-6 relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-6 after:h-[2px] after:bg-[var(--color-gold)]">Newsletter</h3><p class="text-sm mb-4">Restez informé de nos actualités</p><form class="flex w-full max-w-md bg-[#162038] rounded-lg overflow-hidden p-1 border border-gray-800"><input type="email" placeholder="Votre email" class="w-full bg-transparent px-4 py-2 text-sm text-white focus:outline-none placeholder-gray-500"><button type="submit" class="bg-[var(--color-gold)] text-[#101b3b] font-bold px-5 py-2 rounded-md text-sm hover:bg-[#b08b30] transition shrink-0">S'abonner</button></form><div class="flex items-center gap-5 mt-6"><a href="#" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-twitter"></i></a><a href="#" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-linkedin-in"></i></a><a href="#" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-whatsapp"></i></a></div></div>
+            <div>
+                <h3 class="text-white font-bold text-sm tracking-wider uppercase mb-6 relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-6 after:h-[2px] after:bg-[var(--color-gold)]">Newsletter</h3>
+                <p class="text-sm mb-4">Restez informé de nos actualités</p>
+                <form id="newsletterForm" class="flex w-full max-w-md bg-[#162038] rounded-lg overflow-hidden p-1 border border-gray-800" onsubmit="subscribeNewsletter(event)">
+                    <input type="email" id="newsletterEmail" placeholder="Votre email" class="w-full bg-transparent px-4 py-2 text-sm text-white focus:outline-none placeholder-gray-500" required>
+                    <button type="submit" class="bg-[var(--color-gold)] text-[#101b3b] font-bold px-5 py-2 rounded-md text-sm hover:bg-[#b08b30] transition shrink-0">S'abonner</button>
+                </form>
+                <div class="flex items-center gap-5 mt-6" id="footerSocialLinks"></div>
+            </div>
         </div>
         <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-gray-900 text-center text-xs text-gray-600 tracking-wider">&copy; 2026 ATA SCHOOL &ndash; Tous droits réservés</div>
     </footer>
@@ -155,930 +150,367 @@
 </div>
 
 <script>
-// ==================== STOCKAGE UNIFIÉ ====================
-const STORAGE_USERS = "ata_users";
-const STORAGE_COURSES = "ata_courses";
-const STORAGE_VIDEOS = "ata_videos";
-const STORAGE_PDFS = "ata_pdfs";
-const STORAGE_CONFERENCES = "ata_conferences";
-const STORAGE_MESSAGES = "ata_messages";
-const STORAGE_ADMIN_REPLIES = "ata_admin_replies";
-const STORAGE_CHAT = "liveChatMessages";
-const STORAGE_GLOBAL_CHAT = "globalChat";
-const STORAGE_PAYMENTS = "ata_payment_requests";
-const STORAGE_CAROUSEL = "ata_carousel_slides";
+// ==================== STORAGE & DEFAULTS ====================
+const STORAGE_USERS = "ata_users", STORAGE_COURSES = "ata_courses", STORAGE_VIDEOS = "ata_videos",
+      STORAGE_PDFS = "ata_pdfs", STORAGE_CONFERENCES = "ata_conferences", STORAGE_MESSAGES = "ata_messages",
+      STORAGE_ADMIN_REPLIES = "ata_admin_replies", STORAGE_CHAT = "liveChatMessages", STORAGE_GLOBAL_CHAT = "globalChat",
+      STORAGE_PAYMENTS = "ata_payment_requests", STORAGE_CAROUSEL = "ata_carousel_slides", STORAGE_SETTINGS = "ata_settings",
+      STORAGE_NEWSLETTER = "ata_newsletter_subscribers";
 
-// Initialisation par défaut
-if (!localStorage.getItem(STORAGE_USERS)) {
-    const users = [
-        { id:1, name:"Admin ATA", email:"admin@ataschool.edu", password:"admin123", role:"admin", subscribed:true, subscription:{status:'active'}, createdAt:new Date().toISOString() },
-        { id:2, name:"Jean Dupont", email:"jean@test.com", password:"jean123", role:"student", subscribed:false, subscription:{status:'none'}, createdAt:new Date().toISOString() },
-        { id:3, name:"Aina Rakoto", email:"aina@school.mg", password:"aina123", role:"student", subscribed:false, subscription:{status:'none'}, createdAt:new Date().toISOString() }
-    ];
-    localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
-}
-if (!localStorage.getItem(STORAGE_COURSES)) {
-    const courses = [
-        { id:1, titre:"Anglais Débutant", langue:"Anglais", niveau:"Débutant", duree:"12 sem", prix:"85 000 Ar", image:"https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=400", premium:false, accessLevel:'public', videoLink:"" },
-        { id:2, titre:"Anglais Intermédiaire", langue:"Anglais", niveau:"Intermédiaire", duree:"10 sem", prix:"95 000 Ar", image:"https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?w=400", premium:false, accessLevel:'public', videoLink:"" },
-        { id:3, titre:"Français Débutant", langue:"Français", niveau:"Débutant", duree:"12 sem", prix:"80 000 Ar", image:"https://images.pexels.com/photos/1642228/pexels-photo-1642228.jpeg?w=400", premium:false, accessLevel:'public', videoLink:"" },
-        { id:4, titre:"Français Professionnel", langue:"Français", niveau:"Avancé", duree:"8 sem", prix:"110 000 Ar", image:"https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?w=400", premium:true, accessLevel:'premium', videoLink:"" }
-    ];
-    localStorage.setItem(STORAGE_COURSES, JSON.stringify(courses));
-}
-if (!localStorage.getItem(STORAGE_VIDEOS)) {
-    const videos = [
-        { id:1, titre:"Greetings in English", langue:"Anglais", url:"https://www.youtube.com/embed/9nQ9P9vW8bE", thumbnail:"", premium:false, accessLevel:'public' },
-        { id:2, titre:"Se présenter en français", langue:"Français", url:"https://www.youtube.com/embed/5nQ9P9vW8bE", thumbnail:"", premium:false, accessLevel:'public' }
-    ];
-    localStorage.setItem(STORAGE_VIDEOS, JSON.stringify(videos));
-}
-if (!localStorage.getItem(STORAGE_PDFS)) {
-    const pdfs = [
-        { id:1, nom:"Manuel de Grammaire Anglaise", categorie:"Cours", taille:"3.2 MB", downloads:24, premium:false, accessLevel:'public', url:"#" },
-        { id:2, nom:"Exercices de Conjugaison", categorie:"Exercices", taille:"1.5 MB", downloads:12, premium:false, accessLevel:'public', url:"#" }
-    ];
-    localStorage.setItem(STORAGE_PDFS, JSON.stringify(pdfs));
-}
-if (!localStorage.getItem(STORAGE_CONFERENCES)) {
-    const confs = [
-        { id:1, titre:"Webinaire Anglais Business", date:"2026-06-20T14:00", link:"https://meet.google.com/conf1" }
-    ];
-    localStorage.setItem(STORAGE_CONFERENCES, JSON.stringify(confs));
-}
-if (!localStorage.getItem(STORAGE_MESSAGES)) localStorage.setItem(STORAGE_MESSAGES, JSON.stringify([]));
-if (!localStorage.getItem(STORAGE_ADMIN_REPLIES)) localStorage.setItem(STORAGE_ADMIN_REPLIES, JSON.stringify([]));
-if (!localStorage.getItem(STORAGE_CHAT)) {
-    localStorage.setItem(STORAGE_CHAT, JSON.stringify([
-        { user: 'Lucas Miller', text: 'Could you re-explain...', time: '10:42 AM' }
-    ]));
-}
-if (!localStorage.getItem(STORAGE_GLOBAL_CHAT)) {
-    localStorage.setItem(STORAGE_GLOBAL_CHAT, JSON.stringify([
-        { sender: 'admin', text: 'Bonjour, comment puis-je vous aider ?', time: '10:30 AM' }
-    ]));
-}
-if (!localStorage.getItem(STORAGE_PAYMENTS)) localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify([]));
-if (!localStorage.getItem(STORAGE_CAROUSEL)) localStorage.setItem(STORAGE_CAROUSEL, JSON.stringify([]));
+// Defaults
+!localStorage.getItem(STORAGE_USERS) && localStorage.setItem(STORAGE_USERS, JSON.stringify([
+    { id:1, name:"Admin ATA", email:"admin@ataschool.edu", password:"admin123", role:"admin", subscribed:true, subscription:{status:'active'}, createdAt:new Date().toISOString() },
+    { id:2, name:"Jean Dupont", email:"jean@test.com", password:"jean123", role:"student", subscribed:false, subscription:{status:'none'}, createdAt:new Date().toISOString() },
+    { id:3, name:"Aina Rakoto", email:"aina@school.mg", password:"aina123", role:"student", subscribed:false, subscription:{status:'none'}, createdAt:new Date().toISOString() }
+]));
+!localStorage.getItem(STORAGE_COURSES) && localStorage.setItem(STORAGE_COURSES, JSON.stringify([
+    { id:1, titre:"Anglais Débutant", langue:"Anglais", niveau:"Débutant", duree:"12 sem", prix:"85 000 Ar", image:"https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=400", premium:false, accessLevel:'public', visibility:'teaser', videoLink:"" },
+    { id:2, titre:"Anglais Intermédiaire", langue:"Anglais", niveau:"Intermédiaire", duree:"10 sem", prix:"95 000 Ar", image:"https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?w=400", premium:false, accessLevel:'public', visibility:'teaser', videoLink:"" },
+    { id:3, titre:"Français Débutant", langue:"Français", niveau:"Débutant", duree:"12 sem", prix:"80 000 Ar", image:"https://images.pexels.com/photos/1642228/pexels-photo-1642228.jpeg?w=400", premium:false, accessLevel:'public', visibility:'teaser', videoLink:"" },
+    { id:4, titre:"Français Professionnel", langue:"Français", niveau:"Avancé", duree:"8 sem", prix:"110 000 Ar", image:"https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?w=400", premium:true, accessLevel:'premium', visibility:'teaser', videoLink:"" }
+]));
+!localStorage.getItem(STORAGE_VIDEOS) && localStorage.setItem(STORAGE_VIDEOS, JSON.stringify([
+    { id:1, titre:"Greetings in English", langue:"Anglais", url:"https://www.youtube.com/embed/9nQ9P9vW8bE", thumbnail:"", premium:false, accessLevel:'public', visibility:'teaser' },
+    { id:2, titre:"Se présenter en français", langue:"Français", url:"https://www.youtube.com/embed/5nQ9P9vW8bE", thumbnail:"", premium:false, accessLevel:'public', visibility:'teaser' }
+]));
+!localStorage.getItem(STORAGE_PDFS) && localStorage.setItem(STORAGE_PDFS, JSON.stringify([
+    { id:1, nom:"Manuel de Grammaire Anglaise", categorie:"Cours", taille:"3.2 MB", downloads:24, premium:false, accessLevel:'public', visibility:'teaser', url:"#" },
+    { id:2, nom:"Exercices de Conjugaison", categorie:"Exercices", taille:"1.5 MB", downloads:12, premium:false, accessLevel:'public', visibility:'teaser', url:"#" }
+]));
+!localStorage.getItem(STORAGE_CONFERENCES) && localStorage.setItem(STORAGE_CONFERENCES, JSON.stringify([{ id:1, titre:"Webinaire Anglais Business", date:"2026-06-20T14:00", link:"https://meet.google.com/conf1" }]));
+!localStorage.getItem(STORAGE_MESSAGES) && localStorage.setItem(STORAGE_MESSAGES, JSON.stringify([]));
+!localStorage.getItem(STORAGE_ADMIN_REPLIES) && localStorage.setItem(STORAGE_ADMIN_REPLIES, JSON.stringify([]));
+!localStorage.getItem(STORAGE_CHAT) && localStorage.setItem(STORAGE_CHAT, JSON.stringify([]));
+!localStorage.getItem(STORAGE_GLOBAL_CHAT) && localStorage.setItem(STORAGE_GLOBAL_CHAT, JSON.stringify([]));
+!localStorage.getItem(STORAGE_PAYMENTS) && localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify([]));
+!localStorage.getItem(STORAGE_CAROUSEL) && localStorage.setItem(STORAGE_CAROUSEL, JSON.stringify([]));
+!localStorage.getItem(STORAGE_SETTINGS) && localStorage.setItem(STORAGE_SETTINGS, JSON.stringify({ facebook:'', twitter:'', linkedin:'', instagram:'', whatsapp:'', contactEmail:'' }));
+!localStorage.getItem(STORAGE_NEWSLETTER) && localStorage.setItem(STORAGE_NEWSLETTER, JSON.stringify([]));
 
+// ==================== UTILS ====================
 function getUsers() { return JSON.parse(localStorage.getItem(STORAGE_USERS)) || []; }
-function saveUsers(users) { localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); }
+function saveUsers(u) { localStorage.setItem(STORAGE_USERS, JSON.stringify(u)); }
 function getCurrentUser() { return JSON.parse(localStorage.getItem('currentUser')); }
-function setCurrentUser(user) { localStorage.setItem('currentUser', JSON.stringify(user)); }
-function logout() {
-    localStorage.removeItem('currentUser');
-    currentPage = 'home';
-    renderApp();
-    window.scrollTo(0,0);
-    showToast('Vous êtes déconnecté', 'info');
-}
-
+function setCurrentUser(u) { localStorage.setItem('currentUser', JSON.stringify(u)); }
+function logout() { localStorage.removeItem('currentUser'); currentPage = 'home'; renderApp(); window.scrollTo(0,0); showToast('Déconnecté', 'info'); }
 let currentPage = 'home';
-
-function navigateTo(page) {
+function navigateTo(p) {
     const user = getCurrentUser();
-    if ((page === 'videos' || page === 'courses' || page === 'messages' || page === 'resources') && !user) {
-        openAuthModal('login');
-        return;
-    }
-    currentPage = page;
-    renderApp();
+    if ((p === 'videos' || p === 'courses' || p === 'messages' || p === 'resources') && !user) { openAuthModal('login'); return; }
+    currentPage = p; renderApp();
 }
-
 function showToast(msg, type='success') {
-    const container = document.getElementById('toastContainer');
-    if (!container) return;
-    const toast = document.createElement('div');
-    toast.className = `toast font-medium ${type==='error'?'border-red-500 bg-slate-900':'border-[#c9a03d]'}`;
-    toast.innerHTML = `<div class="flex items-center gap-2"><i class="fa-regular ${type==='error'?'fa-circle-exclamation text-red-400':'fa-circle-check text-[#c9a03d]'} text-lg"></i><span>${msg}</span></div>`;
-    container.appendChild(toast);
-    setTimeout(()=> { toast.style.opacity = '0'; setTimeout(()=>toast.remove(), 300); }, 3500);
+    const c = document.getElementById('toastContainer'); if (!c) return;
+    const t = document.createElement('div');
+    t.className = `toast font-medium ${type==='error'?'border-red-500 bg-slate-900':'border-[#c9a03d]'}`;
+    t.innerHTML = `<div class="flex items-center gap-2"><i class="fa-regular ${type==='error'?'fa-circle-exclamation text-red-400':'fa-circle-check text-[#c9a03d]'} text-lg"></i><span>${msg}</span></div>`;
+    c.appendChild(t); setTimeout(()=>{ t.style.opacity='0'; setTimeout(()=>t.remove(),300); },3500);
 }
 
-// ==================== MODE SOMBRE ====================
+// ==================== DARK MODE ====================
 function toggleDarkMode() {
     document.documentElement.classList.toggle('dark');
-    localStorage.setItem('ata_dark_mode', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    localStorage.setItem('ata_dark_mode', document.documentElement.classList.contains('dark')?'dark':'light');
 }
-(function initDarkMode() {
-    if (localStorage.getItem('ata_dark_mode') === 'dark' || 
-        (!localStorage.getItem('ata_dark_mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+(function() {
+    if (localStorage.getItem('ata_dark_mode')==='dark' || (!localStorage.getItem('ata_dark_mode') && window.matchMedia('(prefers-color-scheme: dark)').matches))
         document.documentElement.classList.add('dark');
-    }
 })();
-
-// ==================== LOADER ====================
 function showLoader() { document.getElementById('pageLoader')?.classList.remove('hidden'); }
 function hideLoader() { setTimeout(() => { document.getElementById('pageLoader')?.classList.add('hidden'); }, 300); }
 
-// ==================== SYSTEME DE DROITS D'ACCES ====================
+// ==================== ACCESS ====================
 function getUserAccessLevel() {
-    const u = getCurrentUser();
-    if (!u) return 'visitor';
-    if (u.role === 'admin') return 'admin';
-    if (u.subscription?.status === 'active') return 'premium';
+    const u = getCurrentUser(); if (!u) return 'visitor';
+    if (u.role==='admin') return 'admin';
+    if (u.subscription?.status==='active') return 'premium';
     return 'standard';
 }
 function canAccessContent(c) {
-    const level = getUserAccessLevel();
-    if (level === 'admin') return true;
-    const accessLevel = c.accessLevel || (c.premium ? 'premium' : 'public');
-    if (level === 'premium') return true;
-    if (level === 'standard') return accessLevel !== 'premium';
-    return accessLevel === 'public';
+    const level = getUserAccessLevel(); if (level==='admin') return true;
+    const al = c.accessLevel || (c.premium?'premium':'public');
+    if (level==='premium') return true;
+    if (level==='standard') return al !== 'premium';
+    return al === 'public';
 }
 function renderAccessBadge(c) {
-    const accessLevel = c.accessLevel || (c.premium ? 'premium' : 'public');
-    if (accessLevel === 'premium') return '<span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">🔒 Premium</span>';
-    if (accessLevel === 'members') return '<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">👤 Membres</span>';
+    const al = c.accessLevel || (c.premium?'premium':'public');
+    if (al==='premium') return '<span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">🔒 Premium</span>';
+    if (al==='members') return '<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">👤 Membres</span>';
     return '';
 }
 
-// ==================== FAVORIS ====================
-function getFavorites() {
-    const u = getCurrentUser();
-    if (!u) return [];
-    return JSON.parse(localStorage.getItem(`fav_${u.email}`) || '[]');
-}
+// ==================== FAVORITES ====================
+function getFavorites() { const u=getCurrentUser(); return u ? JSON.parse(localStorage.getItem(`fav_${u.email}`)||'[]') : []; }
 function addFavorite(type, id) {
-    const u = getCurrentUser();
-    if (!u) return showToast('Connectez-vous pour ajouter des favoris', 'warning');
-    const key = `fav_${u.email}`;
-    const favs = getFavorites();
-    if (!favs.find(f => f.type === type && f.id === id)) {
-        favs.push({ type, id });
-        localStorage.setItem(key, JSON.stringify(favs));
-        showToast('Ajouté aux favoris ❤️');
-    }
+    const u=getCurrentUser(); if(!u) return showToast('Connectez-vous','warning');
+    const key=`fav_${u.email}`; const favs=getFavorites();
+    if (!favs.find(f=>f.type===type && f.id===id)) { favs.push({type,id}); localStorage.setItem(key,JSON.stringify(favs)); showToast('Ajouté aux favoris ❤️'); }
 }
 function removeFavorite(type, id) {
-    const u = getCurrentUser();
-    if (!u) return;
-    const key = `fav_${u.email}`;
-    const favs = getFavorites().filter(f => !(f.type === type && f.id === id));
-    localStorage.setItem(key, JSON.stringify(favs));
-    showToast('Retiré des favoris');
+    const u=getCurrentUser(); if(!u) return;
+    const key=`fav_${u.email}`; const favs=getFavorites().filter(f=>!(f.type===type && f.id===id));
+    localStorage.setItem(key,JSON.stringify(favs)); showToast('Retiré des favoris');
 }
-function isFavorite(type, id) {
-    return getFavorites().some(f => f.type === type && f.id === id);
-}
+function isFavorite(type, id) { return getFavorites().some(f=>f.type===type && f.id===id); }
 
-// ==================== MODALE PROMOTIONNELLE ====================
+// ==================== PROMO MODAL ====================
 function showPremiumModal() {
-    const existing = document.getElementById('premiumPromoModal');
-    if (existing) existing.remove();
-    const accessLevel = getUserAccessLevel();
-    const modal = document.createElement('div');
-    modal.id = 'premiumPromoModal';
-    modal.className = 'modal active';
-    modal.style.zIndex = '150';
+    const existing = document.getElementById('premiumPromoModal'); if(existing) existing.remove();
+    const level = getUserAccessLevel();
+    const modal = document.createElement('div'); modal.id='premiumPromoModal'; modal.className='modal active'; modal.style.zIndex='150';
     modal.innerHTML = `
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-md w-full mx-4 relative">
             <button onclick="closePremiumModal()" class="absolute top-4 right-4 text-gray-400 hover:text-[#101b3b] text-xl z-10 icon-pro"><i class="fa-solid fa-xmark"></i></button>
-            <div class="bg-gradient-to-r from-[#101b3b] to-[#1a2a56] p-8 text-center text-white">
-                <i class="fa-solid fa-crown text-5xl text-[var(--color-gold)] mb-4"></i>
-                <h2 class="serif-title text-2xl font-bold">${accessLevel==='visitor'?'Connectez-vous':'Passez à Premium'}</h2>
-            </div>
-            <div class="p-6 text-center">
-                <p class="text-slate-600 text-sm mb-6">${accessLevel==='visitor'?'Connectez-vous pour accéder à ce contenu exclusif.':'Débloquez tous les contenus réservés aux membres Premium.'}</p>
-                <button onclick="${accessLevel==='visitor'?"openAuthModal('login')":"navigateTo('premium')"}" class="btn-premium px-8 py-3 rounded-full font-bold text-sm">${accessLevel==='visitor'?'Se connecter':'Voir les offres Premium'}</button>
-            </div>
+            <div class="bg-gradient-to-r from-[#101b3b] to-[#1a2a56] p-8 text-center text-white"><i class="fa-solid fa-crown text-5xl text-[var(--color-gold)] mb-4"></i><h2 class="serif-title text-2xl font-bold">${level==='visitor'?'Connectez-vous':'Passez à Premium'}</h2></div>
+            <div class="p-6 text-center"><p class="text-slate-600 text-sm mb-6">${level==='visitor'?'Connectez-vous pour accéder à ce contenu exclusif.':'Débloquez tous les contenus réservés aux membres Premium.'}</p><button onclick="${level==='visitor'?"openAuthModal('login')":"navigateTo('premium')"}" class="btn-premium px-8 py-3 rounded-full font-bold text-sm">${level==='visitor'?'Se connecter':'Voir les offres Premium'}</button></div>
         </div>`;
-    document.body.appendChild(modal);
-    modal.addEventListener('click', e => { if (e.target === modal) closePremiumModal(); });
+    document.body.appendChild(modal); modal.addEventListener('click', e => { if(e.target===modal) closePremiumModal(); });
 }
-function closePremiumModal() {
-    const m = document.getElementById('premiumPromoModal');
-    if (m) m.remove();
-}
+function closePremiumModal() { const m=document.getElementById('premiumPromoModal'); if(m) m.remove(); }
 
-// ==================== RENDU PRINCIPAL ====================
+// ==================== RENDER ENGINE ====================
 function renderApp() {
     showLoader();
     const user = getCurrentUser();
-    const mainContent = document.getElementById('mainContent');
-    const authButtons = document.getElementById('authButtons');
+    const authBtns = document.getElementById('authButtons');
+    if (user) {
+        authBtns.innerHTML = `<button onclick="toggleDarkMode()" class="icon-pro mr-2" title="Mode sombre"><i class="fa-solid fa-moon"></i></button><button onclick="logout()" class="btn-premium px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase flex items-center gap-2" style="background-color: #c9a03d; border-color: #c9a03d;"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>`;
+    } else {
+        authBtns.innerHTML = `<button onclick="toggleDarkMode()" class="icon-pro mr-2" title="Mode sombre"><i class="fa-solid fa-moon"></i></button><button onclick="openAuthModal('login')" class="btn-premium px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase">Se connecter</button>`;
+    }
+    document.querySelectorAll('.nav-icon').forEach(i => i.classList.toggle('active', i.getAttribute('data-page')===currentPage));
+    const main = document.getElementById('mainContent');
     const footer = document.getElementById('mainFooter');
 
-    if (user) {
-        authButtons.innerHTML = `
-            <button onclick="toggleDarkMode()" class="icon-pro mr-2" title="Mode sombre"><i class="fa-solid fa-moon"></i></button>
-            <button onclick="logout()" class="btn-premium px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase flex items-center gap-2" style="background-color: #c9a03d; border-color: #c9a03d;">
-                <i class="fas fa-sign-out-alt"></i> Déconnexion
-            </button>`;
-    } else {
-        authButtons.innerHTML = `
-            <button onclick="toggleDarkMode()" class="icon-pro mr-2" title="Mode sombre"><i class="fa-solid fa-moon"></i></button>
-            <button onclick="openAuthModal('login')" class="btn-premium px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase">Se connecter</button>`;
-    }
-
-    document.querySelectorAll('.nav-icon').forEach(icon => {
-        const page = icon.getAttribute('data-page');
-        if (page === currentPage) icon.classList.add('active');
-        else icon.classList.remove('active');
-    });
-
-    switch (currentPage) {
+    switch(currentPage) {
         case 'home':
-            if (user && user.role === 'admin') {
-                mainContent.innerHTML = renderAdminDashboard(user);
-                footer.style.display = 'none';
-                initAdminDashboard();
-            } else if (user && user.role === 'student') {
-                mainContent.innerHTML = renderUserDashboard(user);
-                footer.style.display = 'none';
-            } else {
-                mainContent.innerHTML = renderHomePage();
-                footer.style.display = 'block';
-                setTimeout(() => { initSwiper(); initReveal(); }, 100);
-            }
+            if (user && user.role==='admin') { main.innerHTML = renderAdminDashboard(); footer.style.display='none'; initAdminDashboard(); }
+            else if (user && user.role==='student') { main.innerHTML = renderUserDashboard(user); footer.style.display='none'; }
+            else { main.innerHTML = renderHomePage(); footer.style.display='block'; setTimeout(()=>{ initSwiper(); initReveal(); },100); }
             break;
-        case 'videos':
-            mainContent.innerHTML = renderVideoCourses();
-            footer.style.display = 'block';
-            setTimeout(fillVideoGrid, 50);
-            break;
-        case 'courses':
-            mainContent.innerHTML = renderLiveClass();
-            footer.style.display = 'block';
-            setTimeout(initLiveChat, 100);
-            break;
-        case 'messages':
-            mainContent.innerHTML = renderMessages();
-            footer.style.display = 'none';
-            setTimeout(initMessaging, 100);
-            break;
-        case 'resources':
-            mainContent.innerHTML = renderResources();
-            footer.style.display = 'block';
-            setTimeout(fillResourcesGrid, 50);
-            break;
-        case 'premium':
-            mainContent.innerHTML = renderPremiumPage();
-            footer.style.display = 'block';
-            break;
-        case 'favorites':
-            mainContent.innerHTML = renderFavoritesPage();
-            footer.style.display = 'block';
-            break;
-        default:
-            mainContent.innerHTML = renderHomePage();
-            footer.style.display = 'block';
+        case 'videos': main.innerHTML = renderVideoCourses(); footer.style.display='block'; setTimeout(fillVideoGrid,50); break;
+        case 'courses': main.innerHTML = renderLiveClass(); footer.style.display='block'; break;
+        case 'messages': main.innerHTML = renderMessages(); footer.style.display='none'; setTimeout(initMessaging,100); break;
+        case 'resources': main.innerHTML = renderResources(); footer.style.display='block'; setTimeout(fillResourcesGrid,50); break;
+        case 'premium': main.innerHTML = renderPremiumPage(); footer.style.display='block'; break;
+        case 'favorites': main.innerHTML = renderFavoritesPage(); footer.style.display='block'; break;
+        default: main.innerHTML = renderHomePage(); footer.style.display='block';
     }
-
+    updateFooterLinks();
     initHeaderScroll();
     hideLoader();
 }
 
-// ==================== PAGES UTILISATEUR ====================
+// ==================== PAGES ====================
 function renderHomePage() {
     return `
-        <main>
-            <section class="min-h-[calc(100vh-80px)] flex flex-col lg:flex-row bg-[var(--color-bg-light)]">
-                <div class="w-full lg:w-[55%] flex flex-col justify-between p-8 lg:p-16 xl:p-24">
-                    <div class="mb-8 lg:mb-0 reveal"><img src="IMG.jpg" alt="Logo ATA SCHOOL" class="h-28 w-auto object-contain object-left drop-shadow-sm" onerror="this.style.display='none'"></div>
-                    <div class="my-auto max-w-xl">
-                        <h1 class="serif-title text-5xl lg:text-7xl text-[#101b3b] leading-[1.05] tracking-tight reveal">ATA SCHOOL</h1>
-                        <p class="text-lg lg:text-xl text-gray-600 mt-6 font-medium leading-relaxed reveal" style="transition-delay: 0.1s;">La plateforme qui élève vos compétences</p>
-                        <div class="flex flex-wrap gap-4 mt-10 reveal" style="transition-delay: 0.2s;">
-                            <button class="btn-premium px-8 py-4 rounded-full font-bold text-sm tracking-wide shadow-lg shadow-gray-300 flex items-center gap-2" onclick="navigateTo('videos')"><i class="fas fa-graduation-cap"></i> Explorer les cours</button>
-                            <button class="btn-gold-outline px-8 py-4 rounded-full font-bold text-sm tracking-wide flex items-center gap-2" onclick="openAuthModal('login')"><i class="fas fa-right-to-bracket"></i> Se connecter</button>
-                        </div>
-                    </div>
-                    <div class="pt-8 border-t border-gray-200/60 flex items-center gap-4 text-xs tracking-wider uppercase text-gray-400 font-bold reveal"><span class="text-[var(--color-gold)]">★ ★ ★ ★ ★</span> Plateforme d'apprentissage d'excellence</div>
+    <main>
+        <section class="min-h-[calc(100vh-80px)] flex flex-col lg:flex-row bg-[var(--color-bg-light)]">
+            <div class="w-full lg:w-[55%] flex flex-col justify-between p-8 lg:p-16 xl:p-24">
+                <div class="mb-8 lg:mb-0 reveal"><img src="IMG.jpg" alt="Logo" class="h-28 w-auto object-contain" onerror="this.style.display='none'"></div>
+                <div class="my-auto max-w-xl"><h1 class="serif-title text-5xl lg:text-7xl text-[#101b3b] leading-[1.05] tracking-tight reveal">ATA SCHOOL</h1><p class="text-lg lg:text-xl text-gray-600 mt-6 font-medium leading-relaxed reveal" style="transition-delay:0.1s;">La plateforme qui élève vos compétences</p>
+                    <div class="flex flex-wrap gap-4 mt-10 reveal" style="transition-delay:0.2s;"><button class="btn-premium px-8 py-4 rounded-full font-bold text-sm tracking-wide shadow-lg flex items-center gap-2" onclick="navigateTo('videos')"><i class="fas fa-graduation-cap"></i> Explorer les cours</button><button class="btn-gold-outline px-8 py-4 rounded-full font-bold text-sm tracking-wide flex items-center gap-2" onclick="openAuthModal('login')"><i class="fas fa-right-to-bracket"></i> Se connecter</button></div>
                 </div>
-                <div class="w-full lg:w-[45%] relative min-h-[400px] lg:min-h-0 bg-gray-200">
-                    <img src="Gemini_Generated_Image_pymdofpymdofpymd.png" alt="Formateur ATA School" class="absolute inset-0 w-full h-full object-cover object-center lg:object-right">
-                    <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[var(--color-bg-light)]/40 via-transparent to-transparent"></div>
-                </div>
-            </section>
-            <section class="py-24 bg-white overflow-hidden">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="text-center mb-12 reveal"><span class="text-[var(--color-gold)] font-bold uppercase tracking-widest text-xs">Catalogue</span><h2 class="serif-title text-3xl lg:text-5xl text-[#101b3b] mt-2">📚 Nos Cours Populaires</h2><div class="w-16 h-1 bg-[var(--color-gold)] mx-auto mt-4 rounded-full"></div></div>
-                    <div class="swiper courseSwiper reveal">
-                        <div class="swiper-wrapper" id="coursesCarouselWrapper"></div>
-                        <div class="custom-swiper-next icon-pro"><i class="fa-solid fa-chevron-right"></i></div>
-                        <div class="custom-swiper-prev icon-pro"><i class="fa-solid fa-chevron-left"></i></div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    `;
+                <div class="pt-8 border-t border-gray-200/60 flex items-center gap-4 text-xs tracking-wider uppercase text-gray-400 font-bold reveal"><span class="text-[var(--color-gold)]">★ ★ ★ ★ ★</span> Plateforme d'apprentissage d'excellence</div>
+            </div>
+            <div class="w-full lg:w-[45%] relative min-h-[400px] lg:min-h-0 bg-gray-200"><img src="Gemini_Generated_Image_pymdofpymdofpymd.png" alt="Formateur" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[var(--color-bg-light)]/40 via-transparent to-transparent"></div></div>
+        </section>
+        <section class="py-24 bg-white overflow-hidden"><div class="max-w-7xl mx-auto px-6"><div class="text-center mb-12 reveal"><span class="text-[var(--color-gold)] font-bold uppercase tracking-widest text-xs">Catalogue</span><h2 class="serif-title text-3xl lg:text-5xl text-[#101b3b] mt-2">📚 Nos Cours Populaires</h2><div class="w-16 h-1 bg-[var(--color-gold)] mx-auto mt-4 rounded-full"></div></div><div class="swiper courseSwiper reveal"><div class="swiper-wrapper" id="coursesCarouselWrapper"></div><div class="custom-swiper-next icon-pro"><i class="fa-solid fa-chevron-right"></i></div><div class="custom-swiper-prev icon-pro"><i class="fa-solid fa-chevron-left"></i></div><div class="swiper-pagination"></div></div></div></section>
+    </main>`;
 }
-
 function renderVideoCourses() {
     return `
-        <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-12">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-                <div><h1 class="serif-title text-4xl lg:text-5xl text-[#101b3b] font-bold">Video Courses Library</h1><p class="text-gray-500 mt-2 max-w-xl text-sm leading-relaxed">Unlock your potential with our comprehensive collection of expert-led video lessons.</p></div>
-                <div class="w-full md:w-80 relative"><i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i><input type="text" placeholder="Search courses, lessons..." class="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[var(--color-gold)] transition shadow-sm"></div>
-            </div>
-            <div class="flex flex-col lg:flex-row gap-8">
-                <aside class="w-full lg:w-64 shrink-0 flex flex-col gap-6">
-                    <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                        <div class="mb-6"><h3 class="font-bold text-sm tracking-wider uppercase text-[#101b3b] mb-4">Subjects</h3>
-                            <div class="space-y-3">
-                                <label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="checkbox" checked class="custom-checkbox w-4 h-4 rounded"><span>Anglais</span></label>
-                                <label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="checkbox" checked class="custom-checkbox w-4 h-4 rounded"><span>Français</span></label>
-                            </div>
-                        </div>
-                        <hr class="border-gray-100 my-4">
-                        <div><h3 class="font-bold text-sm tracking-wider uppercase text-[#101b3b] mb-4">Difficulty</h3>
-                            <div class="space-y-3">
-                                <label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" checked class="custom-checkbox w-4 h-4"><span>Débutant</span></label>
-                                <label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" class="custom-checkbox w-4 h-4"><span>Intermédiaire</span></label>
-                                <label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" class="custom-checkbox w-4 h-4"><span>Avancé</span></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-[#101b3b] text-white rounded-2xl p-6 border border-[#c9a03d]/30 relative overflow-hidden shadow-md flex flex-col justify-between min-h-[180px]">
-                        <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-[#c9a03d]/10 rounded-full blur-xl"></div>
-                        <div><h4 class="font-bold text-lg tracking-wide">Pro Access</h4><p class="text-xs text-gray-400 mt-1.5 leading-relaxed">Get unlimited access to all courses and live mentoring.</p></div>
-                        <button class="w-full bg-[var(--color-gold)] text-[#101b3b] text-xs font-bold py-3 rounded-xl hover:bg-[#b08b30] transition mt-4 uppercase tracking-wider" onclick="navigateTo('premium')">Upgrade Now</button>
-                    </div>
-                </aside>
-                <div class="flex-1"><div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="videoGridContainer"></div></div>
-            </div>
-        </main>
-    `;
+    <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"><div><h1 class="serif-title text-4xl lg:text-5xl text-[#101b3b] font-bold">Video Courses Library</h1><p class="text-gray-500 mt-2 max-w-xl text-sm">Unlock your potential with our comprehensive collection of expert-led video lessons.</p></div><div class="w-full md:w-80 relative"><i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i><input type="text" placeholder="Search..." class="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm"></div></div>
+        <div class="flex flex-col lg:flex-row gap-8">
+            <aside class="w-full lg:w-64 shrink-0 flex flex-col gap-6"><div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"><div class="mb-6"><h3 class="font-bold text-sm uppercase text-[#101b3b] mb-4">Subjects</h3><div class="space-y-3"><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="checkbox" checked class="custom-checkbox w-4 h-4"><span>Anglais</span></label><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="checkbox" checked class="custom-checkbox w-4 h-4"><span>Français</span></label></div></div><hr class="border-gray-100 my-4"><div><h3 class="font-bold text-sm uppercase text-[#101b3b] mb-4">Difficulty</h3><div class="space-y-3"><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" checked class="custom-checkbox w-4 h-4"><span>Débutant</span></label><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" class="custom-checkbox w-4 h-4"><span>Intermédiaire</span></label><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" class="custom-checkbox w-4 h-4"><span>Avancé</span></label></div></div></div><div class="bg-[#101b3b] text-white rounded-2xl p-6 border border-[#c9a03d]/30 relative overflow-hidden shadow-md flex flex-col justify-between min-h-[180px]"><div class="absolute -right-6 -bottom-6 w-24 h-24 bg-[#c9a03d]/10 rounded-full blur-xl"></div><div><h4 class="font-bold text-lg tracking-wide">Pro Access</h4><p class="text-xs text-gray-400 mt-1.5">Get unlimited access to all courses and live mentoring.</p></div><button class="w-full bg-[var(--color-gold)] text-[#101b3b] text-xs font-bold py-3 rounded-xl hover:bg-[#b08b30] transition mt-4 uppercase" onclick="navigateTo('premium')">Upgrade Now</button></div></aside>
+            <div class="flex-1"><div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="videoGridContainer"></div></div>
+        </div>
+    </main>`;
 }
-
 function fillVideoGrid() {
-    const container = document.getElementById('videoGridContainer');
-    if (!container) return;
-    const videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS)) || [];
-    container.innerHTML = videos.map(v => {
+    const container = document.getElementById('videoGridContainer'); if(!container) return;
+    const videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS)||[]);
+    const level = getUserAccessLevel();
+    container.innerHTML = videos.filter(v => {
+        if (level==='admin'||level==='premium') return true;
+        const vis = v.visibility||'teaser';
+        return vis !== 'hidden';
+    }).map(v => {
         const canAccess = canAccessContent(v);
-        return `
-        <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between group hover:border-[var(--color-gold)]/40 transition">
-            <div class="relative aspect-video w-full bg-gray-900 overflow-hidden">
-                <img src="${v.thumbnail || 'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?w=500'}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-500" alt="${v.titre}">
-                <span class="absolute bottom-3 right-3 bg-black/70 text-white font-mono text-[11px] px-2 py-0.5 rounded">${v.duree || '--'}</span>
-            </div>
-            <div class="p-5 flex-1 flex flex-col justify-between">
-                <div>
-                    <span class="bg-[#c9a03d]/10 text-[var(--color-gold)] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">${v.langue} ${renderAccessBadge(v)}</span>
-                    <h2 class="font-bold text-[#101b3b] text-base mt-2.5 line-clamp-1">
-                        ${v.titre}
-                        <button onclick="${isFavorite('video',v.id) ? `removeFavorite('video',${v.id})` : `addFavorite('video',${v.id})`}" class="text-xs ml-2 ${isFavorite('video',v.id) ? 'text-red-500' : 'text-gray-400'}"><i class="fa-${isFavorite('video',v.id) ? 'solid' : 'regular'} fa-heart"></i></button>
-                    </h2>
-                    <p class="text-xs text-gray-400 mt-1.5 line-clamp-2">Regardez cette vidéo pour approfondir vos connaissances.</p>
-                </div>
-                <div class="mt-5 pt-4 border-t border-gray-50 flex items-center justify-end">
-                    ${canAccess 
-                        ? `<a href="${v.url}" target="_blank" class="border border-[#101b3b] text-[#101b3b] hover:bg-[#101b3b] hover:text-white transition rounded-lg text-xs font-bold px-4 py-2">Regarder</a>`
-                        : `<button onclick="showPremiumModal()" class="btn-premium px-4 py-2 rounded-lg text-xs font-bold">Débloquer</button>`
-                    }
-                </div>
-            </div>
-        </div>`;
+        return `<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between group hover:border-[var(--color-gold)]/40 transition">
+            <div class="relative aspect-video w-full bg-gray-900 overflow-hidden"><img src="${v.thumbnail||'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?w=500'}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-500" alt="${v.titre}"><span class="absolute bottom-3 right-3 bg-black/70 text-white font-mono text-[11px] px-2 py-0.5 rounded">${v.duree||'--'}</span></div>
+            <div class="p-5 flex-1 flex flex-col justify-between"><div><span class="bg-[#c9a03d]/10 text-[var(--color-gold)] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">${v.langue} ${renderAccessBadge(v)}</span><h2 class="font-bold text-[#101b3b] text-base mt-2.5 line-clamp-1">${v.titre} <button onclick="${isFavorite('video',v.id)?`removeFavorite('video',${v.id})`:`addFavorite('video',${v.id})`}" class="text-xs ml-2 ${isFavorite('video',v.id)?'text-red-500':'text-gray-400'}"><i class="fa-${isFavorite('video',v.id)?'solid':'regular'} fa-heart"></i></button></h2><p class="text-xs text-gray-400 mt-1.5 line-clamp-2">Regardez cette vidéo.</p></div>
+                <div class="mt-5 pt-4 border-t border-gray-50 flex items-center justify-end">${canAccess?`<a href="${v.url}" target="_blank" class="border border-[#101b3b] text-[#101b3b] hover:bg-[#101b3b] hover:text-white transition rounded-lg text-xs font-bold px-4 py-2">Regarder</a>`:`<button onclick="showPremiumModal()" class="btn-premium px-4 py-2 rounded-lg text-xs font-bold">Débloquer</button>`}</div></div></div>`;
     }).join('');
 }
-
 function renderLiveClass() {
-    return `
-        <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-10">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <div class="lg:col-span-2 flex flex-col gap-6">
-                    <div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-lg group">
-                        <img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?w=1000" class="w-full h-full object-cover opacity-80" alt="Live streaming view">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-between p-6">
-                            <div class="flex items-center justify-between">
-                                <span class="bg-red-500 text-white font-bold text-[10px] tracking-wider uppercase px-2.5 py-1 rounded-md shadow-sm">Live</span>
-                                <span class="bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg font-medium flex items-center gap-2"><i class="fa-regular fa-eye"></i> 1,420 watching</span>
-                            </div>
-                            <div class="flex items-center justify-between text-white/90">
-                                <div class="flex items-center gap-4 text-sm">
-                                    <button class="hover:text-[var(--color-gold)] transition" onclick="window.open('https://meet.google.com/new', '_blank')"><i class="fa-solid fa-play"></i></button>
-                                    <button class="hover:text-[var(--color-gold)] transition"><i class="fa-solid fa-volume-high"></i></button>
-                                    <span class="text-xs font-mono">01:24:05</span>
-                                </div>
-                                <a href="https://meet.google.com/new" target="_blank" class="bg-[var(--color-gold)] text-[#101b3b] text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-[#b08b30] transition flex items-center gap-2">
-                                    <i class="fa-solid fa-video"></i> Rejoindre la classe
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-                        <span class="bg-[#c9a03d]/10 text-[var(--color-gold)] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">Organic Chemistry</span>
-                        <h1 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold mt-3">Advanced Molecular Bonding Theories</h1>
-                        <p class="text-xs lg:text-sm text-gray-400 mt-2 leading-relaxed">Welcome to today's intensive session.</p>
-                        <div class="mt-6 pt-6 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-full bg-gray-100 overflow-hidden border border-gray-200"><i class="fa-solid fa-user-tie text-xl text-gray-400 flex items-center justify-center h-full"></i></div>
-                                <div><h4 class="font-bold text-[#101b3b] text-sm">Prof. Alexander Vance</h4><p class="text-[11px] text-gray-400">Senior Faculty of Chemical Engineering</p></div>
-                            </div>
-                            <button class="border border-[var(--color-gold)] text-[var(--color-gold)] hover:bg-[var(--color-gold)] hover:text-[#101b3b] transition rounded-xl text-xs font-bold px-4 py-2.5 flex items-center gap-2">
-                                <i class="fa-solid fa-cloud-arrow-down"></i> Download Class Materials (.PDF)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col h-[560px] lg:h-[536px]">
-                    <div class="p-4 border-b border-gray-100 flex items-center justify-between">
-                        <div class="flex items-center gap-2"><span class="w-2 h-2 bg-green-500 rounded-full"></span><h3 class="font-bold text-sm text-[#101b3b]">Live Community Chat</h3></div>
-                    </div>
-                    <div class="flex-1 p-4 overflow-y-auto space-y-4 chat-scroll bg-gray-50/40" id="chatMessages"></div>
-                    <div class="p-3 border-t border-gray-100 bg-white rounded-b-2xl">
-                        <form id="chatForm" class="flex items-center gap-2 bg-gray-50 rounded-xl px-3 py-2 border border-gray-100">
-                            <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 bg-transparent text-xs text-gray-700 focus:outline-none placeholder-gray-400 py-1">
-                            <button type="submit" class="text-[var(--color-gold)] hover:text-[#101b3b] transition text-sm px-1"><i class="fa-solid fa-paper-plane"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </main>
-    `;
+    return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-10"><div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"><div class="lg:col-span-2 flex flex-col gap-6"><div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-lg group"><img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?w=1000" class="w-full h-full object-cover opacity-80" alt="Live"><div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-between p-6"><div class="flex items-center justify-between"><span class="bg-red-500 text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-md">Live</span><span class="bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg font-medium"><i class="fa-regular fa-eye"></i> 1,420 watching</span></div><div class="flex items-center justify-between text-white/90"><div class="flex items-center gap-4 text-sm"><button class="hover:text-[var(--color-gold)] transition"><i class="fa-solid fa-play"></i></button><span class="text-xs font-mono">01:24:05</span></div><a href="https://meet.google.com/new" target="_blank" class="bg-[var(--color-gold)] text-[#101b3b] text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-[#b08b30] transition flex items-center gap-2"><i class="fa-solid fa-video"></i> Rejoindre</a></div></div></div><div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"><span class="bg-[#c9a03d]/10 text-[var(--color-gold)] text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md">Organic Chemistry</span><h1 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold mt-3">Advanced Molecular Bonding Theories</h1><p class="text-xs text-gray-400 mt-2">Welcome to today's intensive session.</p></div></div></div></main>`;
 }
-
-function initLiveChat() {
-    const chatContainer = document.getElementById('chatMessages');
-    const chatForm = document.getElementById('chatForm');
-    const chatInput = document.getElementById('chatInput');
-    if (!chatContainer || !chatForm) return;
-    function loadMessages() {
-        const messages = JSON.parse(localStorage.getItem(STORAGE_CHAT)) || [];
-        chatContainer.innerHTML = messages.map(msg => {
-            const isTA = msg.isTA ? true : false;
-            const bgClass = isTA ? 'bg-[#101b3b] text-white' : 'bg-white border border-gray-100';
-            const textClass = isTA ? 'text-gray-200' : 'text-gray-500';
-            const labelClass = isTA ? 'text-[var(--color-gold)]' : 'text-[#101b3b]';
-            return `<div class="flex items-start gap-2.5"><div class="w-7 h-7 rounded-full ${isTA ? 'bg-[#c9a03d]/20' : 'bg-gray-200'} shrink-0 text-xs font-bold flex items-center justify-center ${isTA ? 'text-[var(--color-gold)]' : 'text-gray-600'}">${isTA ? '<i class="fa-solid fa-shield-halved text-[10px]"></i>' : msg.user.charAt(0).toUpperCase()}</div><div class="${bgClass} p-3 rounded-2xl rounded-tl-none shadow-2xs max-w-[85%]"><div class="flex items-baseline gap-1.5 mb-0.5"><span class="font-bold text-xs ${labelClass}">${msg.user}</span><span class="text-[9px] ${isTA ? 'text-gray-400' : 'text-gray-400'}">${msg.time}</span></div><p class="text-xs ${textClass} leading-normal">${msg.text}</p></div></div>`;
-        }).join('');
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-    chatForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const text = chatInput.value.trim();
-        if (!text) return;
-        const currentUser = getCurrentUser();
-        const userName = currentUser ? (currentUser.fullName || currentUser.email) : 'Anonymous';
-        const now = new Date();
-        const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        const messages = JSON.parse(localStorage.getItem(STORAGE_CHAT)) || [];
-        messages.push({ user: userName, text, time });
-        localStorage.setItem(STORAGE_CHAT, JSON.stringify(messages));
-        chatInput.value = '';
-        loadMessages();
-    });
-    loadMessages();
-}
-
 function renderResources() {
-    return `
-        <main>
-            <section class="bg-[#101b3b] text-white py-16 lg:py-20">
-                <div class="max-w-7xl mx-auto px-6">
-                    <h1 class="serif-title text-4xl lg:text-6xl font-bold tracking-tight">Download Center</h1>
-                    <p class="text-gray-300 mt-4 max-w-2xl text-sm lg:text-base leading-relaxed opacity-90">Access our comprehensive library of educational materials for English and French language learning.</p>
-                    <div class="flex flex-wrap gap-3 mt-8">
-                        <button class="border border-[var(--color-gold)] text-[var(--color-gold)] bg-[var(--color-gold)]/5 px-4 py-2 rounded-full text-xs font-bold tracking-wide flex items-center gap-2"><i class="fa-solid fa-book"></i> Textbooks & Guides</button>
-                        <button class="border border-white/20 text-gray-300 hover:border-[var(--color-gold)] hover:text-white transition px-4 py-2 rounded-full text-xs font-bold tracking-wide flex items-center gap-2"><i class="fa-solid fa-file-lines"></i> Worksheets</button>
-                    </div>
-                </div>
-            </section>
-            <div class="max-w-7xl mx-auto px-6 py-12">
-                <div class="flex items-center justify-between mb-6">
-                    <div><h2 class="font-bold text-[#101b3b] text-lg lg:text-xl">Latest Resources</h2><p class="text-xs text-gray-400 mt-0.5">Curated materials for English and French</p></div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="resourcesGrid"></div>
-                <section class="mt-20 rounded-3xl bg-gradient-to-r from-[#fae29f] via-[#f5cc6b] to-[#f3bd44] p-8 lg:p-12 shadow-lg relative overflow-hidden">
-                    <div class="absolute right-0 top-0 translate-x-12 -translate-y-12 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div>
-                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative z-10">
-                        <div><h2 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold">Never miss a new resource!</h2><p class="text-[#101b3b]/80 text-sm mt-1 max-w-md font-medium">Join our WhatsApp community to get instant updates on new study materials.</p></div>
-                        <a href="https://wa.me/1234567890" target="_blank" class="bg-[#101b3b] text-white font-bold px-8 py-4 rounded-xl text-sm hover:bg-[#1a2a54] transition flex items-center gap-2 shadow-lg"><i class="fa-brands fa-whatsapp text-xl"></i> Rejoindre le canal WhatsApp</a>
-                    </div>
-                </section>
-            </div>
-        </main>
-    `;
+    return `<main><section class="bg-[#101b3b] text-white py-16 lg:py-20"><div class="max-w-7xl mx-auto px-6"><h1 class="serif-title text-4xl lg:text-6xl font-bold">Download Center</h1><p class="text-gray-300 mt-4 max-w-2xl text-sm">Access our comprehensive library of educational materials.</p></div></section><div class="max-w-7xl mx-auto px-6 py-12"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="resourcesGrid"></div><section class="mt-20 rounded-3xl bg-gradient-to-r from-[#fae29f] via-[#f5cc6b] to-[#f3bd44] p-8 lg:p-12 shadow-lg relative overflow-hidden"><div class="absolute right-0 top-0 translate-x-12 -translate-y-12 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative z-10"><div><h2 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold">Never miss a new resource!</h2><p class="text-[#101b3b]/80 text-sm mt-1">Join our WhatsApp community.</p></div><a href="#" target="_blank" class="bg-[#101b3b] text-white font-bold px-8 py-4 rounded-xl text-sm"><i class="fa-brands fa-whatsapp text-xl"></i> Rejoindre</a></div></section></div></main>`;
 }
-
 function fillResourcesGrid() {
-    const grid = document.getElementById('resourcesGrid');
-    if (!grid) return;
-    const pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS)) || [];
-    grid.innerHTML = pdfs.map(p => {
+    const grid = document.getElementById('resourcesGrid'); if(!grid) return;
+    const pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS)||[]);
+    const level = getUserAccessLevel();
+    grid.innerHTML = pdfs.filter(p => {
+        if (level==='admin'||level==='premium') return true;
+        return (p.visibility||'teaser') !== 'hidden';
+    }).map(p => {
         const canAccess = canAccessContent(p);
-        return `
-        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:border-[var(--color-gold)]/30 transition flex flex-col justify-between min-h-[200px]">
-            <div>
-                <div class="flex items-center justify-between">
-                    <span class="w-9 h-9 bg-orange-50 text-orange-500 rounded-xl flex items-center justify-center text-sm"><i class="fa-regular fa-file-pdf"></i></span>
-                    <span class="text-[10px] font-mono bg-gray-100 text-gray-500 px-2 py-0.5 rounded font-bold">${p.taille}</span>
-                </div>
-                <h3 class="font-bold text-[#101b3b] text-base mt-4 line-clamp-1">
-                    ${p.nom} ${renderAccessBadge(p)}
-                    <button onclick="${isFavorite('pdf',p.id) ? `removeFavorite('pdf',${p.id})` : `addFavorite('pdf',${p.id})`}" class="text-xs ml-2 ${isFavorite('pdf',p.id) ? 'text-red-500' : 'text-gray-400'}"><i class="fa-${isFavorite('pdf',p.id) ? 'solid' : 'regular'} fa-heart"></i></button>
-                </h3>
-                <p class="text-xs text-gray-400 mt-1.5 line-clamp-2">${p.categorie}</p>
-            </div>
-            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-end">
-                ${canAccess 
-                    ? `<a href="${p.url}" target="_blank" class="text-[#101b3b] hover:text-[var(--color-gold)] font-bold flex items-center gap-1 transition text-xs">Download Now <i class="fa-solid fa-arrow-right text-[10px]"></i></a>`
-                    : `<button onclick="showPremiumModal()" class="text-[var(--color-gold)] font-bold text-xs"><i class="fa-solid fa-lock"></i> Premium</button>`
-                }
-            </div>
-        </div>`;
+        return `<div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:border-[var(--color-gold)]/30 transition flex flex-col justify-between min-h-[200px]"><div><div class="flex items-center justify-between"><span class="w-9 h-9 bg-orange-50 text-orange-500 rounded-xl flex items-center justify-center text-sm"><i class="fa-regular fa-file-pdf"></i></span><span class="text-[10px] font-mono bg-gray-100 text-gray-500 px-2 py-0.5 rounded">${p.taille}</span></div><h3 class="font-bold text-[#101b3b] text-base mt-4">${p.nom} ${renderAccessBadge(p)} <button onclick="${isFavorite('pdf',p.id)?`removeFavorite('pdf',${p.id})`:`addFavorite('pdf',${p.id})`}" class="text-xs ml-2 ${isFavorite('pdf',p.id)?'text-red-500':'text-gray-400'}"><i class="fa-${isFavorite('pdf',p.id)?'solid':'regular'} fa-heart"></i></button></h3><p class="text-xs text-gray-400 mt-1.5">${p.categorie}</p></div><div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-end">${canAccess?`<a href="${p.url}" target="_blank" class="text-[#101b3b] hover:text-[var(--color-gold)] font-bold flex items-center gap-1 transition text-xs">Download <i class="fa-solid fa-arrow-right text-[10px]"></i></a>`:`<button onclick="showPremiumModal()" class="text-[var(--color-gold)] font-bold text-xs"><i class="fa-solid fa-lock"></i> Premium</button>`}</div></div>`;
     }).join('');
 }
 
 function renderMessages() {
-    return `
-        <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8 flex flex-col">
-            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row flex-1 overflow-hidden min-h-[600px] max-h-[750px]">
-                <aside class="w-full md:w-80 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col shrink-0">
-                    <div class="p-4 border-b border-gray-50"><h3 class="font-bold text-sm text-[#101b3b]">Conversations</h3></div>
-                    <div class="flex-1 overflow-y-auto custom-scroll divide-y divide-gray-50" id="conversationList"></div>
-                </aside>
-                <section class="flex-1 flex flex-col bg-gray-50/30">
-                    <div class="p-4 bg-white border-b border-gray-100 flex items-center shrink-0">
-                        <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-[#101b3b] text-[var(--color-gold)] flex items-center justify-center font-bold text-xs">AD</div><div><h3 class="font-bold text-xs lg:text-sm text-[#101b3b]">Admin Support Desk</h3><p class="text-[10px] text-green-500 font-semibold flex items-center gap-1 mt-0.5"><span class="w-1 h-1 bg-green-500 rounded-full inline-block"></span> Online</p></div></div>
-                    </div>
-                    <div class="flex-1 p-6 overflow-y-auto custom-scroll space-y-6" id="messageContainer"></div>
-                    <div class="p-4 bg-white border-t border-gray-100 shrink-0">
-                        <form id="messageForm" class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2.5 border border-gray-100">
-                            <input type="text" id="messageInput" placeholder="Écrivez votre message..." class="flex-1 bg-transparent text-xs lg:text-sm text-gray-700 focus:outline-none placeholder-gray-400 py-1">
-                            <button type="submit" class="bg-[#101b3b] text-white hover:bg-[var(--color-gold)] hover:text-[#101b3b] transition w-8 h-8 rounded-lg flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-paper-plane"></i></button>
-                        </form>
-                    </div>
-                </section>
-            </div>
-        </main>
-    `;
+    return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8 flex flex-col"><div class="bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row flex-1 overflow-hidden min-h-[600px] max-h-[750px]"><aside class="w-full md:w-80 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col shrink-0"><div class="p-4 border-b border-gray-50"><h3 class="font-bold text-sm text-[#101b3b]">Conversations</h3></div><div class="flex-1 overflow-y-auto custom-scroll divide-y divide-gray-50" id="conversationList"></div></aside><section class="flex-1 flex flex-col bg-gray-50/30"><div class="p-4 bg-white border-b border-gray-100 flex items-center shrink-0"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-[#101b3b] text-[var(--color-gold)] flex items-center justify-center font-bold text-xs">AD</div><div><h3 class="font-bold text-xs lg:text-sm text-[#101b3b]">Admin Support Desk</h3><p class="text-[10px] text-green-500 font-semibold flex items-center gap-1"><span class="w-1 h-1 bg-green-500 rounded-full inline-block"></span> Online</p></div></div></div><div class="flex-1 p-6 overflow-y-auto custom-scroll space-y-6" id="messageContainer"></div><div class="p-4 bg-white border-t border-gray-100 shrink-0"><form id="messageForm" class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2.5 border border-gray-100"><input type="text" id="messageInput" placeholder="Écrivez votre message..." class="flex-1 bg-transparent text-xs lg:text-sm text-gray-700 focus:outline-none placeholder-gray-400 py-1"><button type="submit" class="bg-[#101b3b] text-white hover:bg-[var(--color-gold)] hover:text-[#101b3b] transition w-8 h-8 rounded-lg flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-paper-plane"></i></button></form></div></section></div></main>`;
 }
-
 function initMessaging() {
-    const conversationList = document.getElementById('conversationList');
-    if (conversationList) {
-        conversationList.innerHTML = `
-            <div class="p-4 bg-gray-50/80 border-l-4 border-[var(--color-gold)] flex items-start gap-3 cursor-pointer" onclick="loadGlobalMessages()">
-                <div class="relative shrink-0 mt-0.5"><div class="w-9 h-9 rounded-xl bg-[#101b3b]/10 text-[#101b3b] flex items-center justify-center font-bold text-sm">AD</div><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white"></span></div>
-                <div class="flex-1 min-w-0"><div class="flex items-center justify-between gap-1"><h4 class="font-bold text-xs text-[#101b3b] truncate">Admin Support Desk</h4><span class="text-[10px] font-medium text-gray-400 shrink-0" id="lastMessageTime">--</span></div><p class="text-[11px] text-gray-500 truncate mt-0.5 font-medium" id="lastMessagePreview">Aucun message</p></div>
-            </div>
-        `;
-    }
-    loadGlobalMessages();
-    const messageForm = document.getElementById('messageForm');
-    const messageInput = document.getElementById('messageInput');
-    if (messageForm) {
-        messageForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const text = messageInput.value.trim();
-            if (!text) return;
-            const currentUser = getCurrentUser();
-            if (!currentUser) return;
-            const now = new Date();
-            const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            const messages = JSON.parse(localStorage.getItem(STORAGE_GLOBAL_CHAT)) || [];
-            messages.push({ sender: currentUser.email, text: text, time: time });
-            localStorage.setItem(STORAGE_GLOBAL_CHAT, JSON.stringify(messages));
-            messageInput.value = '';
-            loadGlobalMessages();
-            setTimeout(() => {
-                const autoReply = { sender: 'admin', text: 'Merci pour votre message. L\'équipe administrative vous répondra dans les plus brefs délais.', time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) };
-                const updatedMessages = JSON.parse(localStorage.getItem(STORAGE_GLOBAL_CHAT)) || [];
-                updatedMessages.push(autoReply);
-                localStorage.setItem(STORAGE_GLOBAL_CHAT, JSON.stringify(updatedMessages));
-                loadGlobalMessages();
-            }, 2000);
-        });
-    }
+    const convList = document.getElementById('conversationList');
+    if(convList) convList.innerHTML = `<div class="p-4 bg-gray-50/80 border-l-4 border-[var(--color-gold)] flex items-start gap-3 cursor-pointer" onclick="loadPrivateMessages()"><div class="relative shrink-0 mt-0.5"><div class="w-9 h-9 rounded-xl bg-[#101b3b]/10 text-[#101b3b] flex items-center justify-center font-bold text-sm">AD</div><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white"></span></div><div class="flex-1 min-w-0"><h4 class="font-bold text-xs text-[#101b3b] truncate">Admin Support Desk</h4><p class="text-[11px] text-gray-500 truncate mt-0.5">Discussion privée</p></div></div>`;
+    loadPrivateMessages();
+    const msgForm = document.getElementById('messageForm');
+    if(msgForm) msgForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const text = document.getElementById('messageInput').value.trim(); if(!text) return;
+        const user = getCurrentUser(); if(!user) return;
+        const now = new Date(); const time = now.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+        const key = `chat_private_admin_${user.email}`;
+        const msgs = JSON.parse(localStorage.getItem(key)||'[]');
+        msgs.push({ sender: user.email, text, time });
+        localStorage.setItem(key, JSON.stringify(msgs));
+        document.getElementById('messageInput').value = '';
+        loadPrivateMessages();
+    });
 }
-
-function loadGlobalMessages() {
-    const messageContainer = document.getElementById('messageContainer');
-    if (!messageContainer) return;
-    const currentUser = getCurrentUser();
-    const messages = JSON.parse(localStorage.getItem(STORAGE_GLOBAL_CHAT)) || [];
-    messageContainer.innerHTML = messages.map(msg => {
-        const isAdmin = msg.sender === 'admin';
-        const isCurrentUser = currentUser && msg.sender === currentUser.email;
-        const alignClass = isAdmin ? 'justify-start' : 'justify-end ml-auto';
-        const bgClass = isAdmin ? 'bg-white border border-gray-100' : 'bg-[#101b3b] text-white';
-        const avatar = isAdmin ? 'AD' : (currentUser ? currentUser.fullName.charAt(0).toUpperCase() : 'ME');
+function loadPrivateMessages() {
+    const user = getCurrentUser(); if(!user) return;
+    const key = `chat_private_admin_${user.email}`;
+    const msgs = JSON.parse(localStorage.getItem(key)||'[]');
+    const container = document.getElementById('messageContainer'); if(!container) return;
+    container.innerHTML = msgs.map(msg => {
+        const isAdmin = msg.sender==='admin';
+        const align = isAdmin ? 'justify-start' : 'justify-end ml-auto';
+        const bg = isAdmin ? 'bg-white border border-gray-100' : 'bg-[#101b3b] text-white';
+        const avatar = isAdmin ? 'AD' : (user.fullName?user.fullName.charAt(0).toUpperCase():'M');
         const avatarBg = isAdmin ? 'bg-gray-100 text-gray-500' : 'bg-[var(--color-gold)] text-[#101b3b]';
-        return `<div class="flex items-start gap-3 max-w-[80%] ${alignClass} ${isAdmin ? '' : 'flex-row-reverse'}"><div class="w-7 h-7 rounded-lg ${avatarBg} flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">${avatar}</div><div class="${isAdmin ? '' : 'flex flex-col items-end'}"><div class="${bgClass} p-3.5 rounded-2xl ${isAdmin ? 'rounded-tl-none' : 'rounded-tr-none'} shadow-sm"><p class="text-xs leading-relaxed">${msg.text}</p></div><span class="text-[9px] text-gray-400 mt-1 block font-medium">${msg.time} ${isCurrentUser ? '<i class="fa-solid fa-check-double text-[8px] text-blue-500 ml-1"></i>' : ''}</span></div></div>`;
+        return `<div class="flex items-start gap-3 max-w-[80%] ${align}"><div class="w-7 h-7 rounded-lg ${avatarBg} flex items-center justify-center text-[10px] font-bold shrink-0">${avatar}</div><div><div class="${bg} p-3.5 rounded-2xl ${isAdmin?'rounded-tl-none':'rounded-tr-none'} shadow-sm"><p class="text-xs leading-relaxed">${msg.text}</p></div><span class="text-[9px] text-gray-400 mt-1 block">${msg.time}</span></div></div>`;
     }).join('');
-    messageContainer.scrollTop = messageContainer.scrollHeight;
-    const lastMsg = messages[messages.length-1];
-    if (lastMsg) {
-        const lastTime = document.getElementById('lastMessageTime');
-        const lastPreview = document.getElementById('lastMessagePreview');
-        if (lastTime) lastTime.textContent = lastMsg.time;
-        if (lastPreview) lastPreview.textContent = lastMsg.text.length > 30 ? lastMsg.text.substring(0,30)+'...' : lastMsg.text;
-    }
+    container.scrollTop = container.scrollHeight;
 }
 
 function renderUserDashboard(user) {
     const storageKey = `userProfile_${user.email}`;
-    let profile = JSON.parse(localStorage.getItem(storageKey)) || { photo: '', contactEmail: user.email, phone: '', messenger: '', selectedCourse: '', level: '', gender: '' };
+    let profile = JSON.parse(localStorage.getItem(storageKey)||'{}');
+    const photoSrc = profile.photo||'https://via.placeholder.com/100';
     window.saveProfile = function() {
         const photoInput = document.getElementById('profilePhotoInput');
-        if (photoInput && photoInput.files && photoInput.files[0]) {
+        if(photoInput && photoInput.files && photoInput.files[0]) {
             const reader = new FileReader();
             reader.onload = function(e) { profile.photo = e.target.result; finalizeSave(); };
             reader.readAsDataURL(photoInput.files[0]);
         } else { finalizeSave(); }
     };
     function finalizeSave() {
-        profile.contactEmail = document.getElementById('contactEmail')?.value || '';
-        profile.phone = document.getElementById('contactPhone')?.value || '';
-        profile.messenger = document.getElementById('contactMessenger')?.value || '';
-        profile.selectedCourse = document.getElementById('selectedCourse')?.value || '';
-        profile.level = document.getElementById('selectedLevel')?.value || '';
-        profile.gender = document.getElementById('selectedGender')?.value || '';
+        profile.contactEmail = document.getElementById('contactEmail')?.value||'';
+        profile.phone = document.getElementById('contactPhone')?.value||'';
+        profile.messenger = document.getElementById('contactMessenger')?.value||'';
+        profile.selectedCourse = document.getElementById('selectedCourse')?.value||'';
+        profile.level = document.getElementById('selectedLevel')?.value||'';
+        profile.gender = document.getElementById('selectedGender')?.value||'';
         localStorage.setItem(storageKey, JSON.stringify(profile));
-        alert('Profil mis à jour avec succès !');
-        const img = document.getElementById('profilePicPreview');
-        if (img) img.src = profile.photo || 'https://via.placeholder.com/100';
+        alert('Profil mis à jour');
+        document.getElementById('profilePicPreview').src = profile.photo||'https://via.placeholder.com/100';
     }
     window.triggerPhotoUpload = () => document.getElementById('profilePhotoInput').click();
-    const photoSrc = profile.photo || 'https://via.placeholder.com/100';
     return `
-        <div class="min-h-screen bg-gray-50 p-6 flex items-center justify-center">
-            <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full">
-                <div class="flex flex-col sm:flex-row items-start gap-6">
-                    <div class="relative shrink-0">
-                        <img id="profilePicPreview" src="${photoSrc}" alt="Photo" class="w-24 h-24 rounded-full object-cover border-4 border-[var(--color-gold)] cursor-pointer profile-pic-upload" onclick="triggerPhotoUpload()">
-                        <input type="file" id="profilePhotoInput" accept="image/*" class="hidden" onchange="saveProfile()">
-                        <div class="text-xs text-gray-400 text-center mt-1">Cliquez pour changer</div>
-                    </div>
-                    <div class="flex-1">
-                        <h1 class="text-2xl font-bold text-[#101b3b]">${user.fullName || user.email}</h1>
-                        <p class="text-sm text-gray-500 mt-1">${user.email}</p>
-                        <p class="text-xs text-[#c9a03d] mt-2 font-semibold">${user.subscription?.status === 'active' ? '⭐ Premium' : 'Standard'}</p>
-                    </div>
-                </div>
-                <div class="mt-8 border-t pt-6">
-                    <h2 class="font-bold text-lg mb-4"><i class="fa-solid fa-address-book mr-2 text-[var(--color-gold)]"></i> Mes contacts</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div><label class="block text-xs font-bold text-gray-600 mb-1">Email</label><input type="email" id="contactEmail" value="${profile.contactEmail}" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm"></div>
-                        <div><label class="block text-xs font-bold text-gray-600 mb-1">Téléphone</label><input type="text" id="contactPhone" value="${profile.phone}" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm"></div>
-                        <div><label class="block text-xs font-bold text-gray-600 mb-1">Messenger (WhatsApp)</label><input type="text" id="contactMessenger" value="${profile.messenger}" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm"></div>
-                    </div>
-                </div>
-                <div class="mt-8 border-t pt-6">
-                    <h2 class="font-bold text-lg mb-4"><i class="fa-solid fa-user-pen mr-2 text-[var(--color-gold)]"></i> Informations personnelles</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div><label class="block text-xs font-bold text-gray-600 mb-1">Nom complet</label><input type="text" value="${user.fullName || ''}" class="w-full px-3 py-2 bg-gray-100 border border-gray-200 rounded-lg text-sm" readonly></div>
-                        <div><label class="block text-xs font-bold text-gray-600 mb-1">Cours choisi</label><select id="selectedCourse" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Anglais" ${profile.selectedCourse==='Anglais'?'selected':''}>Anglais</option><option value="Français" ${profile.selectedCourse==='Français'?'selected':''}>Français</option></select></div>
-                        <div><label class="block text-xs font-bold text-gray-600 mb-1">Niveau</label><select id="selectedLevel" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Débutant" ${profile.level==='Débutant'?'selected':''}>Débutant</option><option value="Intermédiaire" ${profile.level==='Intermédiaire'?'selected':''}>Intermédiaire</option><option value="Avancé" ${profile.level==='Avancé'?'selected':''}>Avancé</option></select></div>
-                        <div><label class="block text-xs font-bold text-gray-600 mb-1">Genre</label><select id="selectedGender" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Homme" ${profile.gender==='Homme'?'selected':''}>Homme</option><option value="Femme" ${profile.gender==='Femme'?'selected':''}>Femme</option><option value="Autre" ${profile.gender==='Autre'?'selected':''}>Autre</option></select></div>
-                    </div>
-                </div>
-                <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                    <button onclick="saveProfile()" class="flex-1 bg-[var(--color-primary)] text-white font-bold py-2.5 rounded-xl text-sm hover:bg-[#1a2a54]"><i class="fa-solid fa-floppy-disk mr-2"></i> Enregistrer</button>
-                    <button onclick="navigateTo('favorites')" class="flex-1 bg-[var(--color-gold)] text-[#101b3b] font-bold py-2.5 rounded-xl text-sm hover:bg-[#b08b30]"><i class="fa-solid fa-heart mr-2"></i> Mes favoris</button>
-                    <button onclick="logout()" class="flex-1 bg-gray-300 text-gray-700 font-bold py-2.5 rounded-xl text-sm hover:bg-gray-400"><i class="fas fa-sign-out-alt mr-2"></i> Déconnexion</button>
-                </div>
-            </div>
-        </div>
-    `;
+    <div class="min-h-screen bg-gray-50 p-6 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full"><div class="flex flex-col sm:flex-row items-start gap-6"><div class="relative shrink-0"><img id="profilePicPreview" src="${photoSrc}" class="w-24 h-24 rounded-full object-cover border-4 border-[var(--color-gold)] cursor-pointer profile-pic-upload" onclick="triggerPhotoUpload()"><input type="file" id="profilePhotoInput" accept="image/*" class="hidden" onchange="saveProfile()"></div><div class="flex-1"><h1 class="text-2xl font-bold text-[#101b3b]">${user.fullName||user.email}</h1><p class="text-sm text-gray-500 mt-1">${user.email}</p><p class="text-xs text-[#c9a03d] mt-2 font-semibold">${user.subscription?.status==='active'?'⭐ Premium':'Standard'}</p></div></div><div class="mt-8 border-t pt-6"><h2 class="font-bold text-lg mb-4"><i class="fa-solid fa-address-book mr-2 text-[var(--color-gold)]"></i> Mes contacts</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-xs font-bold text-gray-600 mb-1">Email</label><input id="contactEmail" value="${profile.contactEmail||''}" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Téléphone</label><input id="contactPhone" value="${profile.phone||''}" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Messenger</label><input id="contactMessenger" value="${profile.messenger||''}" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"></div></div></div><div class="mt-8 border-t pt-6"><h2 class="font-bold text-lg mb-4"><i class="fa-solid fa-user-pen mr-2 text-[var(--color-gold)]"></i> Infos personnelles</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-xs font-bold text-gray-600 mb-1">Nom complet</label><input value="${user.fullName||''}" readonly class="w-full px-3 py-2 bg-gray-100 border rounded-lg text-sm"></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Cours</label><select id="selectedCourse" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Anglais" ${profile.selectedCourse==='Anglais'?'selected':''}>Anglais</option><option value="Français" ${profile.selectedCourse==='Français'?'selected':''}>Français</option></select></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Niveau</label><select id="selectedLevel" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Débutant" ${profile.level==='Débutant'?'selected':''}>Débutant</option><option value="Intermédiaire" ${profile.level==='Intermédiaire'?'selected':''}>Intermédiaire</option><option value="Avancé" ${profile.level==='Avancé'?'selected':''}>Avancé</option></select></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Genre</label><select id="selectedGender" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Homme" ${profile.gender==='Homme'?'selected':''}>Homme</option><option value="Femme" ${profile.gender==='Femme'?'selected':''}>Femme</option><option value="Autre" ${profile.gender==='Autre'?'selected':''}>Autre</option></select></div></div></div><div class="mt-8 flex flex-col sm:flex-row gap-3"><button onclick="saveProfile()" class="flex-1 bg-[var(--color-primary)] text-white font-bold py-2.5 rounded-xl text-sm"><i class="fa-solid fa-floppy-disk mr-2"></i> Enregistrer</button><button onclick="navigateTo('favorites')" class="flex-1 bg-[var(--color-gold)] text-[#101b3b] font-bold py-2.5 rounded-xl text-sm"><i class="fa-solid fa-heart mr-2"></i> Mes favoris</button><button onclick="logout()" class="flex-1 bg-gray-300 text-gray-700 font-bold py-2.5 rounded-xl text-sm"><i class="fas fa-sign-out-alt mr-2"></i> Déconnexion</button></div></div></div>`;
 }
 
-// ==================== PAGE PREMIUM ====================
+// ==================== PREMIUM ====================
 function renderPremiumPage() {
-    const plans = [
-        {name:'Mensuel', price:'15 000 Ar', duration:'1 mois'},
-        {name:'Trimestriel', price:'40 000 Ar', duration:'3 mois', popular:true},
-        {name:'Annuel', price:'120 000 Ar', duration:'12 mois'}
-    ];
     return `
     <main>
-        <section class="bg-gradient-to-br from-[#101b3b] to-[#1a2a56] text-white py-16 lg:py-20 text-center">
-            <i class="fa-solid fa-crown text-6xl text-[var(--color-gold)] mb-6"></i>
-            <h1 class="serif-title text-4xl lg:text-6xl font-bold">Passez à Premium</h1>
-            <p class="text-gray-300 mt-4 max-w-xl mx-auto">Débloquez tous les contenus exclusifs et accédez à des ressources avancées.</p>
-        </section>
-        <section class="max-w-7xl mx-auto px-6 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                ${plans.map(p => `
-                <div class="relative bg-white rounded-2xl border ${p.popular?'border-[var(--color-gold)] shadow-xl':''} p-8 text-center">
-                    ${p.popular ? '<span class="absolute top-0 right-4 transform -translate-y-1/2 bg-[var(--color-gold)] text-[#101b3b] text-xs font-bold px-3 py-1 rounded-full">Populaire</span>' : ''}
-                    <div class="w-14 h-14 bg-gradient-to-br from-slate-500 to-slate-700 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fa-solid fa-crown text-xl text-white"></i>
-                    </div>
-                    <h3 class="font-bold text-xl text-[#101b3b]">${p.name}</h3>
-                    <p class="text-3xl font-extrabold text-[#101b3b] mt-3">${p.price}</p>
-                    <p class="text-xs text-gray-400">${p.duration}</p>
-                    <button onclick="showOrangeMoneyForm('${p.name}','${p.price}')" class="w-full btn-premium py-3 rounded-xl font-bold text-sm mt-6">Choisir ${p.name}</button>
-                </div>
-                `).join('')}
-            </div>
-        </section>
-        <section id="orangeMoneySection" class="max-w-3xl mx-auto px-6 pb-16 hidden">
-            <div class="bg-white rounded-2xl border border-[var(--color-gold)]/30 shadow-lg p-8">
-                <h2 class="serif-title text-2xl font-bold text-[#101b3b]">Paiement Orange Money</h2>
-                <p class="text-xs text-gray-500 mt-2">Remplissez les informations ci-dessous. Notre équipe validera votre paiement sous 24h.</p>
-                <form id="orangeMoneyPaymentForm" class="space-y-4 mt-6" onsubmit="submitOrangeMoneyPayment(event)">
-                    <input type="text" id="omName" placeholder="Nom complet" required class="w-full px-4 py-2.5 border rounded-xl text-sm">
-                    <input type="email" id="omEmail" placeholder="Email" required class="w-full px-4 py-2.5 border rounded-xl text-sm">
-                    <input type="text" id="omPhone" placeholder="Téléphone" required class="w-full px-4 py-2.5 border rounded-xl text-sm">
-                    <input type="text" id="omReference" placeholder="Référence transaction" required class="w-full px-4 py-2.5 border rounded-xl text-sm">
-                    <input type="text" id="omAmount" placeholder="Montant" required class="w-full px-4 py-2.5 border rounded-xl text-sm">
-                    <button type="submit" class="w-full btn-premium py-3 rounded-xl font-bold text-sm">Envoyer la demande</button>
-                </form>
-            </div>
-        </section>
+        <section class="bg-gradient-to-br from-[#101b3b] to-[#1a2a56] text-white py-16 lg:py-20 text-center"><i class="fa-solid fa-crown text-6xl text-[var(--color-gold)] mb-6"></i><h1 class="serif-title text-4xl lg:text-6xl font-bold">Passez à Premium</h1><p class="text-gray-300 mt-4 max-w-xl mx-auto">Débloquez tous les contenus exclusifs.</p></section>
+        <section class="max-w-7xl mx-auto px-6 py-16"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">${[
+            {name:'Mensuel',price:'15 000 Ar',duration:'1 mois'},
+            {name:'Trimestriel',price:'40 000 Ar',duration:'3 mois',popular:true},
+            {name:'Annuel',price:'120 000 Ar',duration:'12 mois'}
+        ].map(p => `<div class="relative bg-white rounded-2xl border ${p.popular?'border-[var(--color-gold)] shadow-xl':''} p-8 text-center">${p.popular?'<span class="absolute top-0 right-4 transform -translate-y-1/2 bg-[var(--color-gold)] text-[#101b3b] text-xs font-bold px-3 py-1 rounded-full">Populaire</span>':''}<div class="w-14 h-14 bg-gradient-to-br from-slate-500 to-slate-700 rounded-xl flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-crown text-xl text-white"></i></div><h3 class="font-bold text-xl text-[#101b3b]">${p.name}</h3><p class="text-3xl font-extrabold text-[#101b3b] mt-3">${p.price}</p><p class="text-xs text-gray-400">${p.duration}</p><button onclick="showOrangeMoneyForm('${p.name}','${p.price}')" class="w-full btn-premium py-3 rounded-xl font-bold text-sm mt-6">Choisir ${p.name}</button></div>`).join('')}</div></section>
+        <section id="orangeMoneySection" class="max-w-3xl mx-auto px-6 pb-16 hidden"><div class="bg-white rounded-2xl border border-[var(--color-gold)]/30 shadow-lg p-8"><h2 class="serif-title text-2xl font-bold text-[#101b3b]">Paiement Orange Money</h2><form id="orangeMoneyPaymentForm" class="space-y-4 mt-6" onsubmit="submitOrangeMoneyPayment(event)"><input type="text" id="omName" placeholder="Nom complet" required class="w-full px-4 py-2.5 border rounded-xl text-sm"><input type="email" id="omEmail" placeholder="Email" required class="w-full px-4 py-2.5 border rounded-xl text-sm"><input type="text" id="omPhone" placeholder="Téléphone" required class="w-full px-4 py-2.5 border rounded-xl text-sm"><input type="text" id="omReference" placeholder="Référence transaction" required class="w-full px-4 py-2.5 border rounded-xl text-sm"><input type="text" id="omAmount" placeholder="Montant" required class="w-full px-4 py-2.5 border rounded-xl text-sm"><button type="submit" class="w-full btn-premium py-3 rounded-xl font-bold text-sm">Envoyer</button></form></div></section>
     </main>`;
 }
-window.showOrangeMoneyForm = (planName, planPrice) => {
-    document.getElementById('orangeMoneySection').classList.remove('hidden');
-    document.getElementById('omAmount').value = planPrice;
-};
-window.submitOrangeMoneyPayment = (e) => {
-    e.preventDefault();
-    const payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS) || '[]');
-    payments.push({
-        id: Date.now(),
-        name: document.getElementById('omName').value,
-        email: document.getElementById('omEmail').value,
-        phone: document.getElementById('omPhone').value,
-        reference: document.getElementById('omReference').value,
-        amount: document.getElementById('omAmount').value,
-        status: 'pending',
-        date: new Date().toISOString()
-    });
-    localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments));
-    alert('Votre demande a été envoyée. Nous vous contacterons après vérification.');
-    document.getElementById('orangeMoneySection').classList.add('hidden');
-};
+window.showOrangeMoneyForm = (plan,price) => { document.getElementById('orangeMoneySection').classList.remove('hidden'); document.getElementById('omAmount').value = price; };
+window.submitOrangeMoneyPayment = (e) => { e.preventDefault(); const payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||[]); payments.push({ id:Date.now(), name:document.getElementById('omName').value, email:document.getElementById('omEmail').value, phone:document.getElementById('omPhone').value, reference:document.getElementById('omReference').value, amount:document.getElementById('omAmount').value, status:'pending', date:new Date().toISOString() }); localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments)); alert('Demande envoyée'); document.getElementById('orangeMoneySection').classList.add('hidden'); };
 
-// ==================== PAGE FAVORIS ====================
+// ==================== FAVORIS ====================
 function renderFavoritesPage() {
     const favs = getFavorites();
-    const courses = JSON.parse(localStorage.getItem(STORAGE_COURSES)) || [];
-    const videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS)) || [];
-    const pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS)) || [];
-    const items = favs.map(f => {
-        if (f.type === 'course') return courses.find(c => c.id === f.id);
-        if (f.type === 'video') return videos.find(v => v.id === f.id);
-        if (f.type === 'pdf') return pdfs.find(p => p.id === f.id);
-    }).filter(i => i);
-    return `
-    <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-12">
-        <h1 class="serif-title text-3xl font-bold mb-8">❤️ Mes favoris</h1>
-        ${items.length === 0 ? '<p class="text-gray-500">Aucun favori pour le moment.</p>' : ''}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            ${items.map(item => `
-                <div class="bg-white rounded-2xl p-6 border shadow-sm">
-                    <h3 class="font-bold">${item.titre || item.nom}</h3>
-                    <button onclick="removeFavorite('${item.titre ? 'course' : item.url ? 'video' : 'pdf'}', ${item.id}); navigateTo('favorites')" class="text-red-500 text-xs mt-2">Retirer</button>
-                </div>
-            `).join('')}
-        </div>
-    </main>`;
+    const courses = JSON.parse(localStorage.getItem(STORAGE_COURSES)||[]);
+    const videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS)||[]);
+    const pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS)||[]);
+    const items = favs.map(f => { if(f.type==='course') return courses.find(c=>c.id===f.id); if(f.type==='video') return videos.find(v=>v.id===f.id); if(f.type==='pdf') return pdfs.find(p=>p.id===f.id); }).filter(i=>i);
+    return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-12"><h1 class="serif-title text-3xl font-bold mb-8">❤️ Mes favoris</h1>${items.length===0?'<p class="text-gray-500">Aucun favori.</p>':''}<div class="grid grid-cols-1 md:grid-cols-3 gap-6">${items.map(i=>`<div class="bg-white rounded-2xl p-6 border shadow-sm"><h3 class="font-bold">${i.titre||i.nom}</h3><button onclick="removeFavorite('${i.titre?'course':i.url?'video':'pdf'}',${i.id});navigateTo('favorites')" class="text-red-500 text-xs">Retirer</button></div>`).join('')}</div></main>`;
 }
 
-// ==================== ADMIN DASHBOARD ====================
-function renderAdminDashboard(user) {
+// ==================== ADMIN ====================
+function renderAdminDashboard() {
     return `
-        <div class="flex min-h-screen">
-            <aside class="w-72 bg-[#101b3b] text-slate-300 flex flex-col fixed h-full z-50 shadow-xl border-r border-[#1a2a56]">
-                <div class="p-6 flex flex-col items-center justify-center border-b border-[#1a2a56]">
-                    <svg class="w-24 h-24 mb-2 drop-shadow-md" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M100 20 L160 50 C160 120 130 165 100 185 C70 165 40 120 40 50 Z" fill="#101b3b" stroke="#c9a03d" stroke-width="5"/>
-                        <path d="M100 28 L152 54 C152 114 126 156 100 174 C74 156 48 114 48 54 Z" fill="#ffffff" opacity="0.1"/>
-                        <path d="M100 35 L145 52 L100 69 L55 52 Z" fill="#101b3b" stroke="#c9a03d" stroke-width="3"/>
-                        <path d="M75 59.5 V75 C75 85 125 85 125 75 V59.5" fill="#101b3b" stroke="#c9a03d" stroke-width="2"/>
-                        <path d="M130 54 V80" stroke="#c9a03d" stroke-width="2"/>
-                        <circle cx="130" cy="82" r="3" fill="#c9a03d"/>
-                        <text x="100" y="115" fill="#c9a03d" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" text-anchor="middle" letter-spacing="2">ATA</text>
-                        <path d="M70 145 C85 140 100 145 100 145 C100 145 115 140 130 145 V125 C115 120 100 125 100 125 C100 125 85 120 70 125 Z" fill="none" stroke="#c9a03d" stroke-width="3"/>
-                        <line x1="100" y1="125" x2="100" y2="145" stroke="#c9a03d" stroke-width="2" />
-                    </svg>
-                    <div class="text-center"><h2 class="text-white font-bold text-lg tracking-wider">ATA SCHOOL</h2><p class="text-[#c9a03d] text-xs font-semibold tracking-widest mt-0.5">YES WE CAN</p></div>
-                </div>
-                <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
-                    <a href="#vue-ensemble" class="flex items-center gap-3 px-4 py-3 text-white bg-[#1a2a56] rounded-xl font-medium"><i class="fa-solid fa-chart-pie text-[#c9a03d]"></i> Vue d'ensemble</a>
-                    <a href="#section-utilisateurs" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-users-gear text-slate-400"></i> Utilisateurs</a>
-                    <a href="#section-cours" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-layer-group text-slate-400"></i> Cours</a>
-                    <a href="#section-medias" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-clapperboard text-slate-400"></i> Vidéos</a>
-                    <a href="#section-pdfs" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-file-zipper text-slate-400"></i> PDF</a>
-                    <a href="#section-evenements" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-presentation-screen text-slate-400"></i> Meet</a>
-                    <a href="#section-messages" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-messages text-slate-400"></i> Messages</a>
-                    <a href="#section-demandes-premium" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-file-invoice-dollar text-slate-400"></i> Demandes Premium</a>
-                    <a href="#section-mediatheque" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-images text-slate-400"></i> Médiathèque</a>
-                    <a href="#section-carousel" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-sliders text-slate-400"></i> Carrousel</a>
-                    <a href="#section-parametres" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-gear text-slate-400"></i> Paramètres</a>
-                </nav>
-                <div class="p-4 border-t border-[#1a2a56] text-xs text-center text-slate-500">&copy; 2026 ATA School Dashboard</div>
-            </aside>
-
-            <main class="flex-1 ml-72 p-8 lg:p-10 max-w-[1600px]">
-                <header class="flex justify-between items-center mb-10 pb-5 border-b border-slate-200">
-                    <div><span class="text-xs font-bold uppercase tracking-widest text-slate-400">Espace Administratif</span><h1 class="text-3xl font-extrabold text-[#101b3b] mt-0.5">Tableau de bord</h1></div>
-                    <div class="flex items-center gap-3 bg-white pr-4 pl-2 py-1.5 rounded-full border border-slate-200"><div class="w-9 h-9 rounded-full bg-[#101b3b] flex items-center justify-center text-white text-sm font-bold border-2 border-[#c9a03d]"><i class="fa-solid fa-globe"></i></div><div class="text-left"><p class="text-sm font-bold text-slate-800 leading-none">Directeur ATA</p><p class="text-[11px] text-[#c9a03d] font-medium mt-0.5">MG Admin Root</p></div></div>
-                </header>
-
-                <section id="vue-ensemble" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10" id="kpiContainer"></section>
-
-                <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-                    <div class="glass-card p-6"><h3 class="font-bold text-slate-800 text-lg mb-4">Inscriptions</h3><div class="h-64"><canvas id="chartLine"></canvas></div></div>
-                    <div class="glass-card p-6"><h3 class="font-bold text-slate-800 text-lg mb-4">Téléchargements</h3><div class="h-64"><canvas id="chartBar"></canvas></div></div>
-                </section>
-
-                <div id="adminDynamicContent"></div>
-            </main>
-        </div>
-    `;
+    <div class="flex min-h-screen">
+        <aside class="w-72 bg-[#101b3b] text-slate-300 flex flex-col fixed h-full z-50 shadow-xl border-r border-[#1a2a56]">
+            <div class="p-6 flex flex-col items-center border-b border-[#1a2a56]"><svg class="w-24 h-24 mb-2 drop-shadow-md" viewBox="0 0 200 200"><path d="M100 20 L160 50 C160 120 130 165 100 185 C70 165 40 120 40 50 Z" fill="#101b3b" stroke="#c9a03d" stroke-width="5"/><text x="100" y="115" fill="#c9a03d" font-family="'Plus Jakarta Sans'" font-weight="800" font-size="28" text-anchor="middle">ATA</text></svg><h2 class="text-white font-bold text-lg">ATA SCHOOL</h2><p class="text-[#c9a03d] text-xs">YES WE CAN</p></div>
+            <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+                <a href="#vue-ensemble" class="flex items-center gap-3 px-4 py-3 text-white bg-[#1a2a56] rounded-xl"><i class="fa-solid fa-chart-pie text-[#c9a03d]"></i> Vue d'ensemble</a>
+                <a href="#section-utilisateurs" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-users-gear text-slate-400"></i> Utilisateurs</a>
+                <a href="#section-cours" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-layer-group text-slate-400"></i> Cours</a>
+                <a href="#section-medias" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-clapperboard text-slate-400"></i> Vidéos</a>
+                <a href="#section-pdfs" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-file-zipper text-slate-400"></i> PDF</a>
+                <a href="#section-evenements" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-presentation-screen text-slate-400"></i> Meet</a>
+                <a href="#section-messages" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-messages text-slate-400"></i> Messages</a>
+                <a href="#section-demandes-premium" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-file-invoice-dollar text-slate-400"></i> Demandes Premium</a>
+                <a href="#section-mediatheque" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-images text-slate-400"></i> Médiathèque</a>
+                <a href="#section-carousel" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-sliders text-slate-400"></i> Carrousel</a>
+                <a href="#section-newsletter" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-envelope text-slate-400"></i> Newsletter</a>
+                <a href="#section-parametres" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-gear text-slate-400"></i> Paramètres</a>
+            </nav>
+        </aside>
+        <main class="flex-1 ml-72 p-8 lg:p-10 max-w-[1600px]">
+            <header class="flex justify-between items-center mb-10 pb-5 border-b border-slate-200"><div><span class="text-xs font-bold uppercase tracking-widest text-slate-400">Espace Administratif</span><h1 class="text-3xl font-extrabold text-[#101b3b] mt-0.5">Tableau de bord</h1></div></header>
+            <section id="vue-ensemble" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10" id="kpiContainer"></section>
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10"><div class="glass-card p-6"><h3 class="font-bold text-slate-800 text-lg mb-4">Inscriptions</h3><div class="h-64"><canvas id="chartLine"></canvas></div></div><div class="glass-card p-6"><h3 class="font-bold text-slate-800 text-lg mb-4">Téléchargements</h3><div class="h-64"><canvas id="chartBar"></canvas></div></div></section>
+            <div id="adminDynamicContent"></div>
+        </main>
+    </div>`;
 }
-
 function initAdminDashboard() {
-    const dynamicContent = document.getElementById('adminDynamicContent');
-    if (dynamicContent) {
-        dynamicContent.innerHTML = `
-            <section id="section-utilisateurs" class="glass-card p-6 mb-10">
-                <div class="flex justify-between items-center mb-6"><div><h2 class="text-xl font-bold text-[#101b3b]"><i class="fa-solid fa-users-gear mr-2 text-[#c9a03d]"></i>Répertoire des utilisateurs</h2></div></div>
-                <div class="overflow-x-auto"><table class="min-w-full divide-y divide-slate-100"><thead><tr class="text-left text-xs font-bold text-slate-400 uppercase tracking-wider bg-slate-50"><th class="p-4 rounded-l-xl">Nom</th><th class="p-4">Email</th><th class="p-4">Premium</th><th class="p-4">Rôle</th><th class="p-4 text-center rounded-r-xl">Actions</th></tr></thead><tbody id="usersTableBody" class="divide-y divide-slate-100 text-sm font-medium text-slate-700"></tbody></table></div>
-                <div id="usersPagination" class="flex justify-center mt-6 pagination"></div>
-            </section>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-                <section id="section-cours" class="glass-card p-6">
-                    <h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-layer-group mr-2 text-[#c9a03d]"></i>Cours</h2>
-                    <div class="bg-slate-50 p-4 rounded-xl border mb-6 space-y-3">
-                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Nouveau module</p>
-                        <div class="grid grid-cols-2 gap-3"><input id="newCourseTitle" placeholder="Titre" class="border bg-white rounded-xl p-2.5 text-sm"><input id="newCourseLang" placeholder="Langue" class="border bg-white rounded-xl p-2.5 text-sm"></div>
-                        <div class="grid grid-cols-2 gap-3"><input id="newCoursePrice" placeholder="Prix" class="border bg-white rounded-xl p-2.5 text-sm"><input id="newCourseImage" placeholder="URL image" class="border bg-white rounded-xl p-2.5 text-sm"></div>
-                        <div class="grid grid-cols-2 gap-3"><input id="newCourseDuration" placeholder="Durée" class="border bg-white rounded-xl p-2.5 text-sm"><label class="flex items-center gap-2 text-sm font-semibold text-slate-600 px-2"><input type="checkbox" id="newCoursePremium" class="w-4 h-4 rounded"> Premium</label></div>
-                        <button id="addCourseBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm">Ajouter</button>
-                    </div>
-                    <div id="coursesList" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div>
-                </section>
-                <section id="section-medias" class="glass-card p-6">
-                    <h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-clapperboard mr-2 text-[#c9a03d]"></i>Vidéos</h2>
-                    <div class="bg-slate-50 p-4 rounded-xl border mb-6 space-y-3">
-                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Nouvelle vidéo</p>
-                        <div class="grid grid-cols-2 gap-3"><input id="newVideoTitle" placeholder="Titre" class="border bg-white rounded-xl p-2.5 text-sm"><input id="newVideoLang" placeholder="Matière" class="border bg-white rounded-xl p-2.5 text-sm"></div>
-                        <div class="grid grid-cols-2 gap-3"><input id="newVideoUrl" placeholder="URL YouTube embed" class="border bg-white rounded-xl p-2.5 text-sm"><label class="flex items-center gap-2 text-sm font-semibold text-slate-600 px-2"><input type="checkbox" id="newVideoPremium" class="w-4 h-4 rounded"> Premium</label></div>
-                        <button id="addVideoBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm">Publier</button>
-                    </div>
-                    <div id="videosList" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div>
-                </section>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-                <section id="section-pdfs" class="glass-card p-6">
-                    <h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-file-zipper mr-2 text-[#c9a03d]"></i>PDF</h2>
-                    <div class="bg-slate-50 p-4 rounded-xl border mb-6 space-y-3">
-                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Nouveau PDF</p>
-                        <div class="grid grid-cols-2 gap-3"><input id="newPdfName" placeholder="Nom" class="border bg-white rounded-xl p-2.5 text-sm"><select id="newPdfCat" class="border bg-white rounded-xl p-2.5 text-sm"><option>Cours</option><option>Guides</option><option>Exercices</option></select></div>
-                        <div class="grid grid-cols-2 gap-3"><input id="newPdfUrl" placeholder="Lien cloud" class="border bg-white rounded-xl p-2.5 text-sm"><label class="flex items-center gap-2 text-sm font-semibold text-slate-600 px-2"><input type="checkbox" id="newPdfPremium" class="w-4 h-4 rounded"> Premium</label></div>
-                        <button id="addPdfBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm">Ajouter</button>
-                    </div>
-                    <div id="pdfsList" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div>
-                </section>
-                <section id="section-evenements" class="glass-card p-6">
-                    <h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-presentation-screen mr-2 text-[#c9a03d]"></i>Meet</h2>
-                    <div class="bg-slate-50 p-4 rounded-xl border mb-6 space-y-3">
-                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Nouvelle conférence</p>
-                        <input id="confTitle" placeholder="Sujet" class="border bg-white rounded-xl p-2.5 w-full text-sm">
-                        <div class="grid grid-cols-2 gap-3"><input type="datetime-local" id="confDate" class="border bg-white rounded-xl p-2.5 text-sm"><input id="confLink" placeholder="Lien Google Meet" class="border bg-white rounded-xl p-2.5 text-sm"></div>
-                        <button id="addConfBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm">Planifier</button>
-                    </div>
-                    <div id="confsList" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div>
-                </section>
-            </div>
-            <section id="section-messages" class="glass-card p-6 mb-10">
-                <h2 class="text-xl font-bold text-[#101b3b] mb-2"><i class="fa-solid fa-messages mr-2 text-[#c9a03d]"></i>Messages entrants</h2>
-                <div id="adminMessagesList" class="space-y-4 max-h-96 overflow-y-auto pr-2"></div>
-            </section>
-            <section id="section-demandes-premium" class="glass-card p-6 mb-10">
-                <h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-file-invoice-dollar mr-2 text-[#c9a03d]"></i>Demandes Premium</h2>
-                <div id="paymentRequestsList" class="space-y-4"></div>
-            </section>
-            <section id="section-mediatheque" class="glass-card p-6 mb-10">
-                <h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-images mr-2 text-[#c9a03d]"></i>Médiathèque</h2>
-                <div id="mediaGrid" class="grid grid-cols-4 gap-4"></div>
-            </section>
-            <section id="section-carousel" class="glass-card p-6 mb-10">
-                <h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-sliders mr-2 text-[#c9a03d]"></i>Carrousel</h2>
-                <button onclick="window.addCarouselSlide()" class="btn-navy px-4 py-2 rounded-xl text-sm mb-4">+ Nouvelle slide</button>
-                <div id="carouselSlidesList" class="space-y-3"></div>
-            </section>
-            <section id="section-parametres" class="glass-card p-6 mb-10">
-                <h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-gear mr-2 text-[#c9a03d]"></i>Paramètres</h2>
-                <div class="grid grid-cols-2 gap-4">
-                    <input id="settingsFacebook" placeholder="Facebook URL" class="border p-2 rounded-xl text-sm">
-                    <input id="settingsTwitter" placeholder="Twitter URL" class="border p-2 rounded-xl text-sm">
-                    <input id="settingsLinkedin" placeholder="LinkedIn URL" class="border p-2 rounded-xl text-sm">
-                    <input id="settingsWhatsapp" placeholder="WhatsApp" class="border p-2 rounded-xl text-sm">
-                </div>
-                <button onclick="window.saveAllSettings()" class="btn-navy px-6 py-2.5 rounded-xl text-sm mt-4">Enregistrer</button>
-            </section>
-        `;
-    }
-
-    let courses = JSON.parse(localStorage.getItem(STORAGE_COURSES)) || [];
-    let videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS)) || [];
-    let pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS)) || [];
-    let conferences = JSON.parse(localStorage.getItem(STORAGE_CONFERENCES)) || [];
-    let userMessages = JSON.parse(localStorage.getItem(STORAGE_MESSAGES)) || [];
-    let adminReplies = JSON.parse(localStorage.getItem(STORAGE_ADMIN_REPLIES)) || [];
-    let carouselSlides = JSON.parse(localStorage.getItem(STORAGE_CAROUSEL)) || [];
-
+    const dyn = document.getElementById('adminDynamicContent');
+    if(dyn) dyn.innerHTML = `
+        <section id="section-utilisateurs" class="glass-card p-6 mb-10"><div class="flex justify-between mb-6"><h2 class="text-xl font-bold text-[#101b3b]"><i class="fa-solid fa-users-gear mr-2 text-[#c9a03d]"></i>Répertoire</h2></div><div class="overflow-x-auto"><table class="min-w-full divide-y divide-slate-100"><thead><tr class="text-left text-xs font-bold text-slate-400 uppercase bg-slate-50"><th class="p-4">Nom</th><th class="p-4">Email</th><th class="p-4">Premium</th><th class="p-4">Rôle</th><th class="p-4 text-center">Actions</th></tr></thead><tbody id="usersTableBody"></tbody></table></div><div id="usersPagination" class="flex justify-center mt-6 pagination"></div></section>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+            <section id="section-cours" class="glass-card p-6"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-layer-group mr-2 text-[#c9a03d]"></i>Cours</h2><div class="bg-slate-50 p-4 rounded-xl border mb-6 space-y-3"><p class="text-xs font-bold text-slate-500 uppercase">Nouveau module</p><div class="grid grid-cols-2 gap-3"><input id="newCourseTitle" placeholder="Titre" class="border bg-white rounded-xl p-2.5 text-sm"><input id="newCourseLang" placeholder="Langue" class="border bg-white rounded-xl p-2.5 text-sm"></div><div class="grid grid-cols-2 gap-3"><input id="newCoursePrice" placeholder="Prix" class="border bg-white rounded-xl p-2.5 text-sm"><input id="newCourseImage" placeholder="URL image" class="border bg-white rounded-xl p-2.5 text-sm"></div><div class="grid grid-cols-2 gap-3"><input id="newCourseDuration" placeholder="Durée" class="border bg-white rounded-xl p-2.5 text-sm"><select id="newCourseVisibility" class="border bg-white rounded-xl p-2.5 text-sm"><option value="teaser">Teaser (visible)</option><option value="hidden">Caché (non‑premium)</option></select></div><label class="flex items-center gap-2 text-sm font-semibold text-slate-600 px-2"><input type="checkbox" id="newCoursePremium" class="w-4 h-4"> Premium</label><button id="addCourseBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm">Ajouter</button></div><div id="coursesList" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div></section>
+            <section id="section-medias" class="glass-card p-6"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-clapperboard mr-2 text-[#c9a03d]"></i>Vidéos</h2><div class="bg-slate-50 p-4 rounded-xl border mb-6 space-y-3"><p class="text-xs font-bold text-slate-500 uppercase">Nouvelle vidéo</p><div class="grid grid-cols-2 gap-3"><input id="newVideoTitle" placeholder="Titre" class="border bg-white rounded-xl p-2.5 text-sm"><input id="newVideoLang" placeholder="Matière" class="border bg-white rounded-xl p-2.5 text-sm"></div><input id="newVideoUrl" placeholder="URL YouTube" class="border bg-white rounded-xl p-2.5 text-sm w-full"><input id="newVideoThumbnail" placeholder="URL miniature" class="border bg-white rounded-xl p-2.5 text-sm w-full"><div class="grid grid-cols-2 gap-3"><select id="newVideoVisibility" class="border bg-white rounded-xl p-2.5 text-sm"><option value="teaser">Teaser</option><option value="hidden">Caché</option></select><label class="flex items-center gap-2 text-sm font-semibold text-slate-600 px-2"><input type="checkbox" id="newVideoPremium" class="w-4 h-4"> Premium</label></div><button id="addVideoBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm">Publier</button></div><div id="videosList" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div></section>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+            <section id="section-pdfs" class="glass-card p-6"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-file-zipper mr-2 text-[#c9a03d]"></i>PDF</h2><div class="bg-slate-50 p-4 rounded-xl border mb-6 space-y-3"><p class="text-xs font-bold text-slate-500 uppercase">Nouveau PDF</p><div class="grid grid-cols-2 gap-3"><input id="newPdfName" placeholder="Nom" class="border bg-white rounded-xl p-2.5 text-sm"><select id="newPdfCat" class="border bg-white rounded-xl p-2.5 text-sm"><option>Cours</option><option>Guides</option><option>Exercices</option></select></div><div class="grid grid-cols-2 gap-3"><input id="newPdfUrl" placeholder="Lien cloud" class="border bg-white rounded-xl p-2.5 text-sm"><select id="newPdfVisibility" class="border bg-white rounded-xl p-2.5 text-sm"><option value="teaser">Teaser</option><option value="hidden">Caché</option></select></div><label class="flex items-center gap-2 text-sm font-semibold text-slate-600 px-2"><input type="checkbox" id="newPdfPremium" class="w-4 h-4"> Premium</label><button id="addPdfBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm">Ajouter</button></div><div id="pdfsList" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div></section>
+            <section id="section-evenements" class="glass-card p-6"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-presentation-screen mr-2 text-[#c9a03d]"></i>Meet</h2><div class="bg-slate-50 p-4 rounded-xl border mb-6 space-y-3"><p class="text-xs font-bold text-slate-500 uppercase">Nouvelle conférence</p><input id="confTitle" placeholder="Sujet" class="border bg-white rounded-xl p-2.5 w-full text-sm"><div class="grid grid-cols-2 gap-3"><input type="datetime-local" id="confDate" class="border bg-white rounded-xl p-2.5 text-sm"><input id="confLink" placeholder="Lien Meet" class="border bg-white rounded-xl p-2.5 text-sm"></div><button id="addConfBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm">Planifier</button></div><div id="confsList" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div></section>
+        </div>
+        <section id="section-messages" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-2"><i class="fa-solid fa-messages mr-2 text-[#c9a03d]"></i>Messages privés</h2><div id="adminMessagesList" class="space-y-4 max-h-96 overflow-y-auto pr-2"></div></section>
+        <section id="section-demandes-premium" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-file-invoice-dollar mr-2 text-[#c9a03d]"></i>Demandes Premium</h2><div id="paymentRequestsList" class="space-y-4"></div></section>
+        <section id="section-mediatheque" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-images mr-2 text-[#c9a03d]"></i>Médiathèque</h2><div id="mediaGrid" class="grid grid-cols-4 gap-4"></div></section>
+        <section id="section-carousel" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-sliders mr-2 text-[#c9a03d]"></i>Carrousel</h2><button onclick="window.addCarouselSlide()" class="btn-navy px-4 py-2 rounded-xl text-sm mb-4">+ Nouvelle slide</button><div id="carouselSlidesList" class="space-y-3"></div></section>
+        <section id="section-newsletter" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-envelope mr-2 text-[#c9a03d]"></i>Abonnés Newsletter</h2><div id="newsletterList" class="space-y-2 max-h-60 overflow-y-auto"></div></section>
+        <section id="section-parametres" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-gear mr-2 text-[#c9a03d]"></i>Paramètres</h2><div class="grid grid-cols-2 gap-4"><input id="settingsFacebook" placeholder="Facebook" class="border p-2 rounded-xl text-sm"><input id="settingsTwitter" placeholder="Twitter" class="border p-2 rounded-xl text-sm"><input id="settingsLinkedin" placeholder="LinkedIn" class="border p-2 rounded-xl text-sm"><input id="settingsWhatsapp" placeholder="WhatsApp" class="border p-2 rounded-xl text-sm"><input id="settingsContactEmail" placeholder="Email de contact" class="border p-2 rounded-xl text-sm"></div><button onclick="window.saveAllSettings()" class="btn-navy px-6 py-2.5 rounded-xl text-sm mt-4">Enregistrer</button></section>
+    `;
+    // data
+    let courses = JSON.parse(localStorage.getItem(STORAGE_COURSES))||[];
+    let videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS))||[];
+    let pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS))||[];
+    let conferences = JSON.parse(localStorage.getItem(STORAGE_CONFERENCES))||[];
+    let userMessages = JSON.parse(localStorage.getItem(STORAGE_MESSAGES))||[];
+    let adminReplies = JSON.parse(localStorage.getItem(STORAGE_ADMIN_REPLIES))||[];
+    let carouselSlides = JSON.parse(localStorage.getItem(STORAGE_CAROUSEL))||[];
     function saveAll() {
         localStorage.setItem(STORAGE_COURSES, JSON.stringify(courses));
         localStorage.setItem(STORAGE_VIDEOS, JSON.stringify(videos));
@@ -1088,457 +520,321 @@ function initAdminDashboard() {
         localStorage.setItem(STORAGE_ADMIN_REPLIES, JSON.stringify(adminReplies));
         localStorage.setItem(STORAGE_CAROUSEL, JSON.stringify(carouselSlides));
     }
-
+    // KPIs
     function refreshKPIs() {
-        const users = JSON.parse(localStorage.getItem(STORAGE_USERS)) || [];
+        const users = getUsers();
         const abonnes = users.filter(u=>u.subscribed).length;
-        const kpiContainer = document.getElementById('kpiContainer');
-        if(kpiContainer) kpiContainer.innerHTML = `
-            <div class="glass-card p-6 flex items-center justify-between"><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Étudiants</p><h4 class="text-2xl font-extrabold text-[#101b3b] mt-1">${users.length}</h4></div><div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-[#101b3b]"><i class="fa-solid fa-users text-xl"></i></div></div>
-            <div class="glass-card p-6 flex items-center justify-between"><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Membres Premium</p><h4 class="text-2xl font-extrabold text-[#101b3b] mt-1">${abonnes}</h4></div><div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-[#c9a03d]"><i class="fa-solid fa-graduation-cap text-xl"></i></div></div>
-            <div class="glass-card p-6 flex items-center justify-between"><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Cours Actifs</p><h4 class="text-2xl font-extrabold text-[#101b3b] mt-1">${courses.length}</h4></div><div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600"><i class="fa-solid fa-book text-xl"></i></div></div>
-            <div class="glass-card p-6 flex items-center justify-between"><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Fichiers PDF</p><h4 class="text-2xl font-extrabold text-[#101b3b] mt-1">${pdfs.length}</h4></div><div class="w-12 h-12 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500"><i class="fa-solid fa-file-pdf text-xl"></i></div></div>
+        document.getElementById('kpiContainer').innerHTML = `
+            <div class="glass-card p-6"><p class="text-xs font-bold text-slate-400 uppercase">Total Étudiants</p><h4 class="text-2xl font-extrabold">${users.length}</h4></div>
+            <div class="glass-card p-6"><p class="text-xs font-bold text-slate-400 uppercase">Membres Premium</p><h4 class="text-2xl font-extrabold">${abonnes}</h4></div>
+            <div class="glass-card p-6"><p class="text-xs font-bold text-slate-400 uppercase">Cours Actifs</p><h4 class="text-2xl font-extrabold">${courses.length}</h4></div>
+            <div class="glass-card p-6"><p class="text-xs font-bold text-slate-400 uppercase">Fichiers PDF</p><h4 class="text-2xl font-extrabold">${pdfs.length}</h4></div>
         `;
     }
-
-    let usersPage = 0;
-    const usersPerPage = 5;
+    // Users pagination
+    let usersPage = 0; const perPage = 5;
     function refreshUsersTable() {
-        let users = JSON.parse(localStorage.getItem(STORAGE_USERS)) || [];
-        const start = usersPage * usersPerPage;
-        const paginated = users.slice(start, start+usersPerPage);
-        const tbody = document.getElementById('usersTableBody');
-        if(tbody) tbody.innerHTML = paginated.map(u => `
-            <tr class="hover:bg-slate-50/80">
-                <td class="p-4 font-semibold text-slate-800">${u.name}</td>
-                <td class="p-4 text-slate-500 font-normal">${u.email}</td>
-                <td class="p-4"><button onclick="window.toggleSub(${u.id})" class="px-3 py-1 rounded-full text-xs font-bold transition-all ${u.subscribed?'bg-[#c9a03d]/10 text-[#b0872c]':'bg-slate-100 text-slate-400'}">${u.subscribed?'⭐ Premium':'Standard'}</button></td>
-                <td class="p-4"><span class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase tracking-wider ${u.role==='admin'?'bg-[#101b3b]/10 text-[#101b3b]':'bg-slate-100 text-slate-500'}">${u.role}</span></td>
-                <td class="p-4 text-center space-x-2">
-                    <button onclick="window.editUser(${u.id})" class="text-[#c9a03d] p-1 hover:bg-amber-50 rounded-lg"><i class="fa-regular fa-pen-to-square text-base"></i></button>
-                    <button onclick="window.deleteUser(${u.id})" class="text-rose-500 p-1 hover:bg-rose-50 rounded-lg"><i class="fa-regular fa-trash-can text-base"></i></button>
-                </td>
-            </tr>
+        const users = getUsers();
+        const paginated = users.slice(usersPage*perPage, (usersPage+1)*perPage);
+        document.getElementById('usersTableBody').innerHTML = paginated.map(u => `
+            <tr class="hover:bg-slate-50"><td class="p-4 font-semibold">${u.name}</td><td class="p-4 text-slate-500">${u.email}</td><td class="p-4"><button onclick="window.toggleSub(${u.id})" class="px-3 py-1 rounded-full text-xs font-bold ${u.subscribed?'bg-[#c9a03d]/10 text-[#b0872c]':'bg-slate-100 text-slate-400'}">${u.subscribed?'⭐ Premium':'Standard'}</button></td><td class="p-4"><span class="px-2.5 py-1 rounded-lg text-xs font-bold uppercase ${u.role==='admin'?'bg-[#101b3b]/10 text-[#101b3b]':'bg-slate-100 text-slate-500'}">${u.role}</span></td><td class="p-4 text-center space-x-2"><button onclick="window.editUser(${u.id})" class="text-[#c9a03d] p-1"><i class="fa-regular fa-pen-to-square"></i></button><button onclick="window.deleteUser(${u.id})" class="text-rose-500 p-1"><i class="fa-regular fa-trash-can"></i></button></td></tr>
         `).join('');
-        const totalPages = Math.ceil(users.length / usersPerPage);
-        const paginationDiv = document.getElementById('usersPagination');
-        if(paginationDiv) {
-            let btns = '';
-            for(let i=0;i<totalPages;i++) btns += `<button class="${i===usersPage?'active':''}" onclick="window.setUserPage(${i})">${i+1}</button>`;
-            paginationDiv.innerHTML = btns;
-        }
+        const totalPages = Math.ceil(users.length/perPage);
+        let btns = '';
+        for(let i=0;i<totalPages;i++) btns += `<button class="${i===usersPage?'active':''}" onclick="window.setUserPage(${i})">${i+1}</button>`;
+        document.getElementById('usersPagination').innerHTML = btns;
     }
     window.setUserPage = (p) => { usersPage = p; refreshUsersTable(); };
-    window.toggleSub = (id) => {
-        let users = JSON.parse(localStorage.getItem(STORAGE_USERS));
-        const u = users.find(u=>u.id===id);
-        if(u) { u.subscribed = !u.subscribed; u.subscription = u.subscribed ? { status: 'active' } : { status: 'none' }; showToast(`Statut de ${u.name} modifié`); }
-        localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
-        refreshAll();
-    };
-    window.editUser = (id) => {
-        let newRole = prompt("Modifier le rôle (student/admin) :", "student");
-        if(newRole && (newRole==='student'||newRole==='admin')) {
-            let users = JSON.parse(localStorage.getItem(STORAGE_USERS));
-            const u = users.find(u=>u.id===id);
-            if(u) u.role = newRole;
-            localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
-            showToast("Rôle utilisateur actualisé");
-            refreshAll();
-        }
-    };
-    window.deleteUser = (id) => {
-        if(confirm("Confirmez-vous la suppression définitive ?")) {
-            let users = JSON.parse(localStorage.getItem(STORAGE_USERS)).filter(u=>u.id!==id);
-            localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
-            showToast("Compte utilisateur supprimé", "error");
-            refreshAll();
-        }
-    };
+    window.toggleSub = (id) => { let users = getUsers(); const u = users.find(u=>u.id===id); if(u) { u.subscribed = !u.subscribed; u.subscription = u.subscribed?{status:'active'}:{status:'none'}; localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); refreshAll(); } };
+    window.editUser = (id) => { let role = prompt("Rôle (student/admin):"); if(role==='student'||role==='admin') { let users = getUsers(); const u = users.find(u=>u.id===id); if(u) u.role = role; localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); refreshAll(); } };
+    window.deleteUser = (id) => { if(confirm("Supprimer ?")) { let users = getUsers().filter(u=>u.id!==id); localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); refreshAll(); } };
 
     function refreshCoursesList() {
-        const container = document.getElementById('coursesList');
-        if(container) container.innerHTML = courses.map(c => `
-            <div class="flex justify-between items-center bg-white border border-slate-100 p-3.5 rounded-xl shadow-sm">
-                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center text-[#101b3b] font-bold text-sm">${c.langue?.substring(0,2).toUpperCase()}</div><div><p class="font-bold text-slate-800 text-sm">${c.titre} ${c.premium ? '<span class="text-[#c9a03d] text-xs">★</span>' : ''}</p><p class="text-xs text-slate-400 font-medium">${c.prix} — ${c.duree}</p></div></div>
-                <div class="flex gap-1"><button onclick="window.editCourse(${c.id})" class="text-slate-400 hover:text-[#c9a03d] p-1.5"><i class="fa-regular fa-edit"></i></button><button onclick="window.deleteCourse(${c.id})" class="text-slate-400 hover:text-rose-500 p-1.5"><i class="fa-regular fa-trash-can"></i></button></div>
-            </div>
+        document.getElementById('coursesList').innerHTML = courses.map(c => `
+            <div class="flex justify-between items-center bg-white border p-3 rounded-xl"><div><span class="font-bold">${c.titre}</span> ${c.premium?'⭐':''}</div><div><button onclick="window.deleteCourse(${c.id})" class="text-rose-500">🗑</button></div></div>
         `).join('');
     }
     window.addCourse = () => {
-        const titre = document.getElementById('newCourseTitle').value;
-        if(!titre) return showToast("Titre obligatoire","error");
-        courses.push({ id: Date.now(), titre, langue: document.getElementById('newCourseLang').value||"Général", niveau:"Débutant", duree: document.getElementById('newCourseDuration').value||"8 sem", prix: document.getElementById('newCoursePrice').value||"Gratuit", image: document.getElementById('newCourseImage').value||"", premium: document.getElementById('newCoursePremium').checked, accessLevel: document.getElementById('newCoursePremium').checked ? 'premium' : 'public', videoLink:"" });
-        saveAll(); refreshAll(); showToast("Nouveau module intégré !");
+        const titre = document.getElementById('newCourseTitle').value; if(!titre) return;
+        courses.push({ id:Date.now(), titre, langue:document.getElementById('newCourseLang').value||"Général", niveau:"Débutant", duree:document.getElementById('newCourseDuration').value||"8 sem", prix:document.getElementById('newCoursePrice').value||"Gratuit", image:document.getElementById('newCourseImage').value||"", premium:document.getElementById('newCoursePremium').checked, accessLevel:document.getElementById('newCoursePremium').checked?'premium':'public', visibility:document.getElementById('newCourseVisibility').value, videoLink:"" });
+        saveAll(); refreshAll(); showToast("Cours ajouté !");
     };
-    window.deleteCourse = (id) => { if(confirm("Supprimer ce cours ?")) { courses = courses.filter(c=>c.id!==id); saveAll(); refreshAll(); showToast("Cours retiré", "error"); } };
-    window.editCourse = (id) => { const c = courses.find(c=>c.id===id); const newTitre = prompt("Modifier l'intitulé :", c.titre); if(newTitre) { c.titre = newTitre; saveAll(); refreshAll(); } };
+    window.deleteCourse = (id) => { if(confirm("Supprimer ?")) { courses = courses.filter(c=>c.id!==id); saveAll(); refreshAll(); } };
 
     function refreshVideosList() {
-        const container = document.getElementById('videosList');
-        if(container) container.innerHTML = videos.map(v => `
-            <div class="flex justify-between items-center bg-white border border-slate-100 p-3.5 rounded-xl shadow-sm">
-                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-rose-50 flex items-center justify-center text-rose-500"><i class="fa-solid fa-play text-xs"></i></div><div><p class="font-bold text-slate-800 text-sm">${v.titre} ${v.premium ? '<span class="text-[#c9a03d] text-xs">🔒</span>' : ''}</p><p class="text-xs text-slate-400 font-medium">Catégorie : ${v.langue}</p></div></div>
-                <div class="flex gap-1"><button onclick="window.editVideo(${v.id})" class="text-slate-400 hover:text-[#c9a03d] p-1.5"><i class="fa-regular fa-edit"></i></button><button onclick="window.deleteVideo(${v.id})" class="text-slate-400 hover:text-rose-500 p-1.5"><i class="fa-regular fa-trash-can"></i></button></div>
-            </div>
-        `).join('');
+        document.getElementById('videosList').innerHTML = videos.map(v => `<div class="flex justify-between bg-white border p-3 rounded-xl"><span>${v.titre} ${v.premium?'🔒':''}</span><div><button onclick="window.deleteVideo(${v.id})" class="text-rose-500">🗑</button></div></div>`).join('');
     }
     window.addVideo = () => {
-        const titre = document.getElementById('newVideoTitle').value;
-        if(!titre) return showToast("Titre obligatoire","error");
-        videos.push({ id: Date.now(), titre, langue: document.getElementById('newVideoLang').value||"Général", url: document.getElementById('newVideoUrl').value||"#", thumbnail:"", premium: document.getElementById('newVideoPremium').checked, accessLevel: document.getElementById('newVideoPremium').checked ? 'premium' : 'public' });
+        const titre = document.getElementById('newVideoTitle').value; if(!titre) return;
+        videos.push({ id:Date.now(), titre, langue:document.getElementById('newVideoLang').value||"Général", url:document.getElementById('newVideoUrl').value||"#", thumbnail:document.getElementById('newVideoThumbnail').value||"", premium:document.getElementById('newVideoPremium').checked, accessLevel:document.getElementById('newVideoPremium').checked?'premium':'public', visibility:document.getElementById('newVideoVisibility').value });
         saveAll(); refreshAll(); showToast("Vidéo ajoutée !");
     };
-    window.deleteVideo = (id) => { if(confirm("Supprimer cette vidéo ?")) { videos = videos.filter(v=>v.id!==id); saveAll(); refreshAll(); showToast("Vidéo supprimée", "error"); } };
-    window.editVideo = (id) => { const v = videos.find(v=>v.id===id); const newTitre = prompt("Nouveau titre :", v.titre); if(newTitre) { v.titre = newTitre; saveAll(); refreshAll(); } };
+    window.deleteVideo = (id) => { if(confirm("Supprimer ?")) { videos = videos.filter(v=>v.id!==id); saveAll(); refreshAll(); } };
 
     function refreshPdfsList() {
-        const container = document.getElementById('pdfsList');
-        if(container) container.innerHTML = pdfs.map(p => `
-            <div class="flex justify-between items-center bg-white border border-slate-100 p-3 rounded-xl shadow-sm">
-                <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 text-xs"><i class="fa-regular fa-file-pdf"></i></div><div><p class="font-bold text-slate-800 text-xs">${p.nom} ${p.premium ? '⭐' : ''}</p><p class="text-[11px] text-slate-400 font-semibold">${p.categorie} — ${p.downloads || 0} téléchargements</p></div></div>
-                <div class="flex gap-1"><button onclick="window.editPdf(${p.id})" class="text-slate-400 hover:text-[#c9a03d] p-1"><i class="fa-regular fa-edit text-xs"></i></button><button onclick="window.deletePdf(${p.id})" class="text-slate-400 hover:text-rose-500 p-1"><i class="fa-regular fa-trash-can text-xs"></i></button></div>
-            </div>
-        `).join('');
+        document.getElementById('pdfsList').innerHTML = pdfs.map(p => `<div class="flex justify-between bg-white border p-3 rounded-xl"><span>${p.nom} ${p.premium?'⭐':''}</span><div><button onclick="window.deletePdf(${p.id})" class="text-rose-500">🗑</button></div></div>`).join('');
     }
     window.addPdf = () => {
-        const nom = document.getElementById('newPdfName').value;
-        if(!nom) return showToast("Nom du fichier manquant","error");
-        pdfs.push({ id: Date.now(), nom, categorie: document.getElementById('newPdfCat').value, taille:"4.8 MB", downloads:0, premium: document.getElementById('newPdfPremium').checked, accessLevel: document.getElementById('newPdfPremium').checked ? 'premium' : 'public', url: document.getElementById('newPdfUrl').value||"#" });
-        saveAll(); refreshAll(); showToast("PDF indexé !");
+        const nom = document.getElementById('newPdfName').value; if(!nom) return;
+        pdfs.push({ id:Date.now(), nom, categorie:document.getElementById('newPdfCat').value, taille:"4.8 MB", downloads:0, premium:document.getElementById('newPdfPremium').checked, accessLevel:document.getElementById('newPdfPremium').checked?'premium':'public', visibility:document.getElementById('newPdfVisibility').value, url:document.getElementById('newPdfUrl').value||"#" });
+        saveAll(); refreshAll(); showToast("PDF ajouté !");
     };
-    window.deletePdf = (id) => { if(confirm("Supprimer ce fichier ?")) { pdfs = pdfs.filter(p=>p.id!==id); saveAll(); refreshAll(); showToast("Document effacé", "error"); } };
-    window.editPdf = (id) => { const p = pdfs.find(p=>p.id===id); const newNom = prompt("Renommer le fichier :", p.nom); if(newNom) { p.nom = newNom; saveAll(); refreshAll(); } };
+    window.deletePdf = (id) => { if(confirm("Supprimer ?")) { pdfs = pdfs.filter(p=>p.id!==id); saveAll(); refreshAll(); } };
 
-    function refreshConferencesList() {
-        const container = document.getElementById('confsList');
-        if(container) container.innerHTML = conferences.map(c => `
-            <div class="flex justify-between items-center bg-white border border-slate-100 p-3 rounded-xl shadow-sm">
-                <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center text-[#c9a03d] text-xs"><i class="fa-solid fa-video"></i></div><div><p class="font-bold text-slate-800 text-xs">${c.titre}</p><p class="text-[11px] text-slate-400 font-semibold"><i class="fa-regular fa-clock mr-1"></i>${new Date(c.date).toLocaleString('fr-FR')}</p></div></div>
-                <div class="flex gap-1"><a href="${c.link}" target="_blank" class="text-blue-500 hover:bg-blue-50 px-2 py-1 rounded-lg text-xs font-bold"><i class="fa-solid fa-arrow-up-right-from-square"></i> Meet</a><button onclick="window.deleteConf(${c.id})" class="text-slate-400 hover:text-rose-500 p-1"><i class="fa-regular fa-trash-can text-xs"></i></button></div>
-            </div>
-        `).join('');
+    function refreshConfs() {
+        document.getElementById('confsList').innerHTML = conferences.map(c => `<div class="flex justify-between bg-white border p-3 rounded-xl"><span>${c.titre}</span><button onclick="window.deleteConf(${c.id})" class="text-rose-500">🗑</button></div>`).join('');
     }
     window.addConference = () => {
-        const titre = document.getElementById('confTitle').value;
-        const date = document.getElementById('confDate').value;
-        const link = document.getElementById('confLink').value;
-        if(titre && date && link) {
-            conferences.push({ id: Date.now(), titre, date, link });
-            saveAll(); refreshAll(); showToast("Conférence planifiée !");
-            document.getElementById('confTitle').value = '';
-        } else showToast("Tous les champs sont impératifs","error");
+        const titre = document.getElementById('confTitle').value, date = document.getElementById('confDate').value, link = document.getElementById('confLink').value;
+        if(titre && date && link) { conferences.push({ id:Date.now(), titre, date, link }); saveAll(); refreshAll(); showToast("Conférence planifiée !"); }
     };
-    window.deleteConf = (id) => { if(confirm("Supprimer cet événement ?")) { conferences = conferences.filter(c=>c.id!==id); saveAll(); refreshAll(); showToast("Événement annulé", "error"); } };
+    window.deleteConf = (id) => { if(confirm("Supprimer ?")) { conferences = conferences.filter(c=>c.id!==id); saveAll(); refreshAll(); } };
 
-    function refreshMessages() {
+    // Messages privés admin
+    function refreshAdminMessages() {
         const container = document.getElementById('adminMessagesList');
         if(!container) return;
-        const msgs = userMessages.filter(m=>m.toAdmin);
-        if(msgs.length === 0) {
-            container.innerHTML = `<p class="text-sm font-medium text-slate-400 text-center py-6">Aucun nouveau message.</p>`;
-            return;
+        // récupérer toutes les conversations privées
+        let conversations = [];
+        for(let i=0; i<localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if(key && key.startsWith('chat_private_admin_')) {
+                const userEmail = key.replace('chat_private_admin_','');
+                const msgs = JSON.parse(localStorage.getItem(key)||'[]');
+                if(msgs.length>0) conversations.push({ email:userEmail, lastMsg:msgs[msgs.length-1] });
+            }
         }
-        container.innerHTML = msgs.map(m => `
-            <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm space-y-3">
-                <div class="flex justify-between items-start"><div class="flex items-center gap-2.5"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-600">${m.fromUserName || 'ID'}</div><div><p class="text-sm font-bold text-slate-800">${m.fromUserName || 'Étudiant #00'+m.fromUserId}</p><p class="text-[11px] text-slate-400 font-medium">${new Date(m.date).toLocaleString('fr-FR')}</p></div></div><span class="bg-amber-100 text-[#b0872c] text-[10px] font-bold px-2 py-0.5 rounded-md uppercase">En attente</span></div>
-                <p class="text-sm text-slate-600 bg-slate-50 p-3 rounded-xl border leading-relaxed">${m.content}</p>
-                <div class="flex gap-2"><textarea id="reply-${m.id}" placeholder="Votre réponse..." class="flex-1 text-sm p-3 rounded-xl border bg-white outline-none focus:border-[#101b3b] h-12 min-h-[44px] max-h-32"></textarea><button onclick="window.sendAdminReply(${m.id})" class="btn-navy px-5 rounded-xl font-bold text-xs shadow-sm whitespace-nowrap">Répondre</button></div>
-            </div>
-        `).join('');
+        container.innerHTML = conversations.length===0 ? '<p class="text-center text-sm text-slate-400 py-4">Aucune conversation.</p>' :
+            conversations.map(conv => `<div class="bg-white border p-4 rounded-xl flex justify-between items-center"><div><span class="font-bold">${conv.email}</span><p class="text-xs text-gray-500">${conv.lastMsg.text.substring(0,40)}...</p></div><button onclick="window.openAdminConversation('${conv.email}')" class="btn-navy px-3 py-1 rounded-lg text-xs">Voir</button></div>`).join('');
     }
-    window.sendAdminReply = (msgId) => {
-        const reply = document.getElementById(`reply-${msgId}`).value;
-        if(!reply) return showToast("Message vide","error");
-        const original = userMessages.find(m=>m.id===msgId);
-        if(original) {
-            adminReplies.push({ toUserId: original.fromUserId, content: reply, date: new Date().toISOString(), read: false });
-            userMessages = userMessages.filter(m=>m.id!==msgId);
-            saveAll(); showToast("Réponse envoyée !");
-            refreshMessages();
+    window.openAdminConversation = (email) => {
+        const key = `chat_private_admin_${email}`;
+        const msgs = JSON.parse(localStorage.getItem(key)||'[]');
+        let conversationHtml = msgs.map(msg => `<div class="mb-2 ${msg.sender==='admin'?'text-right':''}"><span class="text-xs font-semibold">${msg.sender}:</span> ${msg.text} <span class="text-[10px] text-gray-400">${msg.time}</span></div>`).join('');
+        const reply = prompt(`Conversation avec ${email}\n\n${conversationHtml}\n\nVotre réponse :`);
+        if(reply) {
+            const now = new Date(); const time = now.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+            msgs.push({ sender:'admin', text:reply, time });
+            localStorage.setItem(key, JSON.stringify(msgs));
+            refreshAdminMessages();
+            showToast("Réponse envoyée");
         }
     };
 
+    // Paiements
     function refreshPaymentRequests() {
-        const container = document.getElementById('paymentRequestsList');
-        if (!container) return;
-        const payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS) || '[]');
+        const container = document.getElementById('paymentRequestsList'); if(!container) return;
+        const payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]');
         container.innerHTML = payments.map(p => `
-            <div class="bg-white p-4 rounded-xl border mb-2">
-                <p class="text-sm"><strong>${p.name}</strong> (${p.email})</p>
-                <p class="text-xs text-gray-500">${p.amount} - Réf: ${p.reference} - ${new Date(p.date).toLocaleString('fr-FR')} - <span class="font-bold text-xs ${p.status==='pending'?'text-amber-600':p.status==='approved'?'text-green-600':'text-red-600'}">${p.status}</span></p>
-                ${p.status === 'pending' ? `
-                <div class="flex gap-2 mt-2">
-                    <button onclick="window.approvePayment(${p.id})" class="btn-navy text-xs px-3 py-1 rounded">✅ Approuver</button>
-                    <button onclick="window.rejectPayment(${p.id})" class="btn-gold text-xs px-3 py-1 rounded">❌ Rejeter</button>
-                </div>` : ''}
+            <div class="bg-white p-4 rounded-xl border">
+                <p><strong>${p.name}</strong> (${p.email})</p>
+                <p class="text-xs">${p.phone} - ${p.amount} - Réf: ${p.reference} - <span class="font-bold text-xs ${p.status==='pending'?'text-amber-600':p.status==='approved'?'text-green-600':'text-red-600'}">${p.status}</span></p>
+                ${p.status==='pending' ? `<div class="flex gap-2 mt-2"><button onclick="window.approvePayment(${p.id})" class="btn-navy text-xs px-3 py-1 rounded">✅ Approuver</button><button onclick="window.rejectPayment(${p.id})" class="btn-gold text-xs px-3 py-1 rounded">❌ Rejeter</button></div>` : ''}
+                ${p.status==='approved' ? `<button onclick="window.revokePayment(${p.id})" class="text-xs text-red-500 mt-2">Révoquer</button>` : ''}
             </div>
         `).join('');
     }
     window.approvePayment = (id) => {
-        const payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS) || '[]');
-        const payment = payments.find(p => p.id === id);
-        if (payment) {
-            payment.status = 'approved';
-            localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments));
-            const users = getUsers();
-            const user = users.find(u => u.email === payment.email);
-            if (user) {
-                user.subscribed = true;
-                user.subscription = { status: 'active', plan: payment.plan, startDate: new Date().toISOString() };
-                saveUsers(users);
-            }
-            showToast('Paiement approuvé !');
-            refreshAll();
-        }
+        let payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]');
+        const payment = payments.find(p=>p.id===id);
+        if(payment) { payment.status='approved'; localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments)); const users = getUsers(); const user = users.find(u=>u.email===payment.email); if(user) { user.subscribed=true; user.subscription={status:'active'}; localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); } refreshAll(); showToast('Approuvé !'); }
     };
     window.rejectPayment = (id) => {
-        const payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS) || '[]');
-        const payment = payments.find(p => p.id === id);
-        if (payment) {
-            payment.status = 'rejected';
+        let payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]');
+        const payment = payments.find(p=>p.id===id);
+        if(payment) { payment.status='rejected'; localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments)); refreshAll(); showToast('Rejeté'); }
+    };
+    window.revokePayment = (id) => {
+        let payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]');
+        const payment = payments.find(p=>p.id===id);
+        if(payment && payment.status==='approved') {
+            payment.status='pending';
             localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments));
-            showToast('Paiement rejeté', 'error');
-            refreshAll();
+            const users = getUsers(); const user = users.find(u=>u.email===payment.email);
+            if(user) { user.subscribed=false; user.subscription={status:'none'}; localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); }
+            refreshAll(); showToast('Abonnement révoqué');
         }
     };
 
-    function refreshMediaGrid() {
-        const grid = document.getElementById('mediaGrid');
-        if (!grid) return;
+    // Mediatheque
+    function refreshMedia() {
+        const grid = document.getElementById('mediaGrid'); if(!grid) return;
         let items = [];
-        courses.forEach(c => { if (c.image) items.push({ type: 'Cours', name: c.titre, url: c.image }); });
-        videos.forEach(v => { if (v.thumbnail) items.push({ type: 'Vidéo', name: v.titre, url: v.thumbnail }); });
-        pdfs.forEach(p => { if (p.image) items.push({ type: 'PDF', name: p.nom, url: p.image }); });
-        grid.innerHTML = items.map(i => `
-            <div class="relative bg-white border rounded-xl overflow-hidden">
-                <img src="${i.url}" class="w-full h-24 object-cover">
-                <p class="text-xs p-2">${i.name} <span class="text-gray-400">(${i.type})</span></p>
-            </div>
-        `).join('');
+        courses.forEach(c => { if(c.image) items.push({ type:'Cours', name:c.titre, url:c.image }); });
+        videos.forEach(v => { if(v.thumbnail) items.push({ type:'Vidéo', name:v.titre, url:v.thumbnail }); });
+        pdfs.forEach(p => { if(p.image) items.push({ type:'PDF', name:p.nom, url:p.image }); });
+        grid.innerHTML = items.map(i => `<div class="bg-white border rounded-xl overflow-hidden"><img src="${i.url}" class="w-full h-24 object-cover"><p class="text-xs p-1">${i.name} (${i.type})</p></div>`).join('');
     }
-
-    window.addCarouselSlide = () => {
-        carouselSlides.push({ id: Date.now(), title: 'Nouvelle slide', image: '', description: '', buttonText: 'Découvrir', buttonLink: '#', enabled: true, order: carouselSlides.length });
-        saveAll();
-        refreshCarouselList();
-    };
-    window.deleteCarouselSlide = (id) => {
-        carouselSlides = carouselSlides.filter(s => s.id !== id);
-        saveAll();
-        refreshCarouselList();
-    };
-    function refreshCarouselList() {
-        const container = document.getElementById('carouselSlidesList');
-        if (container) container.innerHTML = carouselSlides.map(s => `
-            <div class="flex justify-between items-center bg-white p-3 rounded-xl border">
-                <span>${s.title} ${s.enabled ? '✅' : '❌'}</span>
-                <button onclick="window.deleteCarouselSlide(${s.id})" class="text-rose-500 p-1">🗑</button>
-            </div>
-        `).join('');
+    // Carousel
+    window.addCarouselSlide = () => { carouselSlides.push({ id:Date.now(), title:'Nouvelle slide', image:'', description:'', buttonText:'Découvrir', buttonLink:'#', enabled:true, order:carouselSlides.length }); saveAll(); refreshCarousel(); };
+    window.deleteCarouselSlide = (id) => { carouselSlides = carouselSlides.filter(s=>s.id!==id); saveAll(); refreshCarousel(); };
+    function refreshCarousel() { document.getElementById('carouselSlidesList').innerHTML = carouselSlides.map(s => `<div class="flex justify-between bg-white p-3 rounded-xl border"><span>${s.title} ${s.enabled?'✅':'❌'}</span><button onclick="window.deleteCarouselSlide(${s.id})" class="text-rose-500">🗑</button></div>`).join(''); }
+    // Newsletter
+    function refreshNewsletter() {
+        const subs = JSON.parse(localStorage.getItem(STORAGE_NEWSLETTER)||'[]');
+        document.getElementById('newsletterList').innerHTML = subs.length===0 ? '<p class="text-sm text-slate-400">Aucun abonné.</p>' : subs.map(email => `<div class="bg-white p-2 rounded-xl border text-sm">${email}</div>`).join('');
     }
-
+    // Settings
     window.saveAllSettings = () => {
         const settings = {
             facebook: document.getElementById('settingsFacebook').value,
             twitter: document.getElementById('settingsTwitter').value,
             linkedin: document.getElementById('settingsLinkedin').value,
-            whatsapp: document.getElementById('settingsWhatsapp').value
+            whatsapp: document.getElementById('settingsWhatsapp').value,
+            contactEmail: document.getElementById('settingsContactEmail').value
         };
-        localStorage.setItem('ata_settings', JSON.stringify(settings));
+        localStorage.setItem(STORAGE_SETTINGS, JSON.stringify(settings));
         updateFooterLinks();
         showToast('Paramètres enregistrés');
     };
-
-    function updateFooterLinks() {
-        const settings = JSON.parse(localStorage.getItem('ata_settings') || '{}');
-        const container = document.querySelector('#mainFooter .flex.items-center.gap-5');
-        if (!container) return;
-        container.innerHTML = '';
-        if (settings.facebook) container.innerHTML += `<a href="${settings.facebook}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-facebook-f"></i></a>`;
-        if (settings.twitter) container.innerHTML += `<a href="${settings.twitter}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-twitter"></i></a>`;
-        if (settings.linkedin) container.innerHTML += `<a href="${settings.linkedin}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-linkedin-in"></i></a>`;
-        if (settings.whatsapp) container.innerHTML += `<a href="https://wa.me/${settings.whatsapp.replace(/\D/g,'')}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-whatsapp"></i></a>`;
-    }
-
+    // Charts
     function refreshCharts() {
-        const users = JSON.parse(localStorage.getItem(STORAGE_USERS)) || [];
+        const users = getUsers();
         const lineCtx = document.getElementById('chartLine')?.getContext('2d');
         const barCtx = document.getElementById('chartBar')?.getContext('2d');
-        if (lineCtx) {
-            const inscritsParMois = [0,0,0,0,0,0];
-            users.forEach(u => { const m = new Date(u.createdAt).getMonth(); if(m>=0 && m<6) inscritsParMois[m]++; });
-            new Chart(lineCtx, { type: 'line', data: { labels: ['Jan','Fév','Mar','Avr','Mai','Juin'], datasets: [{ label: 'Nouveaux élèves', data: inscritsParMois, borderColor: '#101b3b', borderWidth: 3, backgroundColor: 'rgba(16, 27, 59, 0.03)', fill: true, tension: 0.35, pointBackgroundColor: '#c9a03d', pointBorderColor: '#fff', pointRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+        if(window._chartLine) window._chartLine.destroy();
+        if(window._chartBar) window._chartBar.destroy();
+        if(lineCtx) {
+            const months = [0,0,0,0,0,0];
+            users.forEach(u => { const m = new Date(u.createdAt).getMonth(); if(m>=0&&m<6) months[m]++; });
+            window._chartLine = new Chart(lineCtx, { type:'line', data:{ labels:['Jan','Fév','Mar','Avr','Mai','Juin'], datasets:[{ label:'Nouveaux élèves', data:months, borderColor:'#101b3b', borderWidth:3, backgroundColor:'rgba(16,27,59,0.03)', fill:true, tension:0.35, pointBackgroundColor:'#c9a03d', pointRadius:4 }] }, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } } } });
         }
-        if (barCtx) {
-            const coursDownloads = pdfs.filter(p=>p.categorie==='Cours').reduce((a,b)=>a+(b.downloads||0),0);
-            const guidesDownloads = pdfs.filter(p=>p.categorie==='Guides').reduce((a,b)=>a+(b.downloads||0),0);
-            const exosDownloads = pdfs.filter(p=>p.categorie==='Exercices').reduce((a,b)=>a+(b.downloads||0),0);
-            new Chart(barCtx, { type: 'bar', data: { labels: ['Cours PDF','Guides','Exercices'], datasets: [{ label: 'Téléchargements', data: [coursDownloads, guidesDownloads, exosDownloads], backgroundColor: ['#c9a03d', '#101b3b', '#64748b'], borderRadius: 8, maxBarThickness: 32 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+        if(barCtx) {
+            const cat = (c) => pdfs.filter(p=>p.categorie===c).reduce((a,b)=>a+(b.downloads||0),0);
+            window._chartBar = new Chart(barCtx, { type:'bar', data:{ labels:['Cours PDF','Guides','Exercices'], datasets:[{ label:'Téléchargements', data:[cat('Cours'),cat('Guides'),cat('Exercices')], backgroundColor:['#c9a03d','#101b3b','#64748b'], borderRadius:8, maxBarThickness:32 }] }, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } } } });
         }
     }
-
     function refreshAll() {
-        refreshKPIs();
-        refreshUsersTable();
-        refreshCoursesList();
-        refreshVideosList();
-        refreshPdfsList();
-        refreshConferencesList();
-        refreshMessages();
-        refreshPaymentRequests();
-        refreshMediaGrid();
-        refreshCarouselList();
-        refreshCharts();
+        refreshKPIs(); refreshUsersTable(); refreshCoursesList(); refreshVideosList(); refreshPdfsList(); refreshConfs();
+        refreshAdminMessages(); refreshPaymentRequests(); refreshMedia(); refreshCarousel(); refreshNewsletter(); refreshCharts();
     }
 
     document.getElementById('addCourseBtn')?.addEventListener('click', window.addCourse);
     document.getElementById('addVideoBtn')?.addEventListener('click', window.addVideo);
     document.getElementById('addPdfBtn')?.addEventListener('click', window.addPdf);
     document.getElementById('addConfBtn')?.addEventListener('click', window.addConference);
-
+    // Load settings into form
+    const settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS)||'{}');
+    document.getElementById('settingsFacebook').value = settings.facebook||'';
+    document.getElementById('settingsTwitter').value = settings.twitter||'';
+    document.getElementById('settingsLinkedin').value = settings.linkedin||'';
+    document.getElementById('settingsWhatsapp').value = settings.whatsapp||'';
+    document.getElementById('settingsContactEmail').value = settings.contactEmail||'';
     refreshAll();
 }
 
-// ==================== MODALE AUTH ====================
+// ==================== NEWSLETTER ====================
+function subscribeNewsletter(e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value.trim();
+    if(!email) return;
+    const subs = JSON.parse(localStorage.getItem(STORAGE_NEWSLETTER)||'[]');
+    if(!subs.includes(email)) { subs.push(email); localStorage.setItem(STORAGE_NEWSLETTER, JSON.stringify(subs)); showToast('Merci de votre abonnement !'); document.getElementById('newsletterEmail').value = ''; }
+    else showToast('Déjà abonné', 'warning');
+}
+
+// ==================== FOOTER LINKS ====================
+function updateFooterLinks() {
+    const settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS)||{});
+    const container = document.getElementById('footerSocialLinks');
+    if(!container) return;
+    let html = '';
+    if(settings.facebook) html += `<a href="${settings.facebook}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-facebook-f"></i></a>`;
+    if(settings.twitter) html += `<a href="${settings.twitter}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-twitter"></i></a>`;
+    if(settings.linkedin) html += `<a href="${settings.linkedin}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-linkedin-in"></i></a>`;
+    if(settings.whatsapp) html += `<a href="https://wa.me/${settings.whatsapp.replace(/\D/g,'')}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-whatsapp"></i></a>`;
+    if(settings.contactEmail) html += `<a href="mailto:${settings.contactEmail}" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-solid fa-envelope"></i></a>`;
+    container.innerHTML = html || '<span class="text-xs text-gray-500">Suivez-nous</span>';
+}
+
+// ==================== AUTH ====================
 function openAuthModal(mode) {
-    const modal = document.getElementById('authModal');
-    const formContainer = document.getElementById('authFormContainer');
-    const decorContainer = document.getElementById('authDecor');
-    modal.classList.add('active');
-    if (mode === 'login') {
-        formContainer.innerHTML = loginFormHTML();
-        decorContainer.innerHTML = loginDecorHTML();
+    document.getElementById('authModal').classList.add('active');
+    const fc = document.getElementById('authFormContainer'), dc = document.getElementById('authDecor');
+    if(mode==='login') {
+        fc.innerHTML = `<div class="my-auto py-6 max-w-sm mx-auto"><h1 class="text-2xl font-bold text-[#101b3b]">Login</h1><form id="loginForm" class="space-y-4 mt-6"><div><label class="text-xs font-bold">Email*</label><input type="email" id="loginEmail" placeholder="mail@ataschool.edu" class="w-full px-4 py-2.5 border rounded-xl text-xs" required></div><div><label class="text-xs font-bold">Password*</label><input type="password" id="loginPassword" placeholder="Min. 8 characters" class="w-full px-4 py-2.5 border rounded-xl text-xs" required></div><button type="submit" class="w-full bg-[#101b3b] text-white py-3 rounded-xl font-bold text-xs">Login</button></form><p class="text-center text-xs text-gray-400 mt-6">Pas de compte ? <a href="#" onclick="openAuthModal('signup')" class="text-[#c9a03d] font-bold">Créer un compte</a></p></div>`;
+        dc.innerHTML = `<div class="my-auto max-w-xs mx-auto"><div class="bg-white/5 border border-white/10 rounded-2xl p-5"><h3 class="font-bold text-sm text-white">Academic Excellence</h3><p class="text-[11px] text-gray-300 mt-2">Join 5,000+ students.</p></div></div>`;
         document.getElementById('loginForm').addEventListener('submit', handleLogin);
     } else {
-        formContainer.innerHTML = signupFormHTML();
-        decorContainer.innerHTML = signupDecorHTML();
+        fc.innerHTML = `<div class="my-auto py-4 max-w-sm mx-auto"><h1 class="text-2xl font-bold text-[#101b3b]">Sign Up</h1><form id="signupForm" class="space-y-3.5 mt-5"><div><label class="text-xs font-bold">Nom complet*</label><input type="text" id="signupName" placeholder="John Doe" class="w-full px-4 py-2.5 border rounded-xl text-xs" required></div><div><label class="text-xs font-bold">Email*</label><input type="email" id="signupEmail" placeholder="student@ataschool.edu" class="w-full px-4 py-2.5 border rounded-xl text-xs" required></div><div><label class="text-xs font-bold">Mot de passe*</label><input type="password" id="signupPassword" placeholder="Min. 8 characters" class="w-full px-4 py-2.5 border rounded-xl text-xs" required></div><label class="flex items-center gap-2 text-xs text-gray-500"><input type="checkbox" id="terms" required> J'accepte les conditions</label><button type="submit" class="w-full bg-[#101b3b] text-white py-3 rounded-xl font-bold text-xs">S'inscrire</button></form><p class="text-center text-xs text-gray-400 mt-5">Déjà un compte ? <a href="#" onclick="openAuthModal('login')" class="text-[#c9a03d] font-bold">Se connecter</a></p></div>`;
+        dc.innerHTML = `<div class="my-auto max-w-xs mx-auto"><div class="bg-white/5 border border-white/10 rounded-2xl p-5"><h3 class="font-bold text-sm text-white">Global Knowledge</h3><p class="text-[11px] text-gray-300 mt-2">Unlock 24/7 modules.</p></div></div>`;
         document.getElementById('signupForm').addEventListener('submit', handleSignup);
     }
 }
 function closeAuthModal() { document.getElementById('authModal').classList.remove('active'); }
 document.getElementById('closeModal').addEventListener('click', closeAuthModal);
-document.getElementById('authModal').addEventListener('click', function(e) { if (e.target === this) closeAuthModal(); });
+document.getElementById('authModal').addEventListener('click', function(e) { if(e.target===this) closeAuthModal(); });
 
-function loginFormHTML() {
-    return `<div class="flex items-center gap-2 text-[#101b3b]"><span class="w-5 h-5 bg-[#101b3b] text-white rounded flex items-center justify-center text-[10px]"><i class="fa-solid fa-graduation-cap"></i></span><span class="font-bold text-xs tracking-wider uppercase">ATA <span class="text-[#c9a03d]">SCHOOL</span></span></div>
-        <div class="my-auto py-6 max-w-sm w-full mx-auto">
-            <h1 class="text-2xl font-bold text-[#101b3b]">Login</h1>
-            <p class="text-xs text-gray-400 mt-1">Access your dashboard and continue your journey.</p>
-            <form id="loginForm" class="space-y-4 mt-6">
-                <div><label class="block text-[11px] font-bold text-[#101b3b] uppercase tracking-wide mb-1.5">Email*</label><input type="email" id="loginEmail" placeholder="mail@ataschool.edu" class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#c9a03d] text-gray-700 transition" required></div>
-                <div><label class="block text-[11px] font-bold text-[#101b3b] uppercase tracking-wide mb-1.5">Password*</label><input type="password" id="loginPassword" placeholder="Min. 8 characters" class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#c9a03d] text-gray-700 transition" required></div>
-                <button type="submit" class="w-full bg-[#101b3b] text-white hover:bg-[#16254f] transition py-3 rounded-xl font-bold text-xs shadow-md mt-2">Login</button>
-            </form>
-            <p class="text-center text-xs text-gray-400 mt-6">Not registered yet? <a href="#" onclick="openAuthModal('signup')" class="text-[#c9a03d] font-bold hover:underline">Create an Account</a></p>
-        </div>
-        <div class="text-[10px] text-gray-400 text-center md:text-left border-t border-gray-50 pt-4 mt-4">&copy; 2026 ATA SCHOOL &ndash; Yes We Can.</div>`;
-}
-function loginDecorHTML() {
-    return `<div class="self-end bg-white/5 backdrop-blur-md p-2 rounded-xl border border-white/10 shadow-lg"><div class="w-16 h-16 border border-[#c9a03d]/30 rounded-lg flex flex-col items-center justify-center text-center p-1 bg-[#101b3b]"><i class="fa-solid fa-graduation-cap text-[#c9a03d] text-lg"></i><span class="font-extrabold text-[9px] text-white tracking-tighter leading-none mt-1">ATA</span><span class="text-[7px] text-gray-400 font-medium tracking-widest uppercase scale-90">SCHOOL</span></div></div><div class="my-auto max-w-xs mx-auto w-full space-y-6"><div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-5 shadow-xl relative overflow-hidden"><div class="absolute -right-4 -top-4 w-16 h-16 bg-[#c9a03d]/10 rounded-full blur-xl"></div><h3 class="font-bold text-sm tracking-wide text-white">Academic Excellence</h3><p class="text-[11px] text-gray-300 mt-2 leading-relaxed font-light">Join 5,000+ students achieving their dreams this semester.</p></div><div class="grid grid-cols-2 gap-3"><div class="bg-white/5 border border-white/5 p-3 rounded-xl text-center"><span class="block text-amber-400 text-xs mb-1"><i class="fa-solid fa-chart-line"></i></span><span class="block font-bold text-xs">98%</span><span class="text-[9px] text-gray-400">Success Rate</span></div><div class="bg-white/5 border border-white/5 p-3 rounded-xl text-center"><span class="block text-amber-400 text-xs mb-1"><i class="fa-solid fa-circle-check"></i></span><span class="block font-bold text-xs">Accredited</span><span class="text-[9px] text-gray-400">ISO Certified</span></div></div></div><div class="text-center space-y-3 pt-4 border-t border-white/5"><p class="text-[10px] font-bold text-[#c9a03d] tracking-widest uppercase">Yes We Can.</p><p class="text-xs italic text-gray-300 font-light">"Turn your ideas into reality."</p><div class="flex items-center justify-center gap-1.5 pt-1"><span class="w-1.5 h-1.5 rounded-full bg-white"></span><span class="w-1.5 h-1.5 rounded-full bg-white/30"></span><span class="w-1.5 h-1.5 rounded-full bg-white/30"></span></div></div>`;
-}
-function signupFormHTML() {
-    return `<div class="flex items-center gap-2 text-[#101b3b]"><span class="w-5 h-5 bg-[#101b3b] text-white rounded flex items-center justify-center text-[10px]"><i class="fa-solid fa-graduation-cap"></i></span><span class="font-bold text-xs tracking-wider uppercase">ATA <span class="text-[#c9a03d]">SCHOOL</span></span></div>
-        <div class="my-auto py-4 max-w-sm w-full mx-auto">
-            <h1 class="text-2xl font-bold text-[#101b3b]">Sign Up</h1>
-            <p class="text-xs text-gray-400 mt-1">Create your master profile and begin digital training.</p>
-            <form id="signupForm" class="space-y-3.5 mt-5">
-                <div><label class="block text-[11px] font-bold text-[#101b3b] uppercase tracking-wide mb-1">Full Name*</label><input type="text" id="signupName" placeholder="John Doe" class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#c9a03d] text-gray-700 transition" required></div>
-                <div><label class="block text-[11px] font-bold text-[#101b3b] uppercase tracking-wide mb-1">Email Address*</label><input type="email" id="signupEmail" placeholder="student@ataschool.edu" class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#c9a03d] text-gray-700 transition" required></div>
-                <div><label class="block text-[11px] font-bold text-[#101b3b] uppercase tracking-wide mb-1">Password*</label><input type="password" id="signupPassword" placeholder="Min. 8 characters" class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#c9a03d] text-gray-700 transition" required></div>
-                <div class="flex items-center text-[11px] pt-1"><label class="flex items-start gap-2 text-gray-500 cursor-pointer select-none"><input type="checkbox" id="terms" class="rounded border-gray-300 text-[#101b3b] focus:ring-0 mt-0.5" required><span>I agree to the <a href="#" class="text-[#c9a03d] font-semibold hover:underline">Terms of Service</a> and Privacy policy.</span></label></div>
-                <button type="submit" class="w-full bg-[#101b3b] text-white hover:bg-[#16254f] transition py-3 rounded-xl font-bold text-xs shadow-md mt-2">Register Account</button>
-            </form>
-            <p class="text-center text-xs text-gray-400 mt-5">Already have an account? <a href="#" onclick="openAuthModal('login')" class="text-[#c9a03d] font-bold hover:underline">Sign In</a></p>
-        </div>
-        <div class="text-[10px] text-gray-400 text-center md:text-left border-t border-gray-50 pt-4 mt-2">&copy; 2026 ATA SCHOOL &ndash; Yes We Can.</div>`;
-}
-function signupDecorHTML() {
-    return `<div class="self-end bg-white/5 backdrop-blur-md p-2 rounded-xl border border-white/10 shadow-lg"><div class="w-16 h-16 border border-[#c9a03d]/30 rounded-lg flex flex-col items-center justify-center text-center p-1 bg-[#101b3b]"><i class="fa-solid fa-graduation-cap text-[#c9a03d] text-lg"></i><span class="font-extrabold text-[9px] text-white tracking-tighter leading-none mt-1">ATA</span><span class="text-[7px] text-gray-400 font-medium tracking-widest uppercase scale-90">SCHOOL</span></div></div><div class="my-auto max-w-xs mx-auto w-full space-y-6"><div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-5 shadow-xl relative overflow-hidden"><div class="absolute -right-4 -top-4 w-16 h-16 bg-[#c9a03d]/10 rounded-full blur-xl"></div><h3 class="font-bold text-sm tracking-wide text-white">Global Knowledge</h3><p class="text-[11px] text-gray-300 mt-2 leading-relaxed font-light">Unlock 24/7 technical documentation modules and peer-to-peer developer tools.</p></div><div class="grid grid-cols-2 gap-3"><div class="bg-white/5 border border-white/5 p-3 rounded-xl text-center"><span class="block text-amber-400 text-xs mb-1"><i class="fa-solid fa-globe"></i></span><span class="block font-bold text-xs">100%</span><span class="text-[9px] text-gray-400">Online Access</span></div><div class="bg-white/5 border border-white/5 p-3 rounded-xl text-center"><span class="block text-amber-400 text-xs mb-1"><i class="fa-solid fa-bolt"></i></span><span class="block font-bold text-xs">Fast-Track</span><span class="text-[9px] text-gray-400">Career Learning</span></div></div></div><div class="text-center space-y-3 pt-4 border-t border-white/5"><p class="text-[10px] font-bold text-[#c9a03d] tracking-widest uppercase">Yes We Can.</p><p class="text-xs italic text-gray-300 font-light">"Turn your ideas into reality."</p><div class="flex items-center justify-center gap-1.5 pt-1"><span class="w-1.5 h-1.5 rounded-full bg-white/30"></span><span class="w-1.5 h-1.5 rounded-full bg-white"></span><span class="w-1.5 h-1.5 rounded-full bg-white/30"></span></div></div>`;
-}
 function handleLogin(e) {
     e.preventDefault();
     const email = document.getElementById('loginEmail').value.trim().toLowerCase();
     const password = document.getElementById('loginPassword').value;
-    const users = getUsers();
-    const user = users.find(u => u.email === email && u.password === password);
-    if (!user) return alert('Email ou mot de passe incorrect.');
-    setCurrentUser({ fullName: user.name, email: user.email, role: user.role, subscription: user.subscription || { status: 'none' } });
-    closeAuthModal();
-    currentPage = 'home';
-    renderApp();
+    const user = getUsers().find(u => u.email===email && u.password===password);
+    if(!user) return alert('Email ou mot de passe incorrect.');
+    setCurrentUser({ fullName:user.name, email:user.email, role:user.role, subscription:user.subscription||{status:'none'} });
+    closeAuthModal(); currentPage='home'; renderApp();
 }
 function handleSignup(e) {
     e.preventDefault();
-    const fullName = document.getElementById('signupName').value.trim();
+    const name = document.getElementById('signupName').value.trim();
     const email = document.getElementById('signupEmail').value.trim().toLowerCase();
     const password = document.getElementById('signupPassword').value;
-    const terms = document.getElementById('terms').checked;
-    if (!terms) return alert('Vous devez accepter les conditions.');
-    if (password.length < 8) return alert('Mot de passe : 8 caractères minimum.');
+    if(password.length<8) return alert('Mot de passe : 8 caractères minimum.');
+    if(!document.getElementById('terms').checked) return alert('Acceptez les conditions.');
     const users = getUsers();
-    if (users.find(u => u.email === email)) return alert('Cet email est déjà utilisé.');
-    const newUser = { id: Date.now(), name: fullName, email, password, role: 'student', subscribed: false, subscription: { status: 'none' }, createdAt: new Date().toISOString() };
-    users.push(newUser);
-    saveUsers(users);
-    setCurrentUser({ fullName: newUser.name, email: newUser.email, role: newUser.role, subscription: newUser.subscription });
-    closeAuthModal();
-    currentPage = 'home';
-    renderApp();
-    alert('Inscription réussie ! Vous êtes connecté.');
+    if(users.find(u=>u.email===email)) return alert('Cet email existe déjà.');
+    const newUser = { id:Date.now(), name, email, password, role:'student', subscribed:false, subscription:{status:'none'}, createdAt:new Date().toISOString() };
+    users.push(newUser); saveUsers(users);
+    setCurrentUser({ fullName:newUser.name, email:newUser.email, role:newUser.role, subscription:newUser.subscription });
+    closeAuthModal(); currentPage='home'; renderApp();
+    alert('Inscription réussie !');
 }
 
-// ==================== INITIALISATIONS ====================
+// ==================== SWIPER & REVEAL ====================
 function initSwiper() {
-    const courses = JSON.parse(localStorage.getItem(STORAGE_COURSES)) || [];
-    const container = document.getElementById('coursesCarouselWrapper');
-    if (!container) return;
-    container.innerHTML = courses.map(c => `
+    const courses = JSON.parse(localStorage.getItem(STORAGE_COURSES))||[];
+    const level = getUserAccessLevel();
+    const filtered = courses.filter(c => {
+        if (level==='admin'||level==='premium') return true;
+        return (c.visibility||'teaser') !== 'hidden';
+    });
+    const wrapper = document.getElementById('coursesCarouselWrapper');
+    if(!wrapper) return;
+    wrapper.innerHTML = filtered.map(c => `
         <div class="swiper-slide flex flex-col justify-between">
-            <div class="relative w-full h-48 bg-gray-100 overflow-hidden"><img src="${c.image || 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=400'}" class="w-full h-full object-cover" alt="${c.titre}">${c.premium ? '<span class="absolute top-3 right-3 bg-[#c9a03d] text-[#101b3b] font-extrabold text-[10px] tracking-widest uppercase px-3 py-1 rounded-full shadow">Premium</span>' : ''}</div>
-            <div class="p-5 flex-1 flex flex-col justify-between bg-white">
-                <div><span class="text-[var(--color-gold)] font-bold text-xs tracking-wider uppercase">${c.langue} &bull; ${c.niveau}</span><h3 class="font-bold text-[#101b3b] text-lg mt-1 line-clamp-1">${c.titre}</h3><p class="text-xs text-gray-400 mt-1"><i class="fa-regular fa-clock mr-1"></i> ${c.duree}</p></div>
-                <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between"><span class="font-extrabold text-[#101b3b]">${c.prix}</span><button class="bg-[#101b3b] hover:bg-[var(--color-gold)] text-white hover:text-[#101b3b] transition-colors rounded-full p-2.5 px-4 text-xs font-bold tracking-wide" onclick="navigateTo('videos')">Découvrir</button></div>
-            </div>
+            <div class="relative w-full h-48 bg-gray-100 overflow-hidden"><img src="${c.image||'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=400'}" class="w-full h-full object-cover"><span class="absolute top-3 right-3 bg-[#c9a03d] text-[#101b3b] font-extrabold text-[10px] uppercase px-3 py-1 rounded-full shadow ${c.premium?'':'hidden'}">Premium</span></div>
+            <div class="p-5 flex-1 flex flex-col justify-between bg-white"><div><span class="text-[var(--color-gold)] font-bold text-xs">${c.langue} &bull; ${c.niveau}</span><h3 class="font-bold text-[#101b3b] text-lg mt-1">${c.titre}</h3><p class="text-xs text-gray-400 mt-1"><i class="fa-regular fa-clock"></i> ${c.duree}</p></div><div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center"><span class="font-extrabold">${c.prix}</span><button class="bg-[#101b3b] hover:bg-[var(--color-gold)] text-white hover:text-[#101b3b] rounded-full px-4 py-2 text-xs font-bold" onclick="navigateTo('videos')">Découvrir</button></div></div>
         </div>
     `).join('');
-    new Swiper('.courseSwiper', {
-        effect: 'coverflow', grabCursor: true, centeredSlides: true, slidesPerView: 'auto',
-        coverflowEffect: { rotate: 20, stretch: 0, depth: 100, modifier: 1.4, slideShadows: true },
-        navigation: { nextEl: '.custom-swiper-next', prevEl: '.custom-swiper-prev' },
-        pagination: { el: '.swiper-pagination', clickable: true }, loop: true,
-        autoplay: { delay: 4000, disableOnInteraction: false }
+    if(window.swiperInstance) window.swiperInstance.destroy(true,true);
+    window.swiperInstance = new Swiper('.courseSwiper', {
+        effect:'coverflow', grabCursor:true, centeredSlides:true, slidesPerView:'auto',
+        coverflowEffect:{ rotate:20, stretch:0, depth:100, modifier:1.4, slideShadows:true },
+        navigation:{ nextEl:'.custom-swiper-next', prevEl:'.custom-swiper-prev' },
+        pagination:{ el:'.swiper-pagination', clickable:true }, loop:true,
+        autoplay:{ delay:4000, disableOnInteraction:false }
     });
 }
 function initReveal() {
     document.querySelectorAll('.reveal').forEach(el => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.15 });
-        observer.observe(el);
+        new IntersectionObserver((entries) => { if(entries[0].isIntersecting) el.classList.add('visible'); }, { threshold:0.15 }).observe(el);
     });
 }
 function initHeaderScroll() {
-    const header = document.getElementById('mainHeader');
-    const backBtn = document.getElementById('backToTop');
+    const header = document.getElementById('mainHeader'), back = document.getElementById('backToTop');
     let lastScroll = window.scrollY;
-    window.onscroll = function() {
+    window.onscroll = () => {
         const y = window.scrollY;
-        if (y > 10) header.classList.add('scrolled'); else header.classList.remove('scrolled');
-        if (y > lastScroll && y > 60) header.classList.add('hide-nav');
-        else if (y < lastScroll) header.classList.remove('hide-nav');
+        header.classList.toggle('scrolled', y>10);
+        header.classList.toggle('hide-nav', y>lastScroll && y>60);
         lastScroll = y;
-        if (y > 300) backBtn.classList.add('show'); else backBtn.classList.remove('show');
+        back.classList.toggle('show', y>300);
     };
-    backBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    back.onclick = () => window.scrollTo({ top:0, behavior:'smooth' });
 }
 
-// ==================== LANCEMENT ====================
-(function() {
-    const user = getCurrentUser();
-    if (!user) { currentPage = 'home'; } else { currentPage = 'home'; }
-    renderApp();
-})();
+// ==================== START ====================
+(function() { currentPage = 'home'; renderApp(); })();
 </script>
 </body>
 </html>
