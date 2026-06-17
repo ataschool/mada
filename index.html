@@ -78,20 +78,10 @@
         @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
         /* DARK MODE */
-        .dark {
-            --color-primary: #f1f5f9;
-            --color-bg-light: #0f172a;
-        }
-        .dark #pageLoader {
-    background-color: #0f172a !important;
-}
-.dark .loading-text {
-    color: #f1f5f9 !important;
-}
+        .dark { --color-primary: #f1f5f9; --color-bg-light: #0f172a; }
         .dark body { background: #0f172a; color: #f1f5f9; }
         .dark .bg-white { background-color: #1e293b !important; }
-        .dark .text-gray-600, .dark .text-gray-500, .dark .text-gray-400,
-        .dark .text-slate-600, .dark .text-slate-500, .dark .text-slate-400 { color: #94a3b8 !important; }
+        .dark .text-gray-600, .dark .text-gray-500, .dark .text-gray-400, .dark .text-slate-600, .dark .text-slate-500, .dark .text-slate-400 { color: #94a3b8 !important; }
         .dark .text-\[\#101b3b\] { color: #f1f5f9 !important; }
         .dark .border-gray-100, .dark .border-gray-200, .dark .border-slate-100, .dark .border-slate-200 { border-color: #334155 !important; }
         .dark .bg-gray-50, .dark .bg-slate-50 { background-color: #1e293b !important; }
@@ -101,108 +91,80 @@
         .dark .btn-premium:hover { background-color: var(--color-gold) !important; color: #101b3b !important; }
         .dark .btn-gold-outline { background: #1e293b !important; color: var(--color-gold) !important; border-color: var(--color-gold); }
         .dark .btn-gold-outline:hover { background-color: var(--color-gold) !important; color: #101b3b !important; }
-        /* --- Animations du loader personnalisé --- */
-.logo-container { position: relative; }
-@keyframes popIn {
-    0% { transform: scale(0.7); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-@keyframes drawStroke {
-    0% { stroke-dashoffset: 1000; }
-    100% { stroke-dashoffset: 0; }
-}
-.svg-shield-outline {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: drawStroke 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-@keyframes rotateGlobe {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-.svg-globe {
-    transform-origin: 150px 253px;
-    animation: rotateGlobe 4s linear infinite;
-}
-@keyframes beatBook {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-}
-.svg-book {
-    transform-origin: 150px 180px;
-    animation: beatBook 2s infinite ease-in-out;
-}
-@keyframes pulseText {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
-}
-.loader-hidden {
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-}
+        .dark #pageLoader { background-color: #0f172a !important; }
+        .dark .loading-text { color: #f1f5f9 !important; }
+        .dark #mobileMenu { background-color: #1e293b; border-color: #334155; }
+        /* Animations loader */
+        .logo-container { position: relative; }
+        @keyframes popIn { 0% { transform: scale(0.7); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes drawStroke { 0% { stroke-dashoffset: 1000; } 100% { stroke-dashoffset: 0; } }
+        .svg-shield-outline { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawStroke 3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes rotateGlobe { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .svg-globe { transform-origin: 150px 253px; animation: rotateGlobe 4s linear infinite; }
+        @keyframes beatBook { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+        .svg-book { transform-origin: 150px 180px; animation: beatBook 2s infinite ease-in-out; }
+        @keyframes pulseText { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+        .loader-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
     </style>
 </head>
 <body>
-
 <div id="app">
-  <div id="pageLoader" class="fixed inset-0 z-[200] flex flex-col items-center justify-center" style="background-color: #ffffff; transition: opacity 0.6s ease, visibility 0.6s ease;">
-    <div class="logo-container" style="width: 280px; height: 280px; animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
-            <path d="M50,50 L250,50 C250,50 250,180 150,270 C50,180 50,50 50,50 Z" fill="#ffffff" />
-            <path class="svg-shield-outline" d="M52,52 L248,52 C248,52 248,178 150,265 C52,178 52,52 52,52 Z" fill="none" stroke="#cca352" stroke-width="4" />
-            <path d="M60,60 L240,60 C240,60 240,170 150,250 C60,170 60,60 60,60 Z" fill="none" stroke="#0d2346" stroke-width="3" />
-            <g id="graduation-cap">
-                <polygon points="150,20 230,50 150,80 70,50" fill="#0d2346" />
-                <polygon points="150,23 220,50 150,77 80,50" fill="#163463" />
-                <rect x="115" y="65" width="70" height="12" fill="#0d2346" rx="3" />
-                <path d="M150,50 L115,58 L115,75" fill="none" stroke="#cca352" stroke-width="2.5" />
-                <circle cx="115" cy="77" r="4" fill="#cca352" />
-            </g>
-            <text x="150" y="130" font-family="'Georgia', serif" font-size="44" font-weight="bold" fill="#0d2346" text-anchor="middle" letter-spacing="4">ATA</text>
-            <line x1="85" y1="145" x2="130" y2="145" stroke="#cca352" stroke-width="2" />
-            <text x="150" y="150" font-family="'Arial', sans-serif" font-size="15" font-weight="bold" fill="#cca352" text-anchor="middle" letter-spacing="3">SCHOOL</text>
-            <line x1="170" y1="145" x2="215" y2="145" stroke="#cca352" stroke-width="2" />
-            <g class="svg-book" fill="#ffffff" stroke="#0d2346" stroke-width="2">
-                <path d="M150,190 C130,175 110,175 95,180 L95,205 C110,200 130,200 150,215 Z" fill="#ffffff"/>
-                <path d="M150,190 C170,175 190,175 205,180 L205,205 C190,200 170,200 150,215 Z" fill="#ffffff"/>
-                <path d="M95,183 L95,208 C110,203 130,203 150,218 C170,203 190,203 205,208 L205,183" fill="none" stroke="#cca352" stroke-width="2" />
-            </g>
-            <g id="ribbon">
-                <path d="M40,210 L260,210 L245,240 L55,240 Z" fill="#0d2346" stroke="#cca352" stroke-width="1.5" />
-                <polygon points="40,210 55,240 25,230" fill="#163463" />
-                <polygon points="260,210 245,240 275,230" fill="#163463" />
-                <path d="M68,225 L70,220 L72,225 L77,225 L73,228 L75,233 L70,230 L65,233 L67,228 L63,225 Z" fill="#cca352" />
-                <path d="M232,225 L234,220 L236,225 L241,225 L237,228 L239,233 L234,230 L229,233 L231,228 L227,225 Z" fill="#cca352" />
-                <text x="150" y="231" font-family="'Impact', 'Arial Black', sans-serif" font-size="18" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">YES WE CAN</text>
-            </g>
-            <g class="svg-globe">
-                <circle cx="150" cy="253" r="13" fill="none" stroke="#0d2346" stroke-width="2" />
-                <path d="M137,253 Q150,253 163,253" fill="none" stroke="#0d2346" stroke-width="1" />
-                <path d="M150,240 Q150,253 150,266" fill="none" stroke="#0d2346" stroke-width="1" />
-                <path d="M141,246 Q150,253 159,246" fill="none" stroke="#0d2346" stroke-width="0.7" />
-                <path d="M141,260 Q150,253 159,260" fill="none" stroke="#0d2346" stroke-width="0.7" />
-                <path d="M144,243 Q150,253 144,263" fill="none" stroke="#0d2346" stroke-width="0.7" />
-                <path d="M156,243 Q150,253 156,263" fill="none" stroke="#0d2346" stroke-width="0.7" />
-            </g>
-            <g id="laurels" fill="#0d2346">
-                <path d="M45,100 C35,120 35,160 50,190" fill="none" stroke="#0d2346" stroke-width="2" />
-                <circle cx="38" cy="110" r="4" /><circle cx="34" cy="125" r="4" />
-                <circle cx="33" cy="142" r="4" /><circle cx="36" cy="160" r="4" />
-                <circle cx="43" cy="175" r="4" />
-                <path d="M255,100 C265,120 265,160 250,190" fill="none" stroke="#0d2346" stroke-width="2" />
-                <circle cx="262" cy="110" r="4" /><circle cx="266" cy="125" r="4" />
-                <circle cx="267" cy="142" r="4" /><circle cx="264" cy="160" r="4" />
-                <circle cx="257" cy="175" r="4" />
-            </g>
-        </svg>
+    <!-- LOADER -->
+    <div id="pageLoader" class="fixed inset-0 z-[200] flex flex-col items-center justify-center" style="background-color: #ffffff; transition: opacity 0.6s ease, visibility 0.6s ease;">
+        <div class="logo-container" style="width: 280px; height: 280px; animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+                <path d="M50,50 L250,50 C250,50 250,180 150,270 C50,180 50,50 50,50 Z" fill="#ffffff" />
+                <path class="svg-shield-outline" d="M52,52 L248,52 C248,52 248,178 150,265 C52,178 52,52 52,52 Z" fill="none" stroke="#cca352" stroke-width="4" />
+                <path d="M60,60 L240,60 C240,60 240,170 150,250 C60,170 60,60 60,60 Z" fill="none" stroke="#0d2346" stroke-width="3" />
+                <g id="grad-cap">
+                    <polygon points="150,20 230,50 150,80 70,50" fill="#0d2346" />
+                    <polygon points="150,23 220,50 150,77 80,50" fill="#163463" />
+                    <rect x="115" y="65" width="70" height="12" fill="#0d2346" rx="3" />
+                    <path d="M150,50 L115,58 L115,75" fill="none" stroke="#cca352" stroke-width="2.5" />
+                    <circle cx="115" cy="77" r="4" fill="#cca352" />
+                </g>
+                <text x="150" y="130" font-family="'Georgia', serif" font-size="44" font-weight="bold" fill="#0d2346" text-anchor="middle" letter-spacing="4">ATA</text>
+                <line x1="85" y1="145" x2="130" y2="145" stroke="#cca352" stroke-width="2" />
+                <text x="150" y="150" font-family="'Arial', sans-serif" font-size="15" font-weight="bold" fill="#cca352" text-anchor="middle" letter-spacing="3">SCHOOL</text>
+                <line x1="170" y1="145" x2="215" y2="145" stroke="#cca352" stroke-width="2" />
+                <g class="svg-book" fill="#ffffff" stroke="#0d2346" stroke-width="2">
+                    <path d="M150,190 C130,175 110,175 95,180 L95,205 C110,200 130,200 150,215 Z" fill="#ffffff"/>
+                    <path d="M150,190 C170,175 190,175 205,180 L205,205 C190,200 170,200 150,215 Z" fill="#ffffff"/>
+                    <path d="M95,183 L95,208 C110,203 130,203 150,218 C170,203 190,203 205,208 L205,183" fill="none" stroke="#cca352" stroke-width="2" />
+                </g>
+                <g id="ribbon">
+                    <path d="M40,210 L260,210 L245,240 L55,240 Z" fill="#0d2346" stroke="#cca352" stroke-width="1.5" />
+                    <polygon points="40,210 55,240 25,230" fill="#163463" />
+                    <polygon points="260,210 245,240 275,230" fill="#163463" />
+                    <path d="M68,225 L70,220 L72,225 L77,225 L73,228 L75,233 L70,230 L65,233 L67,228 L63,225 Z" fill="#cca352" />
+                    <path d="M232,225 L234,220 L236,225 L241,225 L237,228 L239,233 L234,230 L229,233 L231,228 L227,225 Z" fill="#cca352" />
+                    <text x="150" y="231" font-family="'Impact', 'Arial Black', sans-serif" font-size="18" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">YES WE CAN</text>
+                </g>
+                <g class="svg-globe">
+                    <circle cx="150" cy="253" r="13" fill="none" stroke="#0d2346" stroke-width="2" />
+                    <path d="M137,253 Q150,253 163,253" fill="none" stroke="#0d2346" stroke-width="1" />
+                    <path d="M150,240 Q150,253 150,266" fill="none" stroke="#0d2346" stroke-width="1" />
+                    <path d="M141,246 Q150,253 159,246" fill="none" stroke="#0d2346" stroke-width="0.7" />
+                    <path d="M141,260 Q150,253 159,260" fill="none" stroke="#0d2346" stroke-width="0.7" />
+                    <path d="M144,243 Q150,253 144,263" fill="none" stroke="#0d2346" stroke-width="0.7" />
+                    <path d="M156,243 Q150,253 156,263" fill="none" stroke="#0d2346" stroke-width="0.7" />
+                </g>
+                <g id="laurels" fill="#0d2346">
+                    <path d="M45,100 C35,120 35,160 50,190" fill="none" stroke="#0d2346" stroke-width="2" />
+                    <circle cx="38" cy="110" r="4" /><circle cx="34" cy="125" r="4" /><circle cx="33" cy="142" r="4" /><circle cx="36" cy="160" r="4" /><circle cx="43" cy="175" r="4" />
+                    <path d="M255,100 C265,120 265,160 250,190" fill="none" stroke="#0d2346" stroke-width="2" />
+                    <circle cx="262" cy="110" r="4" /><circle cx="266" cy="125" r="4" /><circle cx="267" cy="142" r="4" /><circle cx="264" cy="160" r="4" /><circle cx="257" cy="175" r="4" />
+                </g>
+            </svg>
+        </div>
+        <div class="loading-text" style="margin-top: 25px; font-size: 14px; font-weight: 600; letter-spacing: 2px; color: #0d2346; text-transform: uppercase; animation: pulseText 1.5s infinite ease-in-out;">Chargement en cours...</div>
     </div>
-    <div class="loading-text" style="margin-top: 25px; font-size: 14px; font-weight: 600; letter-spacing: 2px; color: #0d2346; text-transform: uppercase; animation: pulseText 1.5s infinite ease-in-out;">Chargement en cours...</div>
-</div>
 
+    <!-- HEADER -->
     <header id="mainHeader" class="w-full sticky top-0 z-50 border-b border-gray-100/60">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center"><span class="serif-title text-lg tracking-wider text-[#101b3b]">ATA <span class="text-[#c9a03d]">SCHOOL</span></span></div>
+            <button onclick="toggleMobileMenu()" class="md:hidden icon-pro text-2xl"><i class="fa-solid fa-bars"></i></button>
             <nav class="hidden md:flex items-center gap-6 ml-auto">
                 <a href="#" onclick="navigateTo('home')" class="nav-icon" data-page="home"><i class="fa-solid fa-building-columns"></i></a>
                 <a href="#" onclick="navigateTo('courses')" class="nav-icon" data-page="courses"><i class="fa-solid fa-chalkboard-user"></i></a>
@@ -213,17 +175,44 @@
             <div id="authButtons" class="flex items-center gap-4 ml-4"></div>
         </div>
     </header>
+    <!-- Menu mobile -->
+    <div id="mobileMenu" class="md:hidden fixed top-20 left-0 w-full bg-white border-b border-gray-200 shadow-lg z-40 hidden flex-col items-center gap-4 py-6">
+        <a href="#" onclick="navigateTo('home'); closeMobileMenu()" class="nav-icon"><i class="fa-solid fa-building-columns"></i></a>
+        <a href="#" onclick="navigateTo('courses'); closeMobileMenu()" class="nav-icon"><i class="fa-solid fa-chalkboard-user"></i></a>
+        <a href="#" onclick="navigateTo('videos'); closeMobileMenu()" class="nav-icon"><i class="fa-solid fa-circle-play"></i></a>
+        <a href="#" onclick="navigateTo('messages'); closeMobileMenu()" class="nav-icon"><i class="fa-solid fa-message"></i></a>
+        <a href="#" onclick="navigateTo('resources'); closeMobileMenu()" class="nav-icon"><i class="fa-solid fa-box-archive"></i></a>
+    </div>
 
     <div id="mainContent"></div>
 
+    <!-- MODALE AUTH -->
     <div id="authModal" class="modal">
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-12 w-full max-w-4xl min-h-[580px] relative">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-12 w-full max-w-4xl min-h-[400px] md:min-h-[580px] relative max-w-full mx-2 md:max-w-4xl">
             <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-[#101b3b] text-xl z-10 icon-pro"><i class="fa-solid fa-xmark"></i></button>
             <div class="md:col-span-7 p-8 lg:p-12 flex flex-col justify-between" id="authFormContainer"></div>
             <div class="md:col-span-5 bg-gradient-to-br from-[#101b3b] to-[#0a1126] p-8 text-white flex flex-col justify-between relative overflow-hidden" id="authDecor"></div>
         </div>
     </div>
 
+    <!-- MODALE CONVERSATION ADMIN -->
+    <div id="adminConversationModal" class="modal">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden w-full max-w-2xl mx-4 max-h-[80vh] flex flex-col">
+            <div class="p-4 border-b border-gray-100 flex justify-between items-center">
+                <h3 class="font-bold text-lg"><i class="fa-solid fa-user-circle mr-2 text-[#c9a03d]"></i><span id="adminConvUserEmail"></span></h3>
+                <button onclick="closeAdminConversation()" class="icon-pro"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="flex-1 p-4 overflow-y-auto space-y-4 chat-scroll bg-gray-50/40" id="adminConvMessages"></div>
+            <div class="p-4 border-t bg-white">
+                <form id="adminConvReplyForm" class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2.5 border">
+                    <input type="text" id="adminConvReplyInput" placeholder="Votre réponse..." class="flex-1 bg-transparent text-sm focus:outline-none">
+                    <button type="submit" class="bg-[#101b3b] text-white hover:bg-[var(--color-gold)] hover:text-[#101b3b] transition w-8 h-8 rounded-lg flex items-center justify-center shrink-0"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer id="mainFooter" class="bg-[#0b1122] text-gray-400 pt-16 pb-8 border-t-2 border-[var(--color-gold)]">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
             <div class="flex flex-col gap-4"><div><span class="inline-block bg-[#101b3b] text-[var(--color-gold)] font-bold px-5 py-2 rounded text-sm tracking-widest border border-gray-800">ATA</span></div><p class="text-sm text-gray-400 mt-2 max-w-sm leading-relaxed">Plateforme éducative d'excellence, cours et ressources pour tous.</p></div>
@@ -253,7 +242,7 @@ const STORAGE_USERS = "ata_users", STORAGE_COURSES = "ata_courses", STORAGE_VIDE
       STORAGE_PAYMENTS = "ata_payment_requests", STORAGE_CAROUSEL = "ata_carousel_slides", STORAGE_SETTINGS = "ata_settings",
       STORAGE_NEWSLETTER = "ata_newsletter_subscribers";
 
-// Defaults
+// Données initiales
 !localStorage.getItem(STORAGE_USERS) && localStorage.setItem(STORAGE_USERS, JSON.stringify([
     { id:1, name:"Admin ATA", email:"admin@ataschool.edu", password:"admin123", role:"admin", subscribed:true, subscription:{status:'active'}, createdAt:new Date().toISOString() },
     { id:2, name:"Jean Dupont", email:"jean@test.com", password:"jean123", role:"student", subscribed:false, subscription:{status:'none'}, createdAt:new Date().toISOString() },
@@ -280,10 +269,10 @@ const STORAGE_USERS = "ata_users", STORAGE_COURSES = "ata_courses", STORAGE_VIDE
 !localStorage.getItem(STORAGE_GLOBAL_CHAT) && localStorage.setItem(STORAGE_GLOBAL_CHAT, JSON.stringify([]));
 !localStorage.getItem(STORAGE_PAYMENTS) && localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify([]));
 !localStorage.getItem(STORAGE_CAROUSEL) && localStorage.setItem(STORAGE_CAROUSEL, JSON.stringify([]));
-!localStorage.getItem(STORAGE_SETTINGS) && localStorage.setItem(STORAGE_SETTINGS, JSON.stringify({ facebook:'', twitter:'', linkedin:'', instagram:'', whatsapp:'', contactEmail:'' }));
+!localStorage.getItem(STORAGE_SETTINGS) && localStorage.setItem(STORAGE_SETTINGS, JSON.stringify({ facebook:'', twitter:'', linkedin:'', instagram:'', whatsapp:'', contactEmail:'', messenger:'' }));
 !localStorage.getItem(STORAGE_NEWSLETTER) && localStorage.setItem(STORAGE_NEWSLETTER, JSON.stringify([]));
 
-// ==================== UTILS ====================
+// ==================== UTILITAIRES ====================
 function getUsers() { return JSON.parse(localStorage.getItem(STORAGE_USERS)) || []; }
 function saveUsers(u) { localStorage.setItem(STORAGE_USERS, JSON.stringify(u)); }
 function getCurrentUser() { return JSON.parse(localStorage.getItem('currentUser')); }
@@ -302,6 +291,8 @@ function showToast(msg, type='success') {
     t.innerHTML = `<div class="flex items-center gap-2"><i class="fa-regular ${type==='error'?'fa-circle-exclamation text-red-400':'fa-circle-check text-[#c9a03d]'} text-lg"></i><span>${msg}</span></div>`;
     c.appendChild(t); setTimeout(()=>{ t.style.opacity='0'; setTimeout(()=>t.remove(),300); },3500);
 }
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.add('hidden'); }
 
 // ==================== DARK MODE ====================
 function toggleDarkMode() {
@@ -312,24 +303,10 @@ function toggleDarkMode() {
     if (localStorage.getItem('ata_dark_mode')==='dark' || (!localStorage.getItem('ata_dark_mode') && window.matchMedia('(prefers-color-scheme: dark)').matches))
         document.documentElement.classList.add('dark');
 })();
-function showLoader() {
-    const loader = document.getElementById('pageLoader');
-    if (loader) {
-        loader.classList.remove('loader-hidden');
-        loader.style.opacity = '1';
-        loader.style.visibility = 'visible';
-    }
-}
-function hideLoader() {
-    setTimeout(() => {
-        const loader = document.getElementById('pageLoader');
-        if (loader) {
-            loader.classList.add('loader-hidden');
-        }
-    }, 300);
-}
+function showLoader() { const loader = document.getElementById('pageLoader'); if (loader) { loader.classList.remove('loader-hidden'); loader.style.opacity = '1'; loader.style.visibility = 'visible'; } }
+function hideLoader() { setTimeout(() => { const loader = document.getElementById('pageLoader'); if (loader) loader.classList.add('loader-hidden'); }, 300); }
 
-// ==================== ACCESS ====================
+// ==================== DROITS D'ACCÈS ====================
 function getUserAccessLevel() {
     const u = getCurrentUser(); if (!u) return 'visitor';
     if (u.role==='admin') return 'admin';
@@ -350,7 +327,7 @@ function renderAccessBadge(c) {
     return '';
 }
 
-// ==================== FAVORITES ====================
+// ==================== FAVORIS ====================
 function getFavorites() { const u=getCurrentUser(); return u ? JSON.parse(localStorage.getItem(`fav_${u.email}`)||'[]') : []; }
 function addFavorite(type, id) {
     const u=getCurrentUser(); if(!u) return showToast('Connectez-vous','warning');
@@ -364,7 +341,7 @@ function removeFavorite(type, id) {
 }
 function isFavorite(type, id) { return getFavorites().some(f=>f.type===type && f.id===id); }
 
-// ==================== PROMO MODAL ====================
+// ==================== MODALE PROMOTION ====================
 function showPremiumModal() {
     const existing = document.getElementById('premiumPromoModal'); if(existing) existing.remove();
     const level = getUserAccessLevel();
@@ -379,7 +356,7 @@ function showPremiumModal() {
 }
 function closePremiumModal() { const m=document.getElementById('premiumPromoModal'); if(m) m.remove(); }
 
-// ==================== RENDER ENGINE ====================
+// ==================== MOTEUR DE RENDU ====================
 function renderApp() {
     showLoader();
     const user = getCurrentUser();
@@ -412,19 +389,19 @@ function renderApp() {
     hideLoader();
 }
 
-// ==================== PAGES ====================
+// ==================== PAGES STATIQUES ====================
 function renderHomePage() {
     return `
     <main>
         <section class="min-h-[calc(100vh-80px)] flex flex-col lg:flex-row bg-[var(--color-bg-light)]">
             <div class="w-full lg:w-[55%] flex flex-col justify-between p-8 lg:p-16 xl:p-24">
                 <div class="mb-8 lg:mb-0 reveal"><img src="IMG.jpg" alt="Logo" class="h-28 w-auto object-contain" onerror="this.style.display='none'"></div>
-                <div class="my-auto max-w-xl"><h1 class="serif-title text-5xl lg:text-7xl text-[#101b3b] leading-[1.05] tracking-tight reveal">ATA SCHOOL</h1><p class="text-lg lg:text-xl text-gray-600 mt-6 font-medium leading-relaxed reveal" style="transition-delay:0.1s;">La plateforme qui élève vos compétences</p>
-                    <div class="flex flex-wrap gap-4 mt-10 reveal" style="transition-delay:0.2s;"><button class="btn-premium px-8 py-4 rounded-full font-bold text-sm tracking-wide shadow-lg flex items-center gap-2" onclick="navigateTo('videos')"><i class="fas fa-graduation-cap"></i> Explorer les cours</button><button class="btn-gold-outline px-8 py-4 rounded-full font-bold text-sm tracking-wide flex items-center gap-2" onclick="openAuthModal('login')"><i class="fas fa-right-to-bracket"></i> Se connecter</button></div>
+                <div class="my-auto max-w-xl"><h1 class="serif-title text-3xl sm:text-4xl lg:text-7xl text-[#101b3b] leading-[1.05] tracking-tight reveal">ATA SCHOOL</h1><p class="text-base sm:text-lg lg:text-xl text-gray-600 mt-6 font-medium leading-relaxed reveal" style="transition-delay:0.1s;">La plateforme qui élève vos compétences</p>
+                    <div class="flex flex-wrap gap-4 mt-10 reveal" style="transition-delay:0.2s;"><button class="btn-premium px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm tracking-wide shadow-lg flex items-center gap-2" onclick="navigateTo('videos')"><i class="fas fa-graduation-cap"></i> Explorer les cours</button><button class="btn-gold-outline px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold text-sm tracking-wide flex items-center gap-2" onclick="openAuthModal('login')"><i class="fas fa-right-to-bracket"></i> Se connecter</button></div>
                 </div>
                 <div class="pt-8 border-t border-gray-200/60 flex items-center gap-4 text-xs tracking-wider uppercase text-gray-400 font-bold reveal"><span class="text-[var(--color-gold)]">★ ★ ★ ★ ★</span> Plateforme d'apprentissage d'excellence</div>
             </div>
-            <div class="w-full lg:w-[45%] relative min-h-[400px] lg:min-h-0 bg-gray-200"><img src="Gemini_Generated_Image_pymdofpymdofpymd.png" alt="Formateur" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[var(--color-bg-light)]/40 via-transparent to-transparent"></div></div>
+            <div class="w-full lg:w-[45%] relative min-h-[250px] sm:min-h-[400px] lg:min-h-0 bg-gray-200"><img src="Gemini_Generated_Image_pymdofpymdofpymd.png" alt="Formateur" class="absolute inset-0 w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[var(--color-bg-light)]/40 via-transparent to-transparent"></div></div>
         </section>
         <section class="py-24 bg-white overflow-hidden"><div class="max-w-7xl mx-auto px-6"><div class="text-center mb-12 reveal"><span class="text-[var(--color-gold)] font-bold uppercase tracking-widest text-xs">Catalogue</span><h2 class="serif-title text-3xl lg:text-5xl text-[#101b3b] mt-2">📚 Nos Cours Populaires</h2><div class="w-16 h-1 bg-[var(--color-gold)] mx-auto mt-4 rounded-full"></div></div><div class="swiper courseSwiper reveal"><div class="swiper-wrapper" id="coursesCarouselWrapper"></div><div class="custom-swiper-next icon-pro"><i class="fa-solid fa-chevron-right"></i></div><div class="custom-swiper-prev icon-pro"><i class="fa-solid fa-chevron-left"></i></div><div class="swiper-pagination"></div></div></div></section>
     </main>`;
@@ -439,6 +416,7 @@ function renderVideoCourses() {
         </div>
     </main>`;
 }
+
 function fillVideoGrid() {
     const container = document.getElementById('videoGridContainer'); if(!container) return;
     const videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS)||[]);
@@ -459,7 +437,7 @@ function renderLiveClass() {
     return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-10"><div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"><div class="lg:col-span-2 flex flex-col gap-6"><div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-lg group"><img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?w=1000" class="w-full h-full object-cover opacity-80" alt="Live"><div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-between p-6"><div class="flex items-center justify-between"><span class="bg-red-500 text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-md">Live</span><span class="bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg font-medium"><i class="fa-regular fa-eye"></i> 1,420 watching</span></div><div class="flex items-center justify-between text-white/90"><div class="flex items-center gap-4 text-sm"><button class="hover:text-[var(--color-gold)] transition"><i class="fa-solid fa-play"></i></button><span class="text-xs font-mono">01:24:05</span></div><a href="https://meet.google.com/new" target="_blank" class="bg-[var(--color-gold)] text-[#101b3b] text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-[#b08b30] transition flex items-center gap-2"><i class="fa-solid fa-video"></i> Rejoindre</a></div></div></div><div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"><span class="bg-[#c9a03d]/10 text-[var(--color-gold)] text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md">Organic Chemistry</span><h1 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold mt-3">Advanced Molecular Bonding Theories</h1><p class="text-xs text-gray-400 mt-2">Welcome to today's intensive session.</p></div></div></div></main>`;
 }
 function renderResources() {
-    return `<main><section class="bg-[#101b3b] text-white py-16 lg:py-20"><div class="max-w-7xl mx-auto px-6"><h1 class="serif-title text-4xl lg:text-6xl font-bold">Download Center</h1><p class="text-gray-300 mt-4 max-w-2xl text-sm">Access our comprehensive library of educational materials.</p></div></section><div class="max-w-7xl mx-auto px-6 py-12"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="resourcesGrid"></div><section class="mt-20 rounded-3xl bg-gradient-to-r from-[#fae29f] via-[#f5cc6b] to-[#f3bd44] p-8 lg:p-12 shadow-lg relative overflow-hidden"><div class="absolute right-0 top-0 translate-x-12 -translate-y-12 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative z-10"><div><h2 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold">Never miss a new resource!</h2><p class="text-[#101b3b]/80 text-sm mt-1">Join our WhatsApp community.</p></div><a href="#" target="_blank" class="bg-[#101b3b] text-white font-bold px-8 py-4 rounded-xl text-sm"><i class="fa-brands fa-whatsapp text-xl"></i> Rejoindre</a></div></section></div></main>`;
+    return `<main><section class="bg-[#101b3b] text-white py-16 lg:py-20"><div class="max-w-7xl mx-auto px-6"><h1 class="serif-title text-4xl lg:text-6xl font-bold">Download Center</h1><p class="text-gray-300 mt-4 max-w-2xl text-sm">Access our comprehensive library of educational materials.</p></div></section><div class="max-w-7xl mx-auto px-6 py-12"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="resourcesGrid"></div><section class="mt-20 rounded-3xl bg-gradient-to-r from-[#fae29f] via-[#f5cc6b] to-[#f3bd44] p-6 sm:p-8 lg:p-12 shadow-lg relative overflow-hidden"><div class="absolute right-0 top-0 translate-x-12 -translate-y-12 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative z-10"><div><h2 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold">Never miss a new resource!</h2><p class="text-[#101b3b]/80 text-sm mt-1">Join our WhatsApp community.</p></div><a href="#" target="_blank" class="bg-[#101b3b] text-white font-bold px-8 py-4 rounded-xl text-sm"><i class="fa-brands fa-whatsapp text-xl"></i> Rejoindre</a></div></section></div></main>`;
 }
 function fillResourcesGrid() {
     const grid = document.getElementById('resourcesGrid'); if(!grid) return;
@@ -474,8 +452,9 @@ function fillResourcesGrid() {
     }).join('');
 }
 
+// ==================== MESSAGERIE UTILISATEUR ====================
 function renderMessages() {
-    return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8 flex flex-col"><div class="bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row flex-1 overflow-hidden min-h-[600px] max-h-[750px]"><aside class="w-full md:w-80 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col shrink-0"><div class="p-4 border-b border-gray-50"><h3 class="font-bold text-sm text-[#101b3b]">Conversations</h3></div><div class="flex-1 overflow-y-auto custom-scroll divide-y divide-gray-50" id="conversationList"></div></aside><section class="flex-1 flex flex-col bg-gray-50/30"><div class="p-4 bg-white border-b border-gray-100 flex items-center shrink-0"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-[#101b3b] text-[var(--color-gold)] flex items-center justify-center font-bold text-xs">AD</div><div><h3 class="font-bold text-xs lg:text-sm text-[#101b3b]">Admin Support Desk</h3><p class="text-[10px] text-green-500 font-semibold flex items-center gap-1"><span class="w-1 h-1 bg-green-500 rounded-full inline-block"></span> Online</p></div></div></div><div class="flex-1 p-6 overflow-y-auto custom-scroll space-y-6" id="messageContainer"></div><div class="p-4 bg-white border-t border-gray-100 shrink-0"><form id="messageForm" class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2.5 border border-gray-100"><input type="text" id="messageInput" placeholder="Écrivez votre message..." class="flex-1 bg-transparent text-xs lg:text-sm text-gray-700 focus:outline-none placeholder-gray-400 py-1"><button type="submit" class="bg-[#101b3b] text-white hover:bg-[var(--color-gold)] hover:text-[#101b3b] transition w-8 h-8 rounded-lg flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-paper-plane"></i></button></form></div></section></div></main>`;
+    return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8 flex flex-col"><div class="bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row flex-1 overflow-hidden min-h-[400px] sm:min-h-[600px] max-h-[500px] sm:max-h-[750px]"><aside class="w-full md:w-80 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col shrink-0"><div class="p-4 border-b border-gray-50"><h3 class="font-bold text-sm text-[#101b3b]">Conversations</h3></div><div class="flex-1 overflow-y-auto custom-scroll divide-y divide-gray-50" id="conversationList"></div><div class="p-4 border-t border-gray-100 mt-4"><a id="messengerLink" href="#" target="_blank" class="flex items-center gap-2 text-[#101b3b] hover:text-[var(--color-gold)] transition text-sm font-semibold"><i class="fa-brands fa-facebook-messenger text-xl"></i> Contacter l'admin via Messenger</a></div></aside><section class="flex-1 flex flex-col bg-gray-50/30"><div class="p-4 bg-white border-b border-gray-100 flex items-center shrink-0"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-[#101b3b] text-[var(--color-gold)] flex items-center justify-center font-bold text-xs">AD</div><div><h3 class="font-bold text-xs lg:text-sm text-[#101b3b]">Admin Support Desk</h3><p class="text-[10px] text-green-500 font-semibold flex items-center gap-1"><span class="w-1 h-1 bg-green-500 rounded-full inline-block"></span> Online</p></div></div></div><div class="flex-1 p-4 sm:p-6 overflow-y-auto custom-scroll space-y-6" id="messageContainer"></div><div class="p-4 bg-white border-t border-gray-100 shrink-0"><form id="messageForm" class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2.5 border border-gray-100"><input type="text" id="messageInput" placeholder="Écrivez votre message..." class="flex-1 bg-transparent text-xs lg:text-sm text-gray-700 focus:outline-none placeholder-gray-400 py-1"><button type="submit" class="bg-[#101b3b] text-white hover:bg-[var(--color-gold)] hover:text-[#101b3b] transition w-8 h-8 rounded-lg flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-paper-plane"></i></button></form></div></section></div></main>`;
 }
 function initMessaging() {
     const convList = document.getElementById('conversationList');
@@ -494,6 +473,13 @@ function initMessaging() {
         document.getElementById('messageInput').value = '';
         loadPrivateMessages();
     });
+    const settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS)||'{}');
+    const messengerLink = document.getElementById('messengerLink');
+    if (messengerLink && settings.messenger) {
+        messengerLink.href = settings.messenger;
+    } else if (messengerLink) {
+        messengerLink.style.display = 'none';
+    }
 }
 function loadPrivateMessages() {
     const user = getCurrentUser(); if(!user) return;
@@ -511,6 +497,7 @@ function loadPrivateMessages() {
     container.scrollTop = container.scrollHeight;
 }
 
+// ==================== PROFIL UTILISATEUR ====================
 function renderUserDashboard(user) {
     const storageKey = `userProfile_${user.email}`;
     let profile = JSON.parse(localStorage.getItem(storageKey)||'{}');
@@ -536,10 +523,10 @@ function renderUserDashboard(user) {
     }
     window.triggerPhotoUpload = () => document.getElementById('profilePhotoInput').click();
     return `
-    <div class="min-h-screen bg-gray-50 p-6 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full"><div class="flex flex-col sm:flex-row items-start gap-6"><div class="relative shrink-0"><img id="profilePicPreview" src="${photoSrc}" class="w-24 h-24 rounded-full object-cover border-4 border-[var(--color-gold)] cursor-pointer profile-pic-upload" onclick="triggerPhotoUpload()"><input type="file" id="profilePhotoInput" accept="image/*" class="hidden" onchange="saveProfile()"></div><div class="flex-1"><h1 class="text-2xl font-bold text-[#101b3b]">${user.fullName||user.email}</h1><p class="text-sm text-gray-500 mt-1">${user.email}</p><p class="text-xs text-[#c9a03d] mt-2 font-semibold">${user.subscription?.status==='active'?'⭐ Premium':'Standard'}</p></div></div><div class="mt-8 border-t pt-6"><h2 class="font-bold text-lg mb-4"><i class="fa-solid fa-address-book mr-2 text-[var(--color-gold)]"></i> Mes contacts</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-xs font-bold text-gray-600 mb-1">Email</label><input id="contactEmail" value="${profile.contactEmail||''}" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Téléphone</label><input id="contactPhone" value="${profile.phone||''}" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Messenger</label><input id="contactMessenger" value="${profile.messenger||''}" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"></div></div></div><div class="mt-8 border-t pt-6"><h2 class="font-bold text-lg mb-4"><i class="fa-solid fa-user-pen mr-2 text-[var(--color-gold)]"></i> Infos personnelles</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-xs font-bold text-gray-600 mb-1">Nom complet</label><input value="${user.fullName||''}" readonly class="w-full px-3 py-2 bg-gray-100 border rounded-lg text-sm"></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Cours</label><select id="selectedCourse" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Anglais" ${profile.selectedCourse==='Anglais'?'selected':''}>Anglais</option><option value="Français" ${profile.selectedCourse==='Français'?'selected':''}>Français</option></select></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Niveau</label><select id="selectedLevel" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Débutant" ${profile.level==='Débutant'?'selected':''}>Débutant</option><option value="Intermédiaire" ${profile.level==='Intermédiaire'?'selected':''}>Intermédiaire</option><option value="Avancé" ${profile.level==='Avancé'?'selected':''}>Avancé</option></select></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Genre</label><select id="selectedGender" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Homme" ${profile.gender==='Homme'?'selected':''}>Homme</option><option value="Femme" ${profile.gender==='Femme'?'selected':''}>Femme</option><option value="Autre" ${profile.gender==='Autre'?'selected':''}>Autre</option></select></div></div></div><div class="mt-8 flex flex-col sm:flex-row gap-3"><button onclick="saveProfile()" class="flex-1 bg-[var(--color-primary)] text-white font-bold py-2.5 rounded-xl text-sm"><i class="fa-solid fa-floppy-disk mr-2"></i> Enregistrer</button><button onclick="navigateTo('favorites')" class="flex-1 bg-[var(--color-gold)] text-[#101b3b] font-bold py-2.5 rounded-xl text-sm"><i class="fa-solid fa-heart mr-2"></i> Mes favoris</button><button onclick="logout()" class="flex-1 bg-gray-300 text-gray-700 font-bold py-2.5 rounded-xl text-sm"><i class="fas fa-sign-out-alt mr-2"></i> Déconnexion</button></div></div></div>`;
+    <div class="min-h-screen bg-gray-50 p-6 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-xl p-4 sm:p-8 max-w-2xl w-full"><div class="flex flex-col sm:flex-row items-start gap-6"><div class="relative shrink-0"><img id="profilePicPreview" src="${photoSrc}" class="w-24 h-24 rounded-full object-cover border-4 border-[var(--color-gold)] cursor-pointer profile-pic-upload" onclick="triggerPhotoUpload()"><input type="file" id="profilePhotoInput" accept="image/*" class="hidden" onchange="saveProfile()"></div><div class="flex-1"><h1 class="text-2xl font-bold text-[#101b3b]">${user.fullName||user.email}</h1><p class="text-sm text-gray-500 mt-1">${user.email}</p><p class="text-xs text-[#c9a03d] mt-2 font-semibold">${user.subscription?.status==='active'?'⭐ Premium':'Standard'}</p></div></div><div class="mt-8 border-t pt-6"><h2 class="font-bold text-lg mb-4"><i class="fa-solid fa-address-book mr-2 text-[var(--color-gold)]"></i> Mes contacts</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-xs font-bold text-gray-600 mb-1">Email</label><input id="contactEmail" value="${profile.contactEmail||''}" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Téléphone</label><input id="contactPhone" value="${profile.phone||''}" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Messenger</label><input id="contactMessenger" value="${profile.messenger||''}" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"></div></div></div><div class="mt-8 border-t pt-6"><h2 class="font-bold text-lg mb-4"><i class="fa-solid fa-user-pen mr-2 text-[var(--color-gold)]"></i> Infos personnelles</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-xs font-bold text-gray-600 mb-1">Nom complet</label><input value="${user.fullName||''}" readonly class="w-full px-3 py-2 bg-gray-100 border rounded-lg text-sm"></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Cours</label><select id="selectedCourse" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Anglais" ${profile.selectedCourse==='Anglais'?'selected':''}>Anglais</option><option value="Français" ${profile.selectedCourse==='Français'?'selected':''}>Français</option></select></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Niveau</label><select id="selectedLevel" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Débutant" ${profile.level==='Débutant'?'selected':''}>Débutant</option><option value="Intermédiaire" ${profile.level==='Intermédiaire'?'selected':''}>Intermédiaire</option><option value="Avancé" ${profile.level==='Avancé'?'selected':''}>Avancé</option></select></div><div><label class="block text-xs font-bold text-gray-600 mb-1">Genre</label><select id="selectedGender" class="w-full px-3 py-2 bg-gray-50 border rounded-lg text-sm"><option value="">Sélectionnez</option><option value="Homme" ${profile.gender==='Homme'?'selected':''}>Homme</option><option value="Femme" ${profile.gender==='Femme'?'selected':''}>Femme</option><option value="Autre" ${profile.gender==='Autre'?'selected':''}>Autre</option></select></div></div></div><div class="mt-8 flex flex-col sm:flex-row gap-3"><button onclick="saveProfile()" class="flex-1 bg-[var(--color-primary)] text-white font-bold py-2.5 rounded-xl text-sm"><i class="fa-solid fa-floppy-disk mr-2"></i> Enregistrer</button><button onclick="navigateTo('favorites')" class="flex-1 bg-[var(--color-gold)] text-[#101b3b] font-bold py-2.5 rounded-xl text-sm"><i class="fa-solid fa-heart mr-2"></i> Mes favoris</button><button onclick="logout()" class="flex-1 bg-gray-300 text-gray-700 font-bold py-2.5 rounded-xl text-sm"><i class="fas fa-sign-out-alt mr-2"></i> Déconnexion</button></div></div></div>`;
 }
 
-// ==================== PREMIUM ====================
+// ==================== PAGE PREMIUM ====================
 function renderPremiumPage() {
     return `
     <main>
@@ -555,7 +542,7 @@ function renderPremiumPage() {
 window.showOrangeMoneyForm = (plan,price) => { document.getElementById('orangeMoneySection').classList.remove('hidden'); document.getElementById('omAmount').value = price; };
 window.submitOrangeMoneyPayment = (e) => { e.preventDefault(); const payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||[]); payments.push({ id:Date.now(), name:document.getElementById('omName').value, email:document.getElementById('omEmail').value, phone:document.getElementById('omPhone').value, reference:document.getElementById('omReference').value, amount:document.getElementById('omAmount').value, status:'pending', date:new Date().toISOString() }); localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments)); alert('Demande envoyée'); document.getElementById('orangeMoneySection').classList.add('hidden'); };
 
-// ==================== FAVORIS ====================
+// ==================== PAGE FAVORIS ====================
 function renderFavoritesPage() {
     const favs = getFavorites();
     const courses = JSON.parse(localStorage.getItem(STORAGE_COURSES)||[]);
@@ -565,20 +552,99 @@ function renderFavoritesPage() {
     return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-12"><h1 class="serif-title text-3xl font-bold mb-8">❤️ Mes favoris</h1>${items.length===0?'<p class="text-gray-500">Aucun favori.</p>':''}<div class="grid grid-cols-1 md:grid-cols-3 gap-6">${items.map(i=>`<div class="bg-white rounded-2xl p-6 border shadow-sm"><h3 class="font-bold">${i.titre||i.nom}</h3><button onclick="removeFavorite('${i.titre?'course':i.url?'video':'pdf'}',${i.id});navigateTo('favorites')" class="text-red-500 text-xs">Retirer</button></div>`).join('')}</div></main>`;
 }
 
-// ==================== ADMIN ====================
+// ==================== SWIPER, REVEAL, SCROLL ====================
+function initSwiper() {
+    const courses = JSON.parse(localStorage.getItem(STORAGE_COURSES))||[];
+    const level = getUserAccessLevel();
+    const filtered = courses.filter(c => {
+        if (level==='admin'||level==='premium') return true;
+        return (c.visibility||'teaser') !== 'hidden';
+    });
+    const wrapper = document.getElementById('coursesCarouselWrapper');
+    if(!wrapper) return;
+    wrapper.innerHTML = filtered.map(c => `
+        <div class="swiper-slide flex flex-col justify-between">
+            <div class="relative w-full h-48 bg-gray-100 overflow-hidden"><img src="${c.image||'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=400'}" class="w-full h-full object-cover"><span class="absolute top-3 right-3 bg-[#c9a03d] text-[#101b3b] font-extrabold text-[10px] uppercase px-3 py-1 rounded-full shadow ${c.premium?'':'hidden'}">Premium</span></div>
+            <div class="p-5 flex-1 flex flex-col justify-between bg-white"><div><span class="text-[var(--color-gold)] font-bold text-xs">${c.langue} &bull; ${c.niveau}</span><h3 class="font-bold text-[#101b3b] text-lg mt-1">${c.titre}</h3><p class="text-xs text-gray-400 mt-1"><i class="fa-regular fa-clock"></i> ${c.duree}</p></div><div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center"><span class="font-extrabold">${c.prix}</span><button class="bg-[#101b3b] hover:bg-[var(--color-gold)] text-white hover:text-[#101b3b] rounded-full px-4 py-2 text-xs font-bold" onclick="navigateTo('videos')">Découvrir</button></div></div>
+        </div>
+    `).join('');
+    if(window.swiperInstance) window.swiperInstance.destroy(true,true);
+    window.swiperInstance = new Swiper('.courseSwiper', {
+        effect:'coverflow', grabCursor:true, centeredSlides:true, slidesPerView:'auto',
+        coverflowEffect:{ rotate:20, stretch:0, depth:100, modifier:1.4, slideShadows:true },
+        navigation:{ nextEl:'.custom-swiper-next', prevEl:'.custom-swiper-prev' },
+        pagination:{ el:'.swiper-pagination', clickable:true }, loop:true,
+        autoplay:{ delay:4000, disableOnInteraction:false },
+        breakpoints: { 0: { slidesPerView: 1, spaceBetween: 10 }, 640: { slidesPerView: 'auto', spaceBetween: 20 } }
+    });
+}
+function initReveal() {
+    document.querySelectorAll('.reveal').forEach(el => {
+        new IntersectionObserver((entries) => { if(entries[0].isIntersecting) el.classList.add('visible'); }, { threshold:0.15 }).observe(el);
+    });
+}
+function initHeaderScroll() {
+    const header = document.getElementById('mainHeader'), back = document.getElementById('backToTop');
+    let lastScroll = window.scrollY;
+    window.onscroll = () => {
+        const y = window.scrollY;
+        header.classList.toggle('scrolled', y>10);
+        header.classList.toggle('hide-nav', y>lastScroll && y>60);
+        lastScroll = y;
+        back.classList.toggle('show', y>300);
+    };
+    back.onclick = () => window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+// ==================== NEWSLETTER & FOOTER ====================
+function subscribeNewsletter(e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value.trim();
+    if(!email) return;
+    const subs = JSON.parse(localStorage.getItem(STORAGE_NEWSLETTER)||'[]');
+    if(!subs.includes(email)) { subs.push(email); localStorage.setItem(STORAGE_NEWSLETTER, JSON.stringify(subs)); showToast('Merci de votre abonnement !'); document.getElementById('newsletterEmail').value = ''; }
+    else showToast('Déjà abonné', 'warning');
+}
+function updateFooterLinks() {
+    const settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS)||{});
+    const container = document.getElementById('footerSocialLinks');
+    if(!container) return;
+    let html = '';
+    if(settings.facebook) html += `<a href="${settings.facebook}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-facebook-f"></i></a>`;
+    if(settings.twitter) html += `<a href="${settings.twitter}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-twitter"></i></a>`;
+    if(settings.linkedin) html += `<a href="${settings.linkedin}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-linkedin-in"></i></a>`;
+    if(settings.whatsapp) html += `<a href="https://wa.me/${settings.whatsapp.replace(/\D/g,'')}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-whatsapp"></i></a>`;
+    if(settings.contactEmail) html += `<a href="mailto:${settings.contactEmail}" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-solid fa-envelope"></i></a>`;
+    container.innerHTML = html || '<span class="text-xs text-gray-500">Suivez-nous</span>';
+}
+
+// ==================== ADMIN DASHBOARD ====================
 function renderAdminDashboard() {
     return `
     <div class="flex min-h-screen">
-        <aside class="w-72 bg-[#101b3b] text-slate-300 flex flex-col fixed h-full z-50 shadow-xl border-r border-[#1a2a56]">
-            <div class="p-6 flex flex-col items-center border-b border-[#1a2a56]"><svg class="w-24 h-24 mb-2 drop-shadow-md" viewBox="0 0 200 200"><path d="M100 20 L160 50 C160 120 130 165 100 185 C70 165 40 120 40 50 Z" fill="#101b3b" stroke="#c9a03d" stroke-width="5"/><text x="100" y="115" fill="#c9a03d" font-family="'Plus Jakarta Sans'" font-weight="800" font-size="28" text-anchor="middle">ATA</text></svg><h2 class="text-white font-bold text-lg">ATA SCHOOL</h2><p class="text-[#c9a03d] text-xs">YES WE CAN</p></div>
+        <aside id="adminSidebar" class="w-72 bg-[#101b3b] text-slate-300 flex flex-col fixed lg:block hidden h-full z-50 shadow-xl border-r border-[#1a2a56]">
+            <div class="p-6 flex flex-col items-center border-b border-[#1a2a56]">
+                <svg class="w-24 h-24 mb-2 drop-shadow-md" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 20 L160 50 C160 120 130 165 100 185 C70 165 40 120 40 50 Z" fill="#101b3b" stroke="#c9a03d" stroke-width="5"/>
+                    <path d="M100 28 L152 54 C152 114 126 156 100 174 C74 156 48 114 48 54 Z" fill="#ffffff" opacity="0.1"/>
+                    <path d="M100 35 L145 52 L100 69 L55 52 Z" fill="#101b3b" stroke="#c9a03d" stroke-width="3"/>
+                    <path d="M75 59.5 V75 C75 85 125 85 125 75 V59.5" fill="#101b3b" stroke="#c9a03d" stroke-width="2"/>
+                    <path d="M130 54 V80" stroke="#c9a03d" stroke-width="2"/>
+                    <circle cx="130" cy="82" r="3" fill="#c9a03d"/>
+                    <text x="100" y="115" fill="#c9a03d" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28" text-anchor="middle" letter-spacing="2">ATA</text>
+                    <path d="M70 145 C85 140 100 145 100 145 C100 145 115 140 130 145 V125 C115 120 100 125 100 125 C100 125 85 120 70 125 Z" fill="none" stroke="#c9a03d" stroke-width="3"/>
+                    <line x1="100" y1="125" x2="100" y2="145" stroke="#c9a03d" stroke-width="2" />
+                </svg>
+                <div class="text-center"><h2 class="text-white font-bold text-lg tracking-wider">ATA SCHOOL</h2><p class="text-[#c9a03d] text-xs font-semibold tracking-widest mt-0.5">YES WE CAN</p></div>
+            </div>
             <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
-                <a href="#vue-ensemble" class="flex items-center gap-3 px-4 py-3 text-white bg-[#1a2a56] rounded-xl"><i class="fa-solid fa-chart-pie text-[#c9a03d]"></i> Vue d'ensemble</a>
+                <a href="#kpiContainer" class="flex items-center gap-3 px-4 py-3 text-white bg-[#1a2a56] rounded-xl"><i class="fa-solid fa-chart-pie text-[#c9a03d]"></i> Vue d'ensemble</a>
                 <a href="#section-utilisateurs" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-users-gear text-slate-400"></i> Utilisateurs</a>
                 <a href="#section-cours" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-layer-group text-slate-400"></i> Cours</a>
                 <a href="#section-medias" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-clapperboard text-slate-400"></i> Vidéos</a>
                 <a href="#section-pdfs" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-file-zipper text-slate-400"></i> PDF</a>
                 <a href="#section-evenements" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-presentation-screen text-slate-400"></i> Meet</a>
-                <a href="#section-messages" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-messages text-slate-400"></i> Messages</a>
+                <a href="#section-messages" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-messages text-slate-400"></i> Messages privés</a>
                 <a href="#section-demandes-premium" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-file-invoice-dollar text-slate-400"></i> Demandes Premium</a>
                 <a href="#section-mediatheque" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-images text-slate-400"></i> Médiathèque</a>
                 <a href="#section-carousel" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-sliders text-slate-400"></i> Carrousel</a>
@@ -586,14 +652,16 @@ function renderAdminDashboard() {
                 <a href="#section-parametres" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-gear text-slate-400"></i> Paramètres</a>
             </nav>
         </aside>
-        <main class="flex-1 ml-72 p-8 lg:p-10 max-w-[1600px]">
+        <main class="flex-1 lg:ml-72 ml-0 p-4 sm:p-8 lg:p-10 max-w-[1600px]">
+            <button onclick="document.getElementById('adminSidebar').classList.toggle('hidden')" class="lg:hidden fixed top-4 left-4 z-50 bg-[#101b3b] text-white p-2 rounded-lg"><i class="fa-solid fa-bars"></i></button>
             <header class="flex justify-between items-center mb-10 pb-5 border-b border-slate-200"><div><span class="text-xs font-bold uppercase tracking-widest text-slate-400">Espace Administratif</span><h1 class="text-3xl font-extrabold text-[#101b3b] mt-0.5">Tableau de bord</h1></div></header>
-            <section id="kpiContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10" id="kpiContainer"></section>
+            <section id="kpiContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10"></section>
             <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10"><div class="glass-card p-6"><h3 class="font-bold text-slate-800 text-lg mb-4">Inscriptions</h3><div class="h-64"><canvas id="chartLine"></canvas></div></div><div class="glass-card p-6"><h3 class="font-bold text-slate-800 text-lg mb-4">Téléchargements</h3><div class="h-64"><canvas id="chartBar"></canvas></div></div></section>
             <div id="adminDynamicContent"></div>
         </main>
     </div>`;
 }
+
 function initAdminDashboard() {
     const dyn = document.getElementById('adminDynamicContent');
     if(dyn) dyn.innerHTML = `
@@ -611,9 +679,9 @@ function initAdminDashboard() {
         <section id="section-mediatheque" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-images mr-2 text-[#c9a03d]"></i>Médiathèque</h2><div id="mediaGrid" class="grid grid-cols-4 gap-4"></div></section>
         <section id="section-carousel" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-sliders mr-2 text-[#c9a03d]"></i>Carrousel</h2><button onclick="window.addCarouselSlide()" class="btn-navy px-4 py-2 rounded-xl text-sm mb-4">+ Nouvelle slide</button><div id="carouselSlidesList" class="space-y-3"></div></section>
         <section id="section-newsletter" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-envelope mr-2 text-[#c9a03d]"></i>Abonnés Newsletter</h2><div id="newsletterList" class="space-y-2 max-h-60 overflow-y-auto"></div></section>
-        <section id="section-parametres" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-gear mr-2 text-[#c9a03d]"></i>Paramètres</h2><div class="grid grid-cols-2 gap-4"><input id="settingsFacebook" placeholder="Facebook" class="border p-2 rounded-xl text-sm"><input id="settingsTwitter" placeholder="Twitter" class="border p-2 rounded-xl text-sm"><input id="settingsLinkedin" placeholder="LinkedIn" class="border p-2 rounded-xl text-sm"><input id="settingsWhatsapp" placeholder="WhatsApp" class="border p-2 rounded-xl text-sm"><input id="settingsContactEmail" placeholder="Email de contact" class="border p-2 rounded-xl text-sm"></div><button onclick="window.saveAllSettings()" class="btn-navy px-6 py-2.5 rounded-xl text-sm mt-4">Enregistrer</button></section>
+        <section id="section-parametres" class="glass-card p-6 mb-10"><h2 class="text-xl font-bold text-[#101b3b] mb-4"><i class="fa-solid fa-gear mr-2 text-[#c9a03d]"></i>Paramètres</h2><div class="grid grid-cols-2 gap-4"><input id="settingsFacebook" placeholder="Facebook" class="border p-2 rounded-xl text-sm"><input id="settingsTwitter" placeholder="Twitter" class="border p-2 rounded-xl text-sm"><input id="settingsLinkedin" placeholder="LinkedIn" class="border p-2 rounded-xl text-sm"><input id="settingsWhatsapp" placeholder="WhatsApp" class="border p-2 rounded-xl text-sm"><input id="settingsContactEmail" placeholder="Email de contact" class="border p-2 rounded-xl text-sm"><input id="settingsMessenger" placeholder="Lien Messenger (ex: https://m.me/ata.school)" class="border p-2 rounded-xl text-sm"></div><button onclick="window.saveAllSettings()" class="btn-navy px-6 py-2.5 rounded-xl text-sm mt-4">Enregistrer</button></section>
     `;
-    // data
+    // Données admin
     let courses = JSON.parse(localStorage.getItem(STORAGE_COURSES))||[];
     let videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS))||[];
     let pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS))||[];
@@ -621,6 +689,7 @@ function initAdminDashboard() {
     let userMessages = JSON.parse(localStorage.getItem(STORAGE_MESSAGES))||[];
     let adminReplies = JSON.parse(localStorage.getItem(STORAGE_ADMIN_REPLIES))||[];
     let carouselSlides = JSON.parse(localStorage.getItem(STORAGE_CAROUSEL))||[];
+
     function saveAll() {
         localStorage.setItem(STORAGE_COURSES, JSON.stringify(courses));
         localStorage.setItem(STORAGE_VIDEOS, JSON.stringify(videos));
@@ -630,7 +699,6 @@ function initAdminDashboard() {
         localStorage.setItem(STORAGE_ADMIN_REPLIES, JSON.stringify(adminReplies));
         localStorage.setItem(STORAGE_CAROUSEL, JSON.stringify(carouselSlides));
     }
-    // KPIs
     function refreshKPIs() {
         const users = getUsers();
         const abonnes = users.filter(u=>u.subscribed).length;
@@ -641,7 +709,6 @@ function initAdminDashboard() {
             <div class="glass-card p-6"><p class="text-xs font-bold text-slate-400 uppercase">Fichiers PDF</p><h4 class="text-2xl font-extrabold">${pdfs.length}</h4></div>
         `;
     }
-    // Users pagination
     let usersPage = 0; const perPage = 5;
     function refreshUsersTable() {
         const users = getUsers();
@@ -658,53 +725,20 @@ function initAdminDashboard() {
     window.toggleSub = (id) => { let users = getUsers(); const u = users.find(u=>u.id===id); if(u) { u.subscribed = !u.subscribed; u.subscription = u.subscribed?{status:'active'}:{status:'none'}; localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); refreshAll(); } };
     window.editUser = (id) => { let role = prompt("Rôle (student/admin):"); if(role==='student'||role==='admin') { let users = getUsers(); const u = users.find(u=>u.id===id); if(u) u.role = role; localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); refreshAll(); } };
     window.deleteUser = (id) => { if(confirm("Supprimer ?")) { let users = getUsers().filter(u=>u.id!==id); localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); refreshAll(); } };
-
-    function refreshCoursesList() {
-        document.getElementById('coursesList').innerHTML = courses.map(c => `
-            <div class="flex justify-between items-center bg-white border p-3 rounded-xl"><div><span class="font-bold">${c.titre}</span> ${c.premium?'⭐':''}</div><div><button onclick="window.deleteCourse(${c.id})" class="text-rose-500">🗑</button></div></div>
-        `).join('');
-    }
-    window.addCourse = () => {
-        const titre = document.getElementById('newCourseTitle').value; if(!titre) return;
-        courses.push({ id:Date.now(), titre, langue:document.getElementById('newCourseLang').value||"Général", niveau:"Débutant", duree:document.getElementById('newCourseDuration').value||"8 sem", prix:document.getElementById('newCoursePrice').value||"Gratuit", image:document.getElementById('newCourseImage').value||"", premium:document.getElementById('newCoursePremium').checked, accessLevel:document.getElementById('newCoursePremium').checked?'premium':'public', visibility:document.getElementById('newCourseVisibility').value, videoLink:"" });
-        saveAll(); refreshAll(); showToast("Cours ajouté !");
-    };
+    function refreshCoursesList() { document.getElementById('coursesList').innerHTML = courses.map(c => `<div class="flex justify-between items-center bg-white border p-3 rounded-xl"><div><span class="font-bold">${c.titre}</span> ${c.premium?'⭐':''}</div><div><button onclick="window.deleteCourse(${c.id})" class="text-rose-500">🗑</button></div></div>`).join(''); }
+    window.addCourse = () => { const titre = document.getElementById('newCourseTitle').value; if(!titre) return; courses.push({ id:Date.now(), titre, langue:document.getElementById('newCourseLang').value||"Général", niveau:"Débutant", duree:document.getElementById('newCourseDuration').value||"8 sem", prix:document.getElementById('newCoursePrice').value||"Gratuit", image:document.getElementById('newCourseImage').value||"", premium:document.getElementById('newCoursePremium').checked, accessLevel:document.getElementById('newCoursePremium').checked?'premium':'public', visibility:document.getElementById('newCourseVisibility').value, videoLink:"" }); saveAll(); refreshAll(); showToast("Cours ajouté !"); };
     window.deleteCourse = (id) => { if(confirm("Supprimer ?")) { courses = courses.filter(c=>c.id!==id); saveAll(); refreshAll(); } };
-
-    function refreshVideosList() {
-        document.getElementById('videosList').innerHTML = videos.map(v => `<div class="flex justify-between bg-white border p-3 rounded-xl"><span>${v.titre} ${v.premium?'🔒':''}</span><div><button onclick="window.deleteVideo(${v.id})" class="text-rose-500">🗑</button></div></div>`).join('');
-    }
-    window.addVideo = () => {
-        const titre = document.getElementById('newVideoTitle').value; if(!titre) return;
-        videos.push({ id:Date.now(), titre, langue:document.getElementById('newVideoLang').value||"Général", url:document.getElementById('newVideoUrl').value||"#", thumbnail:document.getElementById('newVideoThumbnail').value||"", premium:document.getElementById('newVideoPremium').checked, accessLevel:document.getElementById('newVideoPremium').checked?'premium':'public', visibility:document.getElementById('newVideoVisibility').value });
-        saveAll(); refreshAll(); showToast("Vidéo ajoutée !");
-    };
+    function refreshVideosList() { document.getElementById('videosList').innerHTML = videos.map(v => `<div class="flex justify-between bg-white border p-3 rounded-xl"><span>${v.titre} ${v.premium?'🔒':''}</span><div><button onclick="window.deleteVideo(${v.id})" class="text-rose-500">🗑</button></div></div>`).join(''); }
+    window.addVideo = () => { const titre = document.getElementById('newVideoTitle').value; if(!titre) return; videos.push({ id:Date.now(), titre, langue:document.getElementById('newVideoLang').value||"Général", url:document.getElementById('newVideoUrl').value||"#", thumbnail:document.getElementById('newVideoThumbnail').value||"", premium:document.getElementById('newVideoPremium').checked, accessLevel:document.getElementById('newVideoPremium').checked?'premium':'public', visibility:document.getElementById('newVideoVisibility').value }); saveAll(); refreshAll(); showToast("Vidéo ajoutée !"); };
     window.deleteVideo = (id) => { if(confirm("Supprimer ?")) { videos = videos.filter(v=>v.id!==id); saveAll(); refreshAll(); } };
-
-    function refreshPdfsList() {
-        document.getElementById('pdfsList').innerHTML = pdfs.map(p => `<div class="flex justify-between bg-white border p-3 rounded-xl"><span>${p.nom} ${p.premium?'⭐':''}</span><div><button onclick="window.deletePdf(${p.id})" class="text-rose-500">🗑</button></div></div>`).join('');
-    }
-    window.addPdf = () => {
-        const nom = document.getElementById('newPdfName').value; if(!nom) return;
-        pdfs.push({ id:Date.now(), nom, categorie:document.getElementById('newPdfCat').value, taille:"4.8 MB", downloads:0, premium:document.getElementById('newPdfPremium').checked, accessLevel:document.getElementById('newPdfPremium').checked?'premium':'public', visibility:document.getElementById('newPdfVisibility').value, url:document.getElementById('newPdfUrl').value||"#" });
-        saveAll(); refreshAll(); showToast("PDF ajouté !");
-    };
+    function refreshPdfsList() { document.getElementById('pdfsList').innerHTML = pdfs.map(p => `<div class="flex justify-between bg-white border p-3 rounded-xl"><span>${p.nom} ${p.premium?'⭐':''}</span><div><button onclick="window.deletePdf(${p.id})" class="text-rose-500">🗑</button></div></div>`).join(''); }
+    window.addPdf = () => { const nom = document.getElementById('newPdfName').value; if(!nom) return; pdfs.push({ id:Date.now(), nom, categorie:document.getElementById('newPdfCat').value, taille:"4.8 MB", downloads:0, premium:document.getElementById('newPdfPremium').checked, accessLevel:document.getElementById('newPdfPremium').checked?'premium':'public', visibility:document.getElementById('newPdfVisibility').value, url:document.getElementById('newPdfUrl').value||"#" }); saveAll(); refreshAll(); showToast("PDF ajouté !"); };
     window.deletePdf = (id) => { if(confirm("Supprimer ?")) { pdfs = pdfs.filter(p=>p.id!==id); saveAll(); refreshAll(); } };
-
-    function refreshConfs() {
-        document.getElementById('confsList').innerHTML = conferences.map(c => `<div class="flex justify-between bg-white border p-3 rounded-xl"><span>${c.titre}</span><button onclick="window.deleteConf(${c.id})" class="text-rose-500">🗑</button></div>`).join('');
-    }
-    window.addConference = () => {
-        const titre = document.getElementById('confTitle').value, date = document.getElementById('confDate').value, link = document.getElementById('confLink').value;
-        if(titre && date && link) { conferences.push({ id:Date.now(), titre, date, link }); saveAll(); refreshAll(); showToast("Conférence planifiée !"); }
-    };
+    function refreshConfs() { document.getElementById('confsList').innerHTML = conferences.map(c => `<div class="flex justify-between bg-white border p-3 rounded-xl"><span>${c.titre}</span><button onclick="window.deleteConf(${c.id})" class="text-rose-500">🗑</button></div>`).join(''); }
+    window.addConference = () => { const titre = document.getElementById('confTitle').value, date = document.getElementById('confDate').value, link = document.getElementById('confLink').value; if(titre && date && link) { conferences.push({ id:Date.now(), titre, date, link }); saveAll(); refreshAll(); showToast("Conférence planifiée !"); } };
     window.deleteConf = (id) => { if(confirm("Supprimer ?")) { conferences = conferences.filter(c=>c.id!==id); saveAll(); refreshAll(); } };
-
-    // Messages privés admin
     function refreshAdminMessages() {
-        const container = document.getElementById('adminMessagesList');
-        if(!container) return;
-        // récupérer toutes les conversations privées
+        const container = document.getElementById('adminMessagesList'); if(!container) return;
         let conversations = [];
         for(let i=0; i<localStorage.length; i++) {
             const key = localStorage.key(i);
@@ -720,18 +754,46 @@ function initAdminDashboard() {
     window.openAdminConversation = (email) => {
         const key = `chat_private_admin_${email}`;
         const msgs = JSON.parse(localStorage.getItem(key)||'[]');
-        let conversationHtml = msgs.map(msg => `<div class="mb-2 ${msg.sender==='admin'?'text-right':''}"><span class="text-xs font-semibold">${msg.sender}:</span> ${msg.text} <span class="text-[10px] text-gray-400">${msg.time}</span></div>`).join('');
-        const reply = prompt(`Conversation avec ${email}\n\n${conversationHtml}\n\nVotre réponse :`);
-        if(reply) {
-            const now = new Date(); const time = now.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
-            msgs.push({ sender:'admin', text:reply, time });
-            localStorage.setItem(key, JSON.stringify(msgs));
-            refreshAdminMessages();
-            showToast("Réponse envoyée");
-        }
+        const modal = document.getElementById('adminConversationModal');
+        if (!modal) return;
+        document.getElementById('adminConvUserEmail').textContent = email;
+        const container = document.getElementById('adminConvMessages');
+        container.innerHTML = msgs.map(msg => {
+            const isAdmin = msg.sender === 'admin';
+            const align = isAdmin ? 'justify-start' : 'justify-end';
+            const bg = isAdmin ? 'bg-white border border-gray-100' : 'bg-[#101b3b] text-white';
+            const avatar = isAdmin ? 'AD' : email.charAt(0).toUpperCase();
+            const avatarBg = isAdmin ? 'bg-gray-100 text-gray-500' : 'bg-[var(--color-gold)] text-[#101b3b]';
+            return `<div class="flex items-start gap-3 max-w-[80%] ${align}"><div class="w-7 h-7 rounded-lg ${avatarBg} flex items-center justify-center text-[10px] font-bold shrink-0">${avatar}</div><div><div class="${bg} p-3.5 rounded-2xl shadow-sm"><p class="text-xs leading-relaxed">${msg.text}</p></div><span class="text-[9px] text-gray-400 mt-1 block">${msg.time}</span></div></div>`;
+        }).join('');
+        container.scrollTop = container.scrollHeight;
+        modal.setAttribute('data-email', email);
+        modal.classList.add('active');
     };
-
-    // Paiements
+    document.getElementById('adminConvReplyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const modal = document.getElementById('adminConversationModal');
+        const email = modal.getAttribute('data-email');
+        const reply = document.getElementById('adminConvReplyInput').value.trim();
+        if (!email || !reply) return;
+        const key = `chat_private_admin_${email}`;
+        const msgs = JSON.parse(localStorage.getItem(key)||'[]');
+        const now = new Date();
+        msgs.push({ sender: 'admin', text: reply, time: now.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' }) });
+        localStorage.setItem(key, JSON.stringify(msgs));
+        document.getElementById('adminConvReplyInput').value = '';
+        const container = document.getElementById('adminConvMessages');
+        container.innerHTML = msgs.map(msg => {
+            const isAdmin = msg.sender === 'admin';
+            const align = isAdmin ? 'justify-start' : 'justify-end';
+            const bg = isAdmin ? 'bg-white border border-gray-100' : 'bg-[#101b3b] text-white';
+            const avatar = isAdmin ? 'AD' : email.charAt(0).toUpperCase();
+            const avatarBg = isAdmin ? 'bg-gray-100 text-gray-500' : 'bg-[var(--color-gold)] text-[#101b3b]';
+            return `<div class="flex items-start gap-3 max-w-[80%] ${align}"><div class="w-7 h-7 rounded-lg ${avatarBg} flex items-center justify-center text-[10px] font-bold shrink-0">${avatar}</div><div><div class="${bg} p-3.5 rounded-2xl shadow-sm"><p class="text-xs leading-relaxed">${msg.text}</p></div><span class="text-[9px] text-gray-400 mt-1 block">${msg.time}</span></div></div>`;
+        }).join('');
+        container.scrollTop = container.scrollHeight;
+        refreshAdminMessages();
+    });
     function refreshPaymentRequests() {
         const container = document.getElementById('paymentRequestsList'); if(!container) return;
         const payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]');
@@ -744,29 +806,9 @@ function initAdminDashboard() {
             </div>
         `).join('');
     }
-    window.approvePayment = (id) => {
-        let payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]');
-        const payment = payments.find(p=>p.id===id);
-        if(payment) { payment.status='approved'; localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments)); const users = getUsers(); const user = users.find(u=>u.email===payment.email); if(user) { user.subscribed=true; user.subscription={status:'active'}; localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); } refreshAll(); showToast('Approuvé !'); }
-    };
-    window.rejectPayment = (id) => {
-        let payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]');
-        const payment = payments.find(p=>p.id===id);
-        if(payment) { payment.status='rejected'; localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments)); refreshAll(); showToast('Rejeté'); }
-    };
-    window.revokePayment = (id) => {
-        let payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]');
-        const payment = payments.find(p=>p.id===id);
-        if(payment && payment.status==='approved') {
-            payment.status='pending';
-            localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments));
-            const users = getUsers(); const user = users.find(u=>u.email===payment.email);
-            if(user) { user.subscribed=false; user.subscription={status:'none'}; localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); }
-            refreshAll(); showToast('Abonnement révoqué');
-        }
-    };
-
-    // Mediatheque
+    window.approvePayment = (id) => { let payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]'); const payment = payments.find(p=>p.id===id); if(payment) { payment.status='approved'; localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments)); const users = getUsers(); const user = users.find(u=>u.email===payment.email); if(user) { user.subscribed=true; user.subscription={status:'active'}; localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); } refreshAll(); showToast('Approuvé !'); } };
+    window.rejectPayment = (id) => { let payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]'); const payment = payments.find(p=>p.id===id); if(payment) { payment.status='rejected'; localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments)); refreshAll(); showToast('Rejeté'); } };
+    window.revokePayment = (id) => { let payments = JSON.parse(localStorage.getItem(STORAGE_PAYMENTS)||'[]'); const payment = payments.find(p=>p.id===id); if(payment && payment.status==='approved') { payment.status='pending'; localStorage.setItem(STORAGE_PAYMENTS, JSON.stringify(payments)); const users = getUsers(); const user = users.find(u=>u.email===payment.email); if(user) { user.subscribed=false; user.subscription={status:'none'}; localStorage.setItem(STORAGE_USERS, JSON.stringify(users)); } refreshAll(); showToast('Abonnement révoqué'); } };
     function refreshMedia() {
         const grid = document.getElementById('mediaGrid'); if(!grid) return;
         let items = [];
@@ -775,29 +817,11 @@ function initAdminDashboard() {
         pdfs.forEach(p => { if(p.image) items.push({ type:'PDF', name:p.nom, url:p.image }); });
         grid.innerHTML = items.map(i => `<div class="bg-white border rounded-xl overflow-hidden"><img src="${i.url}" class="w-full h-24 object-cover"><p class="text-xs p-1">${i.name} (${i.type})</p></div>`).join('');
     }
-    // Carousel
     window.addCarouselSlide = () => { carouselSlides.push({ id:Date.now(), title:'Nouvelle slide', image:'', description:'', buttonText:'Découvrir', buttonLink:'#', enabled:true, order:carouselSlides.length }); saveAll(); refreshCarousel(); };
     window.deleteCarouselSlide = (id) => { carouselSlides = carouselSlides.filter(s=>s.id!==id); saveAll(); refreshCarousel(); };
     function refreshCarousel() { document.getElementById('carouselSlidesList').innerHTML = carouselSlides.map(s => `<div class="flex justify-between bg-white p-3 rounded-xl border"><span>${s.title} ${s.enabled?'✅':'❌'}</span><button onclick="window.deleteCarouselSlide(${s.id})" class="text-rose-500">🗑</button></div>`).join(''); }
-    // Newsletter
-    function refreshNewsletter() {
-        const subs = JSON.parse(localStorage.getItem(STORAGE_NEWSLETTER)||'[]');
-        document.getElementById('newsletterList').innerHTML = subs.length===0 ? '<p class="text-sm text-slate-400">Aucun abonné.</p>' : subs.map(email => `<div class="bg-white p-2 rounded-xl border text-sm">${email}</div>`).join('');
-    }
-    // Settings
-    window.saveAllSettings = () => {
-        const settings = {
-            facebook: document.getElementById('settingsFacebook').value,
-            twitter: document.getElementById('settingsTwitter').value,
-            linkedin: document.getElementById('settingsLinkedin').value,
-            whatsapp: document.getElementById('settingsWhatsapp').value,
-            contactEmail: document.getElementById('settingsContactEmail').value
-        };
-        localStorage.setItem(STORAGE_SETTINGS, JSON.stringify(settings));
-        updateFooterLinks();
-        showToast('Paramètres enregistrés');
-    };
-    // Charts
+    function refreshNewsletter() { const subs = JSON.parse(localStorage.getItem(STORAGE_NEWSLETTER)||'[]'); document.getElementById('newsletterList').innerHTML = subs.length===0 ? '<p class="text-sm text-slate-400">Aucun abonné.</p>' : subs.map(email => `<div class="bg-white p-2 rounded-xl border text-sm">${email}</div>`).join(''); }
+    window.saveAllSettings = () => { const settings = { facebook: document.getElementById('settingsFacebook').value, twitter: document.getElementById('settingsTwitter').value, linkedin: document.getElementById('settingsLinkedin').value, whatsapp: document.getElementById('settingsWhatsapp').value, contactEmail: document.getElementById('settingsContactEmail').value, messenger: document.getElementById('settingsMessenger').value }; localStorage.setItem(STORAGE_SETTINGS, JSON.stringify(settings)); updateFooterLinks(); showToast('Paramètres enregistrés'); };
     function refreshCharts() {
         const users = getUsers();
         const lineCtx = document.getElementById('chartLine')?.getContext('2d');
@@ -814,50 +838,22 @@ function initAdminDashboard() {
             window._chartBar = new Chart(barCtx, { type:'bar', data:{ labels:['Cours PDF','Guides','Exercices'], datasets:[{ label:'Téléchargements', data:[cat('Cours'),cat('Guides'),cat('Exercices')], backgroundColor:['#c9a03d','#101b3b','#64748b'], borderRadius:8, maxBarThickness:32 }] }, options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{ display:false } } } });
         }
     }
-    function refreshAll() {
-        refreshKPIs(); refreshUsersTable(); refreshCoursesList(); refreshVideosList(); refreshPdfsList(); refreshConfs();
-        refreshAdminMessages(); refreshPaymentRequests(); refreshMedia(); refreshCarousel(); refreshNewsletter(); refreshCharts();
-    }
-
+    function refreshAll() { refreshKPIs(); refreshUsersTable(); refreshCoursesList(); refreshVideosList(); refreshPdfsList(); refreshConfs(); refreshAdminMessages(); refreshPaymentRequests(); refreshMedia(); refreshCarousel(); refreshNewsletter(); refreshCharts(); }
     document.getElementById('addCourseBtn')?.addEventListener('click', window.addCourse);
     document.getElementById('addVideoBtn')?.addEventListener('click', window.addVideo);
     document.getElementById('addPdfBtn')?.addEventListener('click', window.addPdf);
     document.getElementById('addConfBtn')?.addEventListener('click', window.addConference);
-    // Load settings into form
     const settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS)||'{}');
     document.getElementById('settingsFacebook').value = settings.facebook||'';
     document.getElementById('settingsTwitter').value = settings.twitter||'';
     document.getElementById('settingsLinkedin').value = settings.linkedin||'';
     document.getElementById('settingsWhatsapp').value = settings.whatsapp||'';
     document.getElementById('settingsContactEmail').value = settings.contactEmail||'';
+    document.getElementById('settingsMessenger').value = settings.messenger||'';
     refreshAll();
 }
 
-// ==================== NEWSLETTER ====================
-function subscribeNewsletter(e) {
-    e.preventDefault();
-    const email = document.getElementById('newsletterEmail').value.trim();
-    if(!email) return;
-    const subs = JSON.parse(localStorage.getItem(STORAGE_NEWSLETTER)||'[]');
-    if(!subs.includes(email)) { subs.push(email); localStorage.setItem(STORAGE_NEWSLETTER, JSON.stringify(subs)); showToast('Merci de votre abonnement !'); document.getElementById('newsletterEmail').value = ''; }
-    else showToast('Déjà abonné', 'warning');
-}
-
-// ==================== FOOTER LINKS ====================
-function updateFooterLinks() {
-    const settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS)||{});
-    const container = document.getElementById('footerSocialLinks');
-    if(!container) return;
-    let html = '';
-    if(settings.facebook) html += `<a href="${settings.facebook}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-facebook-f"></i></a>`;
-    if(settings.twitter) html += `<a href="${settings.twitter}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-twitter"></i></a>`;
-    if(settings.linkedin) html += `<a href="${settings.linkedin}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-linkedin-in"></i></a>`;
-    if(settings.whatsapp) html += `<a href="https://wa.me/${settings.whatsapp.replace(/\D/g,'')}" target="_blank" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-brands fa-whatsapp"></i></a>`;
-    if(settings.contactEmail) html += `<a href="mailto:${settings.contactEmail}" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="fa-solid fa-envelope"></i></a>`;
-    container.innerHTML = html || '<span class="text-xs text-gray-500">Suivez-nous</span>';
-}
-
-// ==================== AUTH ====================
+// ==================== AUTHENTIFICATION ====================
 function openAuthModal(mode) {
     document.getElementById('authModal').classList.add('active');
     const fc = document.getElementById('authFormContainer'), dc = document.getElementById('authDecor');
@@ -874,7 +870,7 @@ function openAuthModal(mode) {
 function closeAuthModal() { document.getElementById('authModal').classList.remove('active'); }
 document.getElementById('closeModal').addEventListener('click', closeAuthModal);
 document.getElementById('authModal').addEventListener('click', function(e) { if(e.target===this) closeAuthModal(); });
-
+function closeAdminConversation() { document.getElementById('adminConversationModal').classList.remove('active'); }
 function handleLogin(e) {
     e.preventDefault();
     const email = document.getElementById('loginEmail').value.trim().toLowerCase();
@@ -900,50 +896,7 @@ function handleSignup(e) {
     alert('Inscription réussie !');
 }
 
-// ==================== SWIPER & REVEAL ====================
-function initSwiper() {
-    const courses = JSON.parse(localStorage.getItem(STORAGE_COURSES))||[];
-    const level = getUserAccessLevel();
-    const filtered = courses.filter(c => {
-        if (level==='admin'||level==='premium') return true;
-        return (c.visibility||'teaser') !== 'hidden';
-    });
-    const wrapper = document.getElementById('coursesCarouselWrapper');
-    if(!wrapper) return;
-    wrapper.innerHTML = filtered.map(c => `
-        <div class="swiper-slide flex flex-col justify-between">
-            <div class="relative w-full h-48 bg-gray-100 overflow-hidden"><img src="${c.image||'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=400'}" class="w-full h-full object-cover"><span class="absolute top-3 right-3 bg-[#c9a03d] text-[#101b3b] font-extrabold text-[10px] uppercase px-3 py-1 rounded-full shadow ${c.premium?'':'hidden'}">Premium</span></div>
-            <div class="p-5 flex-1 flex flex-col justify-between bg-white"><div><span class="text-[var(--color-gold)] font-bold text-xs">${c.langue} &bull; ${c.niveau}</span><h3 class="font-bold text-[#101b3b] text-lg mt-1">${c.titre}</h3><p class="text-xs text-gray-400 mt-1"><i class="fa-regular fa-clock"></i> ${c.duree}</p></div><div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center"><span class="font-extrabold">${c.prix}</span><button class="bg-[#101b3b] hover:bg-[var(--color-gold)] text-white hover:text-[#101b3b] rounded-full px-4 py-2 text-xs font-bold" onclick="navigateTo('videos')">Découvrir</button></div></div>
-        </div>
-    `).join('');
-    if(window.swiperInstance) window.swiperInstance.destroy(true,true);
-    window.swiperInstance = new Swiper('.courseSwiper', {
-        effect:'coverflow', grabCursor:true, centeredSlides:true, slidesPerView:'auto',
-        coverflowEffect:{ rotate:20, stretch:0, depth:100, modifier:1.4, slideShadows:true },
-        navigation:{ nextEl:'.custom-swiper-next', prevEl:'.custom-swiper-prev' },
-        pagination:{ el:'.swiper-pagination', clickable:true }, loop:true,
-        autoplay:{ delay:4000, disableOnInteraction:false }
-    });
-}
-function initReveal() {
-    document.querySelectorAll('.reveal').forEach(el => {
-        new IntersectionObserver((entries) => { if(entries[0].isIntersecting) el.classList.add('visible'); }, { threshold:0.15 }).observe(el);
-    });
-}
-function initHeaderScroll() {
-    const header = document.getElementById('mainHeader'), back = document.getElementById('backToTop');
-    let lastScroll = window.scrollY;
-    window.onscroll = () => {
-        const y = window.scrollY;
-        header.classList.toggle('scrolled', y>10);
-        header.classList.toggle('hide-nav', y>lastScroll && y>60);
-        lastScroll = y;
-        back.classList.toggle('show', y>300);
-    };
-    back.onclick = () => window.scrollTo({ top:0, behavior:'smooth' });
-}
-
-// ==================== START ====================
+// ==================== LANCEMENT ====================
 (function() { currentPage = 'home'; renderApp(); })();
 </script>
 </body>
