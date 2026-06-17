@@ -11,7 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -20,8 +19,6 @@
         :root {
             --color-primary: #101b3b;
             --color-gold: #c9a03d;
-            --color-gold-light: #f4e8c1;
-            --color-bg-light: #f4f6f4;
             --bg-primary: #fdfdfd;
             --bg-secondary: #f4f6f4;
             --bg-card: #ffffff;
@@ -39,116 +36,43 @@
             --border-color: #334155;
             --header-bg: rgba(15, 23, 42, 0.9);
         }
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            margin: 0;
-            transition: background-color 0.3s, color 0.3s;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); margin: 0; transition: background-color 0.3s, color 0.3s; }
         .serif-title { font-family: 'Playfair Display', serif; font-weight: 700; }
-        .btn-premium {
-            background-color: var(--color-primary); color: white; border: 1px solid var(--color-primary);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer;
-        }
+        .btn-premium { background-color: var(--color-primary); color: white; border: 1px solid var(--color-primary); transition: all 0.4s; cursor: pointer; }
         .btn-premium:hover { background-color: transparent; color: var(--color-primary); border-color: var(--color-gold); transform: translateY(-2px); }
-        .btn-gold-outline { border: 1px solid var(--color-gold); color: var(--color-primary); transition: all 0.3s ease; background: white; cursor: pointer; }
+        .btn-gold-outline { border: 1px solid var(--color-gold); color: var(--color-primary); transition: all 0.3s; background: white; cursor: pointer; }
         .btn-gold-outline:hover { background-color: var(--color-gold); color: white; }
-        header {
-            transition: background-color 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease;
-            background-color: var(--header-bg); backdrop-filter: blur(6px);
-        }
+        header { transition: background-color 0.5s, box-shadow 0.5s, transform 0.3s; background-color: var(--header-bg); backdrop-filter: blur(6px); }
         header.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         header.hide-nav { transform: translateY(-100%); }
-        .nav-icon {
-            transition: all 0.25s ease; display: inline-block; font-size: 1.4rem;
-            color: var(--text-primary); cursor: pointer;
-        }
+        .nav-icon { transition: all 0.25s; display: inline-block; font-size: 1.4rem; color: var(--text-primary); cursor: pointer; }
         .nav-icon:hover { transform: scale(1.15); color: var(--color-gold); }
         .nav-icon.active { color: var(--color-gold); }
-        #backToTop {
-            position: fixed; bottom: 30px; right: 30px; z-index: 50; background-color: var(--color-primary); color: white;
-            width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; box-shadow: 0 8px 20px rgba(16, 27, 59, 0.25); transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.3s;
-            opacity: 0; transform: translateY(20px); pointer-events: none;
-        }
-        #backToTop.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        #backToTop:hover { background-color: var(--color-gold); color: var(--color-primary); }
-        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        #backToTop { position: fixed; bottom: 30px; right: 30px; z-index: 50; background: var(--color-primary); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.4s; }
+        #backToTop.show { opacity: 1; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-        /* Swiper */
         .swiper { width: 100%; padding-top: 50px; padding-bottom: 70px; }
-        .swiper-slide {
-            background-position: center; background-size: cover; width: 320px; height: 430px; border-radius: 1rem;
-            overflow: hidden; box-shadow: 0 15px 35px rgba(16, 27, 59, 0.15); background: var(--bg-card);
-            border: 1px solid var(--border-color); transition: border-color 0.3s;
-        }
+        .swiper-slide { width: 320px; height: 430px; border-radius: 1rem; overflow: hidden; background: var(--bg-card); border: 1px solid var(--border-color); }
         .swiper-slide-active { border-color: var(--color-gold); }
-        .swiper-button-next, .swiper-button-prev {
-            color: var(--color-gold); background: white; width: 45px; height: 45px;
-            border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .swiper-button-next:after, .swiper-button-prev:after { font-size: 16px; font-weight: bold; }
+        .swiper-button-next, .swiper-button-prev { color: var(--color-gold); background: white; width: 45px; height: 45px; border-radius: 50%; }
         .swiper-pagination-bullet-active { background: var(--color-gold) !important; }
-        .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100;
-            display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
-            visibility: hidden; opacity: 0; transition: visibility 0s 0.3s, opacity 0.3s ease;
-        }
-        .modal.active { visibility: visible; opacity: 1; transition: visibility 0s 0s, opacity 0.3s ease; }
-        .chat-scroll::-webkit-scrollbar { width: 4px; }
-        .chat-scroll::-webkit-scrollbar-track { background: transparent; }
-        .chat-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-        .custom-checkbox { accent-color: var(--color-gold); }
-        .profile-pic-upload { cursor: pointer; transition: opacity 0.2s; }
-        .profile-pic-upload:hover { opacity: 0.8; }
-        .glass-card {
-            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glass-card:hover { transform: translateY(-2px); box-shadow: 0 12px 20px -5px rgba(16, 27, 59, 0.08); }
-        .btn-gold { background: linear-gradient(135deg, #c9a03d, #b0872c); color: white; transition: all 0.2s; }
-        .btn-gold:hover { background: linear-gradient(135deg, #b0872c, #967020); }
-        .btn-navy { background: #101b3b; color: white; transition: all 0.2s; }
-        .btn-navy:hover { background: #1a2a56; }
-        .pagination button {
-            margin: 0 4px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border-color);
-            background: var(--bg-card); font-weight: 500; transition: all 0.2s; color: var(--text-primary);
-        }
-        .pagination button.active { background: #101b3b; color: white; border-color: #101b3b; }
-        .toast {
-            position: fixed; bottom: 24px; right: 24px; z-index: 9999; background: #101b3b; color: white;
-            border-left: 4px solid #c9a03d; padding: 16px 24px; border-radius: 12px;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-            animation: slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); visibility: hidden; opacity: 0; transition: 0.3s; }
+        .modal.active { visibility: visible; opacity: 1; }
+        .glass-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 1rem; }
+        .btn-navy { background: #101b3b; color: white; }
+        .toast { position: fixed; bottom: 24px; right: 24px; z-index: 9999; background: #101b3b; color: white; padding: 16px 24px; border-radius: 12px; border-left: 4px solid #c9a03d; animation: slideIn 0.3s; }
         @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        #pageLoader { backdrop-filter: blur(4px); background: rgba(255, 255, 255, 0.8); }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .animate-spin { animation: spin 1s linear infinite; }
-        #mainContent { animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .carousel-slide-item.sortable-ghost { opacity: 0.4; background: #fef3c7; }
-        .carousel-slide-item.sortable-chosen { box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-        /* Mode sombre */
-        .dark .bg-white, .dark .glass-card, .dark .swiper-slide, .dark .modal .bg-white { background-color: var(--bg-card) !important; border-color: var(--border-color) !important; }
         .dark input, .dark select, .dark textarea { background-color: #1e293b !important; color: #f1f5f9 !important; border-color: #334155 !important; }
-        .dark .nav-icon { color: #cbd5e1; }
-        .dark .nav-icon:hover, .dark .nav-icon.active { color: #fbbf24; }
-        @media (max-width: 768px) {
-            .glass-card { padding: 1rem !important; }
-            .serif-title { font-size: 1.5rem !important; }
-        }
     </style>
 </head>
 <body>
 
 <div id="app">
     <div id="pageLoader" class="fixed inset-0 z-[200] flex items-center justify-center hidden">
-        <div class="text-center"><div class="w-12 h-12 border-4 border-[var(--color-gold)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div><p class="text-sm font-medium" style="color: var(--text-secondary);">Chargement...</p></div>
+        <div class="text-center"><div class="w-12 h-12 border-4 border-[var(--color-gold)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div><p class="text-sm" style="color: var(--text-secondary);">Chargement...</p></div>
     </div>
 
-    <!-- Header -->
     <header id="mainHeader" class="w-full sticky top-0 z-50 border-b" style="border-color: var(--border-color);">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-2">
@@ -168,7 +92,6 @@
 
     <div id="mainContent"></div>
 
-    <!-- Modale Auth -->
     <div id="authModal" class="modal">
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-12 w-full max-w-4xl min-h-[580px] relative">
             <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-[#101b3b] text-xl z-10"><i class="fa-solid fa-xmark"></i></button>
@@ -177,7 +100,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer id="mainFooter" class="bg-[#0b1122] text-gray-400 pt-16 pb-8 border-t-2 border-[var(--color-gold)]">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
             <div class="flex flex-col gap-4"><div><span class="inline-block bg-[#101b3b] text-[var(--color-gold)] font-bold px-5 py-2 rounded text-sm tracking-widest border border-gray-800">ATA</span></div><p class="text-sm text-gray-400 mt-2 max-w-sm leading-relaxed">ATA School – Always Think Ahead. Plateforme éducative d'excellence.</p></div>
@@ -192,14 +114,14 @@
 </div>
 
 <script>
-// ==================== CONFIGURATION FIREBASE ====================
+// ==================== CONFIGURATION FIREBASE (À REMPLACER PAR VOS PROPRES CLÉS) ====================
 const firebaseConfig = {
-    apiKey: "AIzaSyDv6k7UjQw0WcFuJ3L8RqT1yPq9s7mN2bA",
-    authDomain: "ata-school-app.firebaseapp.com",
-    projectId: "ata-school-app",
-    storageBucket: "ata-school-app.appspot.com",
-    messagingSenderId: "123456789012",
-    appId: "1:123456789012:web:abcdef1234567890abcdef"
+    apiKey: "VOTRE_API_KEY",
+    authDomain: "VOTRE_PROJET.firebaseapp.com",
+    projectId: "VOTRE_PROJET",
+    storageBucket: "VOTRE_PROJET.appspot.com",
+    messagingSenderId: "VOTRE_SENDER_ID",
+    appId: "VOTRE_APP_ID"
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
@@ -213,67 +135,19 @@ const STORAGE_COURSES = "ata_courses";
 const STORAGE_VIDEOS = "ata_videos";
 const STORAGE_PDFS = "ata_pdfs";
 const STORAGE_CONFERENCES = "ata_conferences";
-const STORAGE_MESSAGES = "ata_messages";
-const STORAGE_ADMIN_REPLIES = "ata_admin_replies";
 const STORAGE_CHAT = "liveChatMessages";
-const STORAGE_GLOBAL_CHAT = "globalChat";
 const STORAGE_CAROUSEL = "ata_carousel_slides";
 const STORAGE_SETTINGS = "ata_settings";
 
 (function initDefaultData() {
-    if (!localStorage.getItem(STORAGE_USERS)) {
-        const users = [
-            { id:1, name:"Admin ATA", email:"admin@ataschool.edu", password:"admin123", role:"admin", subscribed:true, photo:"", subscription:{ status:'none', plan:'', startDate:null, endDate:null }, createdAt:new Date().toISOString() },
-            { id:2, name:"Jean Dupont", email:"jean@test.com", password:"jean123", role:"student", subscribed:true, photo:"", subscription:{ status:'none', plan:'', startDate:null, endDate:null }, createdAt:new Date().toISOString() },
-            { id:3, name:"Aina Rakoto", email:"aina@school.mg", password:"aina123", role:"student", subscribed:false, photo:"", subscription:{ status:'none', plan:'', startDate:null, endDate:null }, createdAt:new Date().toISOString() }
-        ];
-        localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
-    }
-    if (!localStorage.getItem(STORAGE_COURSES)) {
-        const courses = [
-            { id:1, titre:"Anglais Débutant", langue:"Anglais", niveau:"Débutant", duree:"12 sem", prix:"85 000 Ar", image:"https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=400", premium:false, accessLevel:'public', videoLink:"", views:0 },
-            { id:2, titre:"Anglais Intermédiaire", langue:"Anglais", niveau:"Intermédiaire", duree:"10 sem", prix:"95 000 Ar", image:"https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?w=400", premium:false, accessLevel:'public', videoLink:"", views:0 },
-            { id:3, titre:"Français Débutant", langue:"Français", niveau:"Débutant", duree:"12 sem", prix:"80 000 Ar", image:"https://images.pexels.com/photos/1642228/pexels-photo-1642228.jpeg?w=400", premium:false, accessLevel:'public', videoLink:"", views:0 },
-            { id:4, titre:"Français Professionnel", langue:"Français", niveau:"Avancé", duree:"8 sem", prix:"110 000 Ar", image:"https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?w=400", premium:true, accessLevel:'premium', videoLink:"", views:0 }
-        ];
-        localStorage.setItem(STORAGE_COURSES, JSON.stringify(courses));
-    }
-    if (!localStorage.getItem(STORAGE_VIDEOS)) {
-        const videos = [
-            { id:1, titre:"Greetings in English", langue:"Anglais", url:"https://www.youtube.com/embed/9nQ9P9vW8bE", thumbnail:"", premium:false, accessLevel:"public" },
-            { id:2, titre:"Se présenter en français", langue:"Français", url:"https://www.youtube.com/embed/5nQ9P9vW8bE", thumbnail:"", premium:false, accessLevel:"public" }
-        ];
-        localStorage.setItem(STORAGE_VIDEOS, JSON.stringify(videos));
-    }
-    if (!localStorage.getItem(STORAGE_PDFS)) {
-        const pdfs = [
-            { id:1, nom:"Manuel de Grammaire Anglaise", categorie:"Cours", taille:"3.2 MB", downloads:24, premium:false, accessLevel:"public", image:"", url:"#" },
-            { id:2, nom:"Exercices de Conjugaison", categorie:"Exercices", taille:"1.5 MB", downloads:12, premium:false, accessLevel:"public", image:"", url:"#" }
-        ];
-        localStorage.setItem(STORAGE_PDFS, JSON.stringify(pdfs));
-    }
-    if (!localStorage.getItem(STORAGE_CONFERENCES)) {
-        const confs = [{ id:1, titre:"Webinaire Anglais Business", date:"2026-06-20T14:00", link:"https://meet.google.com/conf1" }];
-        localStorage.setItem(STORAGE_CONFERENCES, JSON.stringify(confs));
-    }
-    if (!localStorage.getItem(STORAGE_MESSAGES)) localStorage.setItem(STORAGE_MESSAGES, JSON.stringify([]));
-    if (!localStorage.getItem(STORAGE_ADMIN_REPLIES)) localStorage.setItem(STORAGE_ADMIN_REPLIES, JSON.stringify([]));
-    if (!localStorage.getItem(STORAGE_CHAT)) localStorage.setItem(STORAGE_CHAT, JSON.stringify([{ user: 'Lucas Miller', text: 'Could you re-explain...', time: '10:42 AM' }]));
-    if (!localStorage.getItem(STORAGE_GLOBAL_CHAT)) localStorage.setItem(STORAGE_GLOBAL_CHAT, JSON.stringify([{ sender: 'admin', text: 'Bonjour, comment puis-je vous aider ?', time: '10:30 AM' }]));
-    if (!localStorage.getItem(STORAGE_CAROUSEL)) {
-        const slides = [
-            { id:1, image:"https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=800", title:"Apprenez l'Anglais", description:"Des cours adaptés à tous les niveaux", buttonText:"Découvrir", buttonLink:"#", enabled:true, order:0 },
-            { id:2, image:"https://images.pexels.com/photos/1642228/pexels-photo-1642228.jpeg?w=800", title:"Maîtrisez le Français", description:"Avec nos professeurs expérimentés", buttonText:"Commencer", buttonLink:"#", enabled:true, order:1 },
-            { id:3, image:"https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?w=800", title:"Formation Premium", description:"Débloquez tout le potentiel d'ATA School", buttonText:"En savoir plus", buttonLink:"#", enabled:true, order:2 }
-        ];
-        localStorage.setItem(STORAGE_CAROUSEL, JSON.stringify(slides));
-    }
-    if (!localStorage.getItem(STORAGE_SETTINGS)) {
-        const settings = { orangeMoneyNumber: '032 XX XXX XX', orangeMoneyName: 'ATA School Premium', facebook: '', twitter: '', linkedin: '', instagram: '', whatsapp: '' };
-        localStorage.setItem(STORAGE_SETTINGS, JSON.stringify(settings));
-    }
-    if (!localStorage.getItem('ata_payment_requests')) localStorage.setItem('ata_payment_requests', JSON.stringify([]));
-    if (!localStorage.getItem('ata_activity_log')) localStorage.setItem('ata_activity_log', JSON.stringify([]));
+    if (!localStorage.getItem(STORAGE_USERS)) localStorage.setItem(STORAGE_USERS, JSON.stringify([{ id:1, name:"Admin ATA", email:"admin@ataschool.edu", password:"admin123", role:"admin", subscribed:true, photo:"", subscription:{ status:'none' }, createdAt:new Date().toISOString() }]));
+    if (!localStorage.getItem(STORAGE_COURSES)) localStorage.setItem(STORAGE_COURSES, JSON.stringify([{ id:1, titre:"Anglais Débutant", langue:"Anglais", niveau:"Débutant", duree:"12 sem", prix:"85 000 Ar", image:"https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=400", accessLevel:'public', views:0 }]));
+    if (!localStorage.getItem(STORAGE_VIDEOS)) localStorage.setItem(STORAGE_VIDEOS, JSON.stringify([{ id:1, titre:"Greetings in English", url:"https://www.youtube.com/embed/9nQ9P9vW8bE", thumbnail:"", accessLevel:'public' }]));
+    if (!localStorage.getItem(STORAGE_PDFS)) localStorage.setItem(STORAGE_PDFS, JSON.stringify([{ id:1, nom:"Manuel de Grammaire", categorie:"Cours", downloads:0, accessLevel:'public', image:"", url:"#" }]));
+    if (!localStorage.getItem(STORAGE_CONFERENCES)) localStorage.setItem(STORAGE_CONFERENCES, JSON.stringify([]));
+    if (!localStorage.getItem(STORAGE_CHAT)) localStorage.setItem(STORAGE_CHAT, JSON.stringify([]));
+    if (!localStorage.getItem(STORAGE_CAROUSEL)) localStorage.setItem(STORAGE_CAROUSEL, JSON.stringify([]));
+    if (!localStorage.getItem(STORAGE_SETTINGS)) localStorage.setItem(STORAGE_SETTINGS, JSON.stringify({ facebook:'', twitter:'', linkedin:'', instagram:'', whatsapp:'' }));
 })();
 
 function getUsers() { return JSON.parse(localStorage.getItem(STORAGE_USERS)) || []; }
@@ -281,62 +155,15 @@ function saveUsers(users) { localStorage.setItem(STORAGE_USERS, JSON.stringify(u
 function getCurrentUser() { return JSON.parse(localStorage.getItem('currentUser')); }
 function setCurrentUser(user) { localStorage.setItem('currentUser', JSON.stringify(user)); }
 function logout() { if (confirm('Voulez-vous vraiment vous déconnecter ?')) { localStorage.removeItem('currentUser'); currentPage = 'home'; renderApp(); window.scrollTo(0,0); showToast('Vous avez été déconnecté avec succès', 'info'); } }
-function getCarouselMode() { return localStorage.getItem('ata_carousel_mode') || 'courses'; }
 
 let currentPage = 'home';
-
-function getUserAccessLevel() {
-    const user = getCurrentUser();
-    if (!user) return 'visitor';
-    if (user.role === 'admin') return 'admin';
-    if (user.subscription && user.subscription.status === 'active') {
-        if (user.subscription.endDate) {
-            const now = new Date(), endDate = new Date(user.subscription.endDate);
-            if (endDate > now) return 'premium';
-            else { user.subscription.status = 'expired'; setCurrentUser(user); return 'standard'; }
-        }
-        return 'premium';
-    }
-    return 'standard';
-}
-
-function canAccessContent(content) {
-    const accessLevel = getUserAccessLevel();
-    const requiredLevel = content.accessLevel || 'public';
-    if (accessLevel === 'admin' || accessLevel === 'premium') return true;
-    if (accessLevel === 'standard') return requiredLevel === 'public' || requiredLevel === 'members';
-    if (accessLevel === 'visitor') return requiredLevel === 'public';
-    return false;
-}
-
-function renderAccessBadge(content) {
-    const level = content.accessLevel || 'public';
-    if (level === 'premium') return '<span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">🔒 Premium</span>';
-    if (level === 'members') return '<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">👤 Membres</span>';
-    return '<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">🌐 Public</span>';
-}
-
-function canAccessPage(page) {
-    const accessLevel = getUserAccessLevel();
-    switch (page) {
-        case 'home': case 'premium': case 'favorites': return true;
-        case 'videos': case 'resources': case 'courses': case 'messages': return accessLevel !== 'visitor';
-        default: return true;
-    }
-}
-
-function checkPageAccess(page) {
-    if (!canAccessPage(page)) {
-        if (getUserAccessLevel() === 'visitor') openAuthModal('login');
-        else showPremiumModal();
-        return false;
-    }
-    return true;
-}
+function getUserAccessLevel() { const u = getCurrentUser(); if (!u) return 'visitor'; if (u.role === 'admin') return 'admin'; if (u.subscription?.status === 'active') return 'premium'; return 'standard'; }
+function canAccessContent(c) { const level = getUserAccessLevel(); if (level === 'admin' || level === 'premium') return true; if (level === 'standard') return (c.accessLevel||'public') !== 'premium'; return (c.accessLevel||'public') === 'public'; }
+function renderAccessBadge(c) { const l = c.accessLevel||'public'; if (l==='premium') return '<span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">🔒 Premium</span>'; if (l==='members') return '<span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">👤 Membres</span>'; return ''; }
 
 function navigateTo(page) {
     if (page === 'home' || page === 'premium' || page === 'favorites') { currentPage = page; renderApp(); return; }
-    if (!checkPageAccess(page)) return;
+    if ((page === 'videos' || page === 'courses' || page === 'messages' || page === 'resources') && !getCurrentUser()) { openAuthModal('login'); return; }
     currentPage = page; renderApp();
 }
 
@@ -346,161 +173,12 @@ function hideLoader() { setTimeout(() => { document.getElementById('pageLoader')
 function showToast(msg, type = 'success') {
     const container = document.getElementById('toastContainer');
     if (!container) return;
-    const icons = { success:'fa-circle-check', error:'fa-circle-exclamation', warning:'fa-triangle-exclamation', info:'fa-circle-info' };
-    const colors = { success:'border-[#c9a03d] bg-[#101b3b]', error:'border-red-500 bg-slate-900', warning:'border-amber-500 bg-slate-900', info:'border-blue-500 bg-slate-900' };
-    const iconColors = { success:'text-[#c9a03d]', error:'text-red-400', warning:'text-amber-400', info:'text-blue-400' };
     const toast = document.createElement('div');
-    toast.className = `toast font-medium ${colors[type] || colors.success}`;
-    toast.innerHTML = `<div class="flex items-center gap-2"><i class="fa-regular ${icons[type] || icons.success} ${iconColors[type] || iconColors.success} text-lg"></i><span>${msg}</span></div>`;
+    toast.className = `toast font-medium ${type==='error'?'border-red-500':''}`;
+    toast.innerHTML = `<span>${msg}</span>`;
     container.appendChild(toast);
-    setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(100%)'; toast.style.transition = 'all 0.3s ease'; setTimeout(() => toast.remove(), 300); }, 3500);
+    setTimeout(() => toast.remove(), 3500);
 }
-
-// ==================== MODE SOMBRE ====================
-function initDarkMode() {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedMode = localStorage.getItem('ata_dark_mode');
-    if (savedMode === 'dark' || (!savedMode && prefersDark)) {
-        document.documentElement.classList.add('dark');
-    }
-}
-function toggleDarkMode() {
-    document.documentElement.classList.toggle('dark');
-    const isDark = document.documentElement.classList.contains('dark');
-    localStorage.setItem('ata_dark_mode', isDark ? 'dark' : 'light');
-}
-initDarkMode();
-
-// ==================== FAVORIS ====================
-function getFavorites() {
-    const user = getCurrentUser();
-    if (!user) return [];
-    const key = `favorites_${user.email}`;
-    return JSON.parse(localStorage.getItem(key)) || [];
-}
-function addFavorite(type, id) {
-    const user = getCurrentUser();
-    if (!user) return showToast('Connectez-vous pour ajouter aux favoris', 'warning');
-    const key = `favorites_${user.email}`;
-    const favs = getFavorites();
-    if (!favs.find(f => f.type === type && f.id === id)) {
-        favs.push({ type, id, addedAt: new Date().toISOString() });
-        localStorage.setItem(key, JSON.stringify(favs));
-        showToast('Ajouté aux favoris ❤️');
-    } else showToast('Déjà dans vos favoris');
-}
-function removeFavorite(type, id) {
-    const user = getCurrentUser();
-    if (!user) return;
-    const key = `favorites_${user.email}`;
-    let favs = getFavorites();
-    favs = favs.filter(f => !(f.type === type && f.id === id));
-    localStorage.setItem(key, JSON.stringify(favs));
-    showToast('Retiré des favoris');
-}
-function isFavorite(type, id) {
-    return getFavorites().some(f => f.type === type && f.id === id);
-}
-
-// ==================== COMPOSANT UPLOAD ====================
-function compressImage(file, maxWidth = 800) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const img = new Image();
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                let width = img.width, height = img.height;
-                if (width > maxWidth) { height = (maxWidth / width) * height; width = maxWidth; }
-                canvas.width = width; canvas.height = height;
-                const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, width, height);
-                canvas.toBlob((blob) => resolve(blob), 'image/jpeg', 0.85);
-            };
-            img.src = e.target.result;
-        };
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-    });
-}
-async function uploadImage(file, folder = 'general') {
-    const compressed = await compressImage(file, 800);
-    const filename = `${folder}/${Date.now()}_${Math.random().toString(36).substr(2,6)}.jpg`;
-    const storageRef = storage.ref(filename);
-    await storageRef.put(compressed);
-    return await storageRef.getDownloadURL();
-}
-function imageUploaderHTML(idPrefix, currentImageUrl = '') {
-    return `<div class="image-uploader" id="${idPrefix}Uploader"><div class="flex gap-3 mb-3"><label class="flex items-center gap-2 text-sm font-semibold cursor-pointer" style="color: var(--text-secondary);"><input type="radio" name="${idPrefix}ImgType" value="url" checked onchange="toggleUploadMode('${idPrefix}')"> URL</label><label class="flex items-center gap-2 text-sm font-semibold cursor-pointer" style="color: var(--text-secondary);"><input type="radio" name="${idPrefix}ImgType" value="file" onchange="toggleUploadMode('${idPrefix}')"> Fichier</label></div><div id="${idPrefix}UrlInput" class="mb-3"><input type="text" id="${idPrefix}ImageUrl" placeholder="https://..." value="${currentImageUrl}" class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm"></div><div id="${idPrefix}FileInput" class="hidden mb-3"><label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-[var(--color-gold)] transition bg-gray-50"><div class="flex flex-col items-center justify-center pt-5 pb-6"><i class="fa-solid fa-cloud-arrow-up text-2xl text-gray-400 mb-2"></i><p class="text-xs text-gray-500">Cliquez ou glissez une image</p></div><input type="file" id="${idPrefix}ImageFile" accept="image/*" class="hidden" onchange="previewUploadImage('${idPrefix}')"></label><div class="mt-2"><button onclick="startUpload('${idPrefix}')" class="btn-navy px-4 py-2 rounded-xl text-xs font-bold">Téléverser</button><span id="${idPrefix}UploadStatus" class="text-xs text-gray-500 ml-2"></span></div></div><div id="${idPrefix}Preview" class="mt-3 ${currentImageUrl ? '' : 'hidden'}"><img id="${idPrefix}PreviewImg" src="${currentImageUrl}" class="w-full max-h-40 object-cover rounded-xl border"></div><input type="hidden" id="${idPrefix}FinalImageUrl" value="${currentImageUrl}"></div>`;
-}
-function toggleUploadMode(idPrefix) {
-    const urlInput = document.getElementById(`${idPrefix}UrlInput`);
-    const fileInput = document.getElementById(`${idPrefix}FileInput`);
-    const radioUrl = document.querySelector(`input[name="${idPrefix}ImgType"][value="url"]`);
-    if (radioUrl.checked) { urlInput.classList.remove('hidden'); fileInput.classList.add('hidden'); }
-    else { urlInput.classList.add('hidden'); fileInput.classList.remove('hidden'); }
-}
-function previewUploadImage(idPrefix) {
-    const fileInput = document.getElementById(`${idPrefix}ImageFile`);
-    const previewImg = document.getElementById(`${idPrefix}PreviewImg`);
-    const previewDiv = document.getElementById(`${idPrefix}Preview`);
-    if (fileInput.files[0]) {
-        const reader = new FileReader();
-        reader.onload = e => { previewImg.src = e.target.result; previewDiv.classList.remove('hidden'); };
-        reader.readAsDataURL(fileInput.files[0]);
-    }
-}
-async function startUpload(idPrefix) {
-    const fileInput = document.getElementById(`${idPrefix}ImageFile`);
-    const status = document.getElementById(`${idPrefix}UploadStatus`);
-    const finalUrl = document.getElementById(`${idPrefix}FinalImageUrl`);
-    const previewImg = document.getElementById(`${idPrefix}PreviewImg`);
-    const previewDiv = document.getElementById(`${idPrefix}Preview`);
-    if (!fileInput.files[0]) return showToast('Sélectionnez une image', 'error');
-    status.textContent = 'Téléversement...';
-    try {
-        const url = await uploadImage(fileInput.files[0], idPrefix);
-        finalUrl.value = url; previewImg.src = url; previewDiv.classList.remove('hidden');
-        status.textContent = '✓'; status.className = 'text-xs text-green-500 ml-2';
-        showToast('Image téléversée !');
-    } catch (e) { status.textContent = 'Erreur'; status.className = 'text-xs text-red-500 ml-2'; }
-}
-function getImageUrl(idPrefix) {
-    const radioUrl = document.querySelector(`input[name="${idPrefix}ImgType"][value="url"]`);
-    return radioUrl.checked ? document.getElementById(`${idPrefix}ImageUrl`).value : document.getElementById(`${idPrefix}FinalImageUrl`).value;
-}
-
-// ==================== AUTHENTIFICATION GOOGLE ====================
-async function signInWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    try {
-        const result = await auth.signInWithPopup(provider);
-        const firebaseUser = result.user;
-        const users = getUsers();
-        let localUser = users.find(u => u.email === firebaseUser.email);
-        if (!localUser) {
-            localUser = { id: Date.now(), name: firebaseUser.displayName || firebaseUser.email.split('@')[0], email: firebaseUser.email, photo: firebaseUser.photoURL || '', role: 'student', subscribed: false, subscription: { status: 'none', plan: '', startDate: null, endDate: null }, createdAt: new Date().toISOString(), firebaseUid: firebaseUser.uid };
-            users.push(localUser); saveUsers(users);
-        }
-        setCurrentUser({ fullName: localUser.name, email: localUser.email, role: localUser.role, photo: localUser.photo, subscription: localUser.subscription });
-        closeAuthModal(); currentPage = 'home'; renderApp(); showToast(`Bienvenue ${localUser.name} !`);
-    } catch (error) {
-        if (error.code === 'auth/popup-closed-by-user') return;
-        alert('Erreur de connexion Google.');
-    }
-}
-
-// ==================== MODALE PROMOTION PREMIUM ====================
-function showPremiumModal() {
-    const existing = document.getElementById('premiumPromoModal');
-    if (existing) existing.remove();
-    const accessLevel = getUserAccessLevel();
-    const modal = document.createElement('div');
-    modal.id = 'premiumPromoModal'; modal.className = 'modal active'; modal.style.zIndex = '150';
-    modal.innerHTML = `<div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-md w-full mx-4 relative"><button onclick="closePremiumModal()" class="absolute top-4 right-4 text-gray-400 hover:text-[#101b3b] text-xl z-10"><i class="fa-solid fa-xmark"></i></button><div class="bg-gradient-to-r from-[#101b3b] to-[#1a2a56] p-8 text-center text-white"><i class="fa-solid fa-crown text-5xl text-[var(--color-gold)] mb-4"></i><h2 class="serif-title text-2xl font-bold">${accessLevel === 'visitor' ? 'Connectez-vous' : 'Passez à Premium'}</h2></div><div class="p-6 text-center"><p class="text-slate-600 text-sm mb-6">${accessLevel === 'visitor' ? 'Connectez-vous pour accéder à ce contenu exclusif.' : 'Débloquez tous les contenus réservés aux membres Premium.'}</p><button onclick="${accessLevel === 'visitor' ? "openAuthModal('login')" : "navigateTo('premium')"}" class="btn-premium px-8 py-3 rounded-full font-bold text-sm">${accessLevel === 'visitor' ? 'Se connecter' : 'Voir les offres Premium'}</button></div></div>`;
-    document.body.appendChild(modal);
-    modal.addEventListener('click', e => { if (e.target === modal) closePremiumModal(); });
-}
-function closePremiumModal() { const m = document.getElementById('premiumPromoModal'); if (m) m.remove(); }
 
 // ==================== RENDU PRINCIPAL ====================
 function renderApp() {
@@ -510,28 +188,17 @@ function renderApp() {
     const authButtons = document.getElementById('authButtons');
     const footer = document.getElementById('mainFooter');
     if (user) {
-        const isPremium = user.subscription?.status === 'active';
-        authButtons.innerHTML = `<button onclick="toggleDarkMode()" class="text-gray-600 hover:text-[#c9a03d] transition mr-2"><i class="fa-solid fa-moon text-lg"></i></button>${isPremium ? '<span class="text-[var(--color-gold)] text-xs font-bold mr-2">⭐ Premium</span>' : ''}<a href="#" onclick="navigateTo('premium')" class="text-[var(--color-gold)] hover:text-[#b0872c] text-xs font-bold tracking-wider uppercase mr-4"><i class="fa-solid fa-crown mr-1"></i> Premium</a><button onclick="logout()" class="btn-premium px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase flex items-center gap-2" style="background-color: #c9a03d; border-color: #c9a03d;"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>`;
+        authButtons.innerHTML = `<button onclick="toggleDarkMode()" class="text-gray-600 hover:text-[#c9a03d] transition mr-2"><i class="fa-solid fa-moon text-lg"></i></button><button onclick="logout()" class="btn-premium px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase">Déconnexion</button>`;
     } else {
-        authButtons.innerHTML = `<button onclick="toggleDarkMode()" class="text-gray-600 hover:text-[#c9a03d] transition mr-2"><i class="fa-solid fa-moon text-lg"></i></button><a href="#" onclick="navigateTo('premium')" class="text-[var(--color-gold)] hover:text-[#b0872c] text-xs font-bold tracking-wider uppercase mr-4"><i class="fa-solid fa-crown mr-1"></i> Premium</a><button onclick="openAuthModal('login')" class="btn-premium px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase">Se connecter</button>`;
+        authButtons.innerHTML = `<button onclick="toggleDarkMode()" class="text-gray-600 hover:text-[#c9a03d] transition mr-2"><i class="fa-solid fa-moon text-lg"></i></button><button onclick="openAuthModal('login')" class="btn-premium px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase">Se connecter</button>`;
     }
-    document.querySelectorAll('.nav-icon').forEach(icon => {
-        const page = icon.getAttribute('data-page');
-        icon.classList.toggle('active', page === currentPage);
-    });
+    document.querySelectorAll('.nav-icon').forEach(icon => icon.classList.toggle('active', icon.getAttribute('data-page') === currentPage));
     switch (currentPage) {
-        case 'home':
-            if (user?.role === 'admin') { mainContent.innerHTML = renderAdminDashboard(user); footer.style.display = 'none'; initAdminDashboard(); }
-            else if (user?.role === 'student') { mainContent.innerHTML = renderUserDashboard(user); footer.style.display = 'none'; }
-            else { mainContent.innerHTML = renderHomePage(); footer.style.display = 'block'; initSwiper(); initReveal(); }
-            break;
+        case 'home': mainContent.innerHTML = user?.role === 'admin' ? renderAdminDashboard() : renderHomePage(); footer.style.display = user?.role === 'admin' ? 'none' : 'block'; if (user?.role === 'admin') initAdminDashboard(); else if (!user) { initSwiper(); initReveal(); } break;
         case 'videos': mainContent.innerHTML = renderVideoCourses(); footer.style.display = 'block'; setTimeout(fillVideoGrid, 50); break;
-        case 'courses': mainContent.innerHTML = renderLiveClass(); footer.style.display = 'block'; setTimeout(initLiveChat, 100); break;
-        case 'messages': mainContent.innerHTML = renderMessages(); footer.style.display = 'none'; setTimeout(initMessaging, 100); break;
+        case 'courses': mainContent.innerHTML = renderLiveClass(); footer.style.display = 'block'; break;
+        case 'messages': mainContent.innerHTML = renderMessages(); footer.style.display = 'none'; break;
         case 'resources': mainContent.innerHTML = renderResources(); footer.style.display = 'block'; setTimeout(fillResourcesGrid, 50); break;
-        case 'premium': mainContent.innerHTML = renderPremiumPage(); footer.style.display = 'block'; break;
-        case 'favorites': mainContent.innerHTML = renderFavoritesPage(); footer.style.display = 'block'; break;
-        default: mainContent.innerHTML = renderHomePage(); footer.style.display = 'block';
     }
     updateFooterLinks();
     initHeaderScroll();
@@ -539,366 +206,50 @@ function renderApp() {
 }
 
 // ==================== PAGES ====================
-function renderHomePage() {
-    const mode = getCarouselMode();
-    return `<main><section class="min-h-[calc(100vh-80px)] flex flex-col lg:flex-row bg-[var(--bg-secondary)]"><div class="w-full lg:w-[55%] flex flex-col justify-between p-8 lg:p-16 xl:p-24"><div class="mb-8 lg:mb-0 reveal"><img src="IMG.jpg" alt="Logo" class="h-28 w-auto object-contain" onerror="this.style.display='none'"></div><div class="my-auto max-w-xl"><h1 class="serif-title text-5xl lg:text-7xl text-[#101b3b] leading-[1.05] tracking-tight reveal">ATA SCHOOL</h1><p class="text-lg lg:text-xl text-gray-600 mt-6 font-medium leading-relaxed reveal" style="transition-delay:0.1s;">Always Think Ahead – La plateforme qui élève vos compétences</p><div class="flex flex-wrap gap-4 mt-10 reveal" style="transition-delay:0.2s;"><button class="btn-premium px-8 py-4 rounded-full font-bold text-sm shadow-lg flex items-center gap-2" onclick="navigateTo('videos')"><i class="fas fa-graduation-cap"></i> Explorer les cours</button><button class="btn-gold-outline px-8 py-4 rounded-full font-bold text-sm flex items-center gap-2" onclick="openAuthModal('login')"><i class="fas fa-right-to-bracket"></i> Se connecter</button></div></div><div class="pt-8 border-t border-gray-200/60 flex items-center gap-4 text-xs tracking-wider uppercase text-gray-400 font-bold reveal"><span class="text-[var(--color-gold)]">★ ★ ★ ★ ★</span> Plateforme d'apprentissage d'excellence</div></div><div class="w-full lg:w-[45%] relative min-h-[400px] lg:min-h-0 bg-gray-200"><img src="Gemini_Generated_Image_pymdofpymdofpymd.png" alt="Formateur" class="absolute inset-0 w-full h-full object-cover object-center lg:object-right"><div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[var(--color-bg-light)]/40 via-transparent to-transparent"></div></div></section><section class="py-24 bg-white overflow-hidden"><div class="max-w-7xl mx-auto px-6"><div class="text-center mb-12 reveal"><span class="text-[var(--color-gold)] font-bold uppercase tracking-widest text-xs">${mode==='custom'?'À la une':'Catalogue'}</span><h2 class="serif-title text-3xl lg:text-5xl text-[#101b3b] mt-2">${mode==='custom'?'✨ Nos Offres & Actualités':'📚 Nos Cours Populaires'}</h2><div class="w-16 h-1 bg-[var(--color-gold)] mx-auto mt-4 rounded-full"></div></div><div class="swiper courseSwiper reveal"><div class="swiper-wrapper" id="coursesCarouselWrapper"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div></div></div></section></main>`;
-}
-function renderVideoCourses() {
-    return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-12"><div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"><div><h1 class="serif-title text-4xl lg:text-5xl text-[#101b3b] font-bold">Video Courses Library</h1><p class="text-gray-500 mt-2 max-w-xl text-sm">Unlock your potential with our comprehensive collection of expert-led video lessons.</p></div><div class="w-full md:w-80 relative"><i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i><input type="text" placeholder="Search..." class="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm"></div></div><div class="flex flex-col lg:flex-row gap-8"><aside class="w-full lg:w-64 shrink-0 flex flex-col gap-6"><div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"><div class="mb-6"><h3 class="font-bold text-sm uppercase text-[#101b3b] mb-4">Subjects</h3><div class="space-y-3"><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="checkbox" checked class="custom-checkbox w-4 h-4 rounded"> Anglais</label><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="checkbox" checked class="custom-checkbox w-4 h-4 rounded"> Français</label></div></div><hr class="border-gray-100 my-4"><div><h3 class="font-bold text-sm uppercase text-[#101b3b] mb-4">Difficulty</h3><div class="space-y-3"><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" checked class="custom-checkbox w-4 h-4"> Débutant</label><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" class="custom-checkbox w-4 h-4"> Intermédiaire</label><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" class="custom-checkbox w-4 h-4"> Avancé</label></div></div></div></aside><div class="flex-1"><div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="videoGridContainer"></div></div></div></main>`;
-}
-function fillVideoGrid() {
-    const container = document.getElementById('videoGridContainer');
-    if (!container) return;
-    const videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS)) || [];
-    container.innerHTML = videos.map(v => {
-        const canAccess = canAccessContent(v);
-        return `<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between group hover:border-[var(--color-gold)]/40 transition"><div class="relative aspect-video w-full bg-gray-900 overflow-hidden"><img src="${v.thumbnail||'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?w=500'}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-500" alt="${v.titre}">${!canAccess?'<div class="absolute inset-0 bg-black/40 flex items-center justify-center"><div class="text-center text-white"><i class="fa-solid fa-lock text-3xl mb-2"></i><p class="text-xs font-bold uppercase">Premium</p><button onclick="showPremiumModal()" class="mt-2 bg-[var(--color-gold)] text-[#101b3b] text-[10px] font-bold px-3 py-1.5 rounded-full">Débloquer</button></div></div>':''}</div><div class="p-5 flex-1 flex flex-col justify-between"><div><span class="bg-[#c9a03d]/10 text-[var(--color-gold)] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">${v.langue} ${renderAccessBadge(v)}</span><h2 class="font-bold text-[#101b3b] text-base mt-2.5 line-clamp-1">${v.titre} <button onclick="${isFavorite('video',v.id)?`removeFavorite('video',${v.id})`:`addFavorite('video',${v.id})`}" class="text-xs ml-2 ${isFavorite('video',v.id)?'text-red-500':'text-gray-400 hover:text-red-400'}"><i class="fa-${isFavorite('video',v.id)?'solid':'regular'} fa-heart"></i></button></h2></div><div class="mt-5 pt-4 border-t border-gray-50 flex items-center justify-end">${canAccess?`<a href="${v.url}" target="_blank" class="border border-[#101b3b] text-[#101b3b] hover:bg-[#101b3b] hover:text-white transition rounded-lg text-xs font-bold px-4 py-2">Regarder</a>`:`<button onclick="showPremiumModal()" class="bg-[var(--color-gold)] text-[#101b3b] hover:bg-[#b08b30] transition rounded-lg text-xs font-bold px-4 py-2 flex items-center gap-1"><i class="fa-solid fa-lock"></i> Premium</button>`}</div></div></div>`;
-    }).join('');
-}
-function renderLiveClass() {
-    return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-10"><div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"><div class="lg:col-span-2 flex flex-col gap-6"><div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-lg group"><img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?w=1000" class="w-full h-full object-cover opacity-80" alt="Live"><div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-between p-6"><div class="flex items-center justify-between"><span class="bg-red-500 text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-md">Live</span><span class="bg-black/60 text-white text-xs px-3 py-1.5 rounded-lg"><i class="fa-regular fa-eye"></i> 1,420 watching</span></div><div class="flex items-center justify-between text-white/90"><a href="https://meet.google.com/new" target="_blank" class="bg-[var(--color-gold)] text-[#101b3b] text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-[#b08b30] transition flex items-center gap-2"><i class="fa-solid fa-video"></i> Rejoindre</a></div></div></div><div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"><span class="bg-[#c9a03d]/10 text-[var(--color-gold)] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">Organic Chemistry</span><h1 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold mt-3">Advanced Molecular Bonding Theories</h1><p class="text-xs lg:text-sm text-gray-400 mt-2">Welcome to today's intensive session.</p></div></div><div class="bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col h-[560px] lg:h-[536px]"><div class="p-4 border-b border-gray-100"><h3 class="font-bold text-sm text-[#101b3b]">Live Community Chat</h3></div><div class="flex-1 p-4 overflow-y-auto space-y-4 chat-scroll bg-gray-50/40" id="chatMessages"></div><div class="p-3 border-t border-gray-100 bg-white rounded-b-2xl"><form id="chatForm" class="flex items-center gap-2 bg-gray-50 rounded-xl px-3 py-2 border"><input type="text" id="chatInput" placeholder="Message..." class="flex-1 bg-transparent text-xs"><button type="submit" class="text-[var(--color-gold)]"><i class="fa-solid fa-paper-plane"></i></button></form></div></div></div></main>`;
-}
-function initLiveChat() {
-    const chatContainer = document.getElementById('chatMessages');
-    const chatForm = document.getElementById('chatForm');
-    const chatInput = document.getElementById('chatInput');
-    if (!chatContainer || !chatForm) return;
-    function loadMessages() {
-        const messages = JSON.parse(localStorage.getItem(STORAGE_CHAT)) || [];
-        chatContainer.innerHTML = messages.map(msg => {
-            const isTA = msg.isTA ? true : false;
-            const bgClass = isTA ? 'bg-[#101b3b] text-white' : 'bg-white border border-gray-100';
-            const textClass = isTA ? 'text-gray-200' : 'text-gray-500';
-            const labelClass = isTA ? 'text-[var(--color-gold)]' : 'text-[#101b3b]';
-            return `<div class="flex items-start gap-2.5"><div class="w-7 h-7 rounded-full ${isTA ? 'bg-[#c9a03d]/20' : 'bg-gray-200'} shrink-0 text-xs font-bold flex items-center justify-center ${isTA ? 'text-[var(--color-gold)]' : 'text-gray-600'}">${isTA ? '<i class="fa-solid fa-shield-halved text-[10px]"></i>' : msg.user.charAt(0).toUpperCase()}</div><div class="${bgClass} p-3 rounded-2xl rounded-tl-none shadow-2xs max-w-[85%]"><div class="flex items-baseline gap-1.5 mb-0.5"><span class="font-bold text-xs ${labelClass}">${msg.user}</span><span class="text-[9px] ${isTA ? 'text-gray-400' : 'text-gray-400'}">${msg.time}</span></div><p class="text-xs ${textClass} leading-normal">${msg.text}</p></div></div>`;
-        }).join('');
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-    chatForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const text = chatInput.value.trim();
-        if (!text) return;
-        const currentUser = getCurrentUser();
-        const userName = currentUser ? (currentUser.fullName || currentUser.email) : 'Anonymous';
-        const now = new Date();
-        const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        const messages = JSON.parse(localStorage.getItem(STORAGE_CHAT)) || [];
-        messages.push({ user: userName, text, time });
-        localStorage.setItem(STORAGE_CHAT, JSON.stringify(messages));
-        chatInput.value = '';
-        loadMessages();
-    });
-    loadMessages();
-}
-function renderResources() {
-    return `<main><section class="bg-[#101b3b] text-white py-16 lg:py-20"><div class="max-w-7xl mx-auto px-6"><h1 class="serif-title text-4xl lg:text-6xl font-bold">Download Center</h1><p class="text-gray-300 mt-4">Access our comprehensive library.</p></div></section><div class="max-w-7xl mx-auto px-6 py-12"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="resourcesGrid"></div><section class="mt-20 rounded-3xl bg-gradient-to-r from-[#fae29f] via-[#f5cc6b] to-[#f3bd44] p-8 lg:p-12 shadow-lg"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8"><div><h2 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold">Never miss a new resource!</h2><p class="text-[#101b3b]/80 text-sm">Join our WhatsApp community.</p></div><a href="#" target="_blank" class="bg-[#101b3b] text-white font-bold px-8 py-4 rounded-xl text-sm"><i class="fa-brands fa-whatsapp text-xl"></i> Rejoindre</a></div></section></div></main>`;
-}
-function fillResourcesGrid() {
-    const grid = document.getElementById('resourcesGrid');
-    if (!grid) return;
-    const pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS)) || [];
-    grid.innerHTML = pdfs.map(p => {
-        const canAccess = canAccessContent(p);
-        return `<div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"><div class="flex items-center justify-between"><span class="w-9 h-9 bg-orange-50 text-orange-500 rounded-xl flex items-center justify-center"><i class="fa-regular fa-file-pdf"></i></span><span class="text-[10px] font-mono bg-gray-100 text-gray-500 px-2 py-0.5 rounded">${p.taille}</span></div><h3 class="font-bold text-[#101b3b] text-base mt-4">${p.nom} ${renderAccessBadge(p)} <button onclick="${isFavorite('pdf',p.id)?`removeFavorite('pdf',${p.id})`:`addFavorite('pdf',${p.id})`}" class="text-xs ml-2 ${isFavorite('pdf',p.id)?'text-red-500':'text-gray-400 hover:text-red-400'}"><i class="fa-${isFavorite('pdf',p.id)?'solid':'regular'} fa-heart"></i></button></h3><div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-end">${canAccess?`<a href="${p.url}" target="_blank" class="text-[#101b3b] hover:text-[var(--color-gold)] font-bold text-xs">Download <i class="fa-solid fa-arrow-right"></i></a>`:`<button onclick="showPremiumModal()" class="text-[var(--color-gold)] font-bold text-xs"><i class="fa-solid fa-lock"></i> Premium</button>`}</div></div>`;
-    }).join('');
-}
-function renderMessages() {
-    const user = getCurrentUser();
-    const isPremium = user?.subscription?.status === 'active';
-    return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8 flex flex-col"><div class="bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row flex-1 overflow-hidden min-h-[600px] max-h-[750px]"><aside class="w-full md:w-80 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col shrink-0"><div class="p-4 border-b border-gray-50"><h3 class="font-bold text-sm text-[#101b3b]">Conversations</h3></div><div class="flex-1 overflow-y-auto custom-scroll divide-y divide-gray-50" id="conversationList"><div class="p-4 bg-gray-50/80 border-l-4 border-[var(--color-gold)] flex items-start gap-3 cursor-pointer" onclick="switchConversation('private')"><div class="relative shrink-0"><div class="w-9 h-9 rounded-xl bg-[#101b3b]/10 text-[#101b3b] flex items-center justify-center font-bold text-sm">AD</div><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white"></span></div><div class="flex-1 min-w-0"><h4 class="font-bold text-xs text-[#101b3b]">Admin Support Desk</h4><p class="text-[11px] text-gray-500">Discussion privée</p></div></div><div class="p-4 flex items-start gap-3 cursor-pointer" onclick="switchConversation('general')"><div class="relative shrink-0"><div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">🌐</div></div><div class="flex-1 min-w-0"><h4 class="font-bold text-xs text-[#101b3b]">Groupe Général</h4><p class="text-[11px] text-gray-500">Tous les membres</p></div></div>${isPremium?`<div class="p-4 flex items-start gap-3 cursor-pointer" onclick="switchConversation('premium')"><div class="w-9 h-9 rounded-xl bg-amber-50 text-[var(--color-gold)] flex items-center justify-center font-bold text-sm">⭐</div><div class="flex-1 min-w-0"><h4 class="font-bold text-xs text-[#101b3b]">Groupe Premium</h4><p class="text-[11px] text-gray-500">Membres Premium</p></div></div>`:''}</div></aside><section class="flex-1 flex flex-col bg-gray-50/30"><div class="p-4 bg-white border-b border-gray-100 flex items-center shrink-0" id="chatHeader"><div class="w-9 h-9 rounded-xl bg-[#101b3b] text-[var(--color-gold)] flex items-center justify-center font-bold text-xs" id="chatAvatar">AD</div><div><h3 class="font-bold text-xs lg:text-sm text-[#101b3b]" id="chatTitle">Admin Support Desk</h3><p class="text-[10px] text-green-500" id="chatStatus">En ligne</p></div></div><div class="flex-1 p-6 overflow-y-auto custom-scroll space-y-6" id="messageContainer"><p class="text-center text-sm text-gray-400 py-10">Sélectionnez une conversation</p></div><div class="p-4 bg-white border-t border-gray-100 shrink-0" id="messageInputArea" style="display:none;"><form id="messageForm" class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2.5 border"><input type="text" id="messageInput" placeholder="Message..." class="flex-1 bg-transparent text-xs"><button type="submit" class="bg-[#101b3b] text-white w-8 h-8 rounded-lg"><i class="fa-solid fa-paper-plane"></i></button></form></div></section></div></main>`;
-}
-function renderPremiumPage() {
-    const settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS)) || {};
-    const plans = [
-        { name:'Mensuel', price:'15 000 Ar', duration:'1 mois', icon:'fa-calendar-check', benefits:['Accès illimité vidéos Premium','Téléchargement PDF','Cours exclusifs'] },
-        { name:'Trimestriel', price:'40 000 Ar', duration:'3 mois', icon:'fa-star', popular:true, benefits:['Avantages Mensuel','1 mois offert','Certificat'] },
-        { name:'Annuel', price:'120 000 Ar', duration:'12 mois', icon:'fa-crown', benefits:['Avantages Trimestriel','4 mois offerts','Mentorat'] }
-    ];
-    return `<main><section class="bg-gradient-to-br from-[#101b3b] to-[#1a2a56] text-white py-16 lg:py-20 text-center"><i class="fa-solid fa-crown text-6xl text-[var(--color-gold)] mb-6"></i><h1 class="serif-title text-4xl lg:text-6xl font-bold">Passez à Premium</h1></section><section class="max-w-7xl mx-auto px-6 py-16"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">${plans.map(p=>`<div class="relative bg-white rounded-2xl border ${p.popular?'border-[var(--color-gold)] shadow-xl':''} p-8 flex flex-col"><div class="text-center mb-6"><div class="w-14 h-14 bg-gradient-to-br from-slate-500 to-slate-700 rounded-xl flex items-center justify-center mx-auto"><i class="fa-solid ${p.icon} text-xl text-white"></i></div><h3 class="font-bold text-xl text-[#101b3b]">${p.name}</h3><p class="text-3xl font-extrabold text-[#101b3b] mt-3">${p.price}</p><p class="text-xs text-gray-400">${p.duration}</p></div><ul class="space-y-3 mb-8 flex-1">${p.benefits.map(b=>`<li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-[var(--color-gold)]"></i>${b}</li>`).join('')}</ul><button onclick="showOrangeMoneyForm('${p.name}','${p.price}')" class="w-full btn-premium py-3 rounded-xl font-bold text-sm">Choisir ${p.name}</button></div>`).join('')}</div></section><section id="orangeMoneySection" class="max-w-3xl mx-auto px-6 pb-16 hidden"><div class="bg-white rounded-2xl border border-[var(--color-gold)]/30 shadow-lg p-8"><h2 class="serif-title text-2xl font-bold text-[#101b3b]">Paiement Orange Money</h2><p>Numéro : ${settings.orangeMoneyNumber} - ${settings.orangeMoneyName}</p><form id="orangeMoneyPaymentForm" class="space-y-4 mt-6" onsubmit="submitOrangeMoneyPayment(event)"><input type="text" id="omName" placeholder="Nom complet" required class="w-full px-4 py-2.5 border rounded-xl text-sm"><input type="email" id="omEmail" placeholder="Email" required class="w-full px-4 py-2.5 border rounded-xl text-sm"><input type="text" id="omPhone" placeholder="Téléphone" required class="w-full px-4 py-2.5 border rounded-xl text-sm"><input type="text" id="omReference" placeholder="Référence transaction" required class="w-full px-4 py-2.5 border rounded-xl text-sm"><input type="text" id="omAmount" placeholder="Montant" required class="w-full px-4 py-2.5 border rounded-xl text-sm"><button type="submit" class="w-full btn-premium py-3 rounded-xl font-bold text-sm">Envoyer</button></form></div></section></main>`;
-}
-window.showOrangeMoneyForm = (planName, planPrice) => {
-    document.getElementById('orangeMoneySection').classList.remove('hidden');
-    document.getElementById('omAmount').value = planPrice;
-};
-window.submitOrangeMoneyPayment = (e) => {
-    e.preventDefault();
-    const payments = JSON.parse(localStorage.getItem('ata_payment_requests')) || [];
-    payments.push({ id:Date.now(), name:document.getElementById('omName').value, email:document.getElementById('omEmail').value, phone:document.getElementById('omPhone').value, reference:document.getElementById('omReference').value, amount:document.getElementById('omAmount').value, status:'pending', date:new Date().toISOString() });
-    localStorage.setItem('ata_payment_requests', JSON.stringify(payments));
-    alert('Demande envoyée !');
-    document.getElementById('orangeMoneySection').classList.add('hidden');
-};
-function renderFavoritesPage() {
-    const favs = getFavorites();
-    const courses = JSON.parse(localStorage.getItem(STORAGE_COURSES)) || [];
-    const videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS)) || [];
-    const pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS)) || [];
-    const items = favs.map(f => {
-        if (f.type==='course') return courses.find(c=>c.id===f.id);
-        if (f.type==='video') return videos.find(v=>v.id===f.id);
-        if (f.type==='pdf') return pdfs.find(p=>p.id===f.id);
-    }).filter(i=>i);
-    return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-12"><h1 class="serif-title text-3xl font-bold mb-8">❤️ Mes favoris</h1>${items.length===0?'<p class="text-gray-500">Aucun favori.</p>':''}<div class="grid grid-cols-1 md:grid-cols-3 gap-6">${items.map(i=>`<div class="bg-white rounded-2xl p-6 border shadow-sm"><h3 class="font-bold">${i.titre||i.nom}</h3><button onclick="removeFavorite('${i.titre?'course':i.url?'video':'pdf'}',${i.id});navigateTo('favorites')" class="text-red-500 text-xs">Retirer</button></div>`).join('')}</div></main>`;
-}
-function renderUserDashboard(user) {
-    const photoSrc = user.photo || 'https://via.placeholder.com/100';
-    return `<div class="min-h-screen bg-gray-50 p-6 flex items-center justify-center"><div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full"><div class="flex items-start gap-6"><img src="${photoSrc}" class="w-24 h-24 rounded-full border-4 border-[var(--color-gold)]"><div><h1 class="text-2xl font-bold">${user.fullName}</h1><p>${user.email}</p><span class="text-xs">${user.subscription?.status==='active'?'⭐ Premium':'Standard'}</span></div></div><div class="mt-8 flex gap-3"><button onclick="navigateTo('favorites')" class="flex-1 bg-[#101b3b] text-white py-2.5 rounded-xl text-sm">❤️ Mes favoris</button><button onclick="logout()" class="flex-1 bg-[var(--color-gold)] text-[#101b3b] py-2.5 rounded-xl text-sm">Déconnexion</button></div></div></div>`;
-}
+function renderHomePage() { return `<main><section class="min-h-[calc(100vh-80px)] flex flex-col lg:flex-row bg-[var(--bg-secondary)]"><div class="w-full lg:w-[55%] flex flex-col justify-between p-8 lg:p-16 xl:p-24"><div class="mb-8 lg:mb-0 reveal"><img src="IMG.jpg" alt="Logo" class="h-28 w-auto object-contain" onerror="this.style.display='none'"></div><div class="my-auto max-w-xl"><h1 class="serif-title text-5xl lg:text-7xl text-[#101b3b] leading-[1.05] tracking-tight reveal">ATA SCHOOL</h1><p class="text-lg lg:text-xl text-gray-600 mt-6 font-medium leading-relaxed reveal" style="transition-delay:0.1s;">Always Think Ahead – La plateforme qui élève vos compétences</p><div class="flex flex-wrap gap-4 mt-10 reveal" style="transition-delay:0.2s;"><button class="btn-premium px-8 py-4 rounded-full font-bold text-sm shadow-lg flex items-center gap-2" onclick="navigateTo('videos')"><i class="fas fa-graduation-cap"></i> Explorer les cours</button><button class="btn-gold-outline px-8 py-4 rounded-full font-bold text-sm flex items-center gap-2" onclick="openAuthModal('login')"><i class="fas fa-right-to-bracket"></i> Se connecter</button></div></div><div class="pt-8 border-t border-gray-200/60 flex items-center gap-4 text-xs tracking-wider uppercase text-gray-400 font-bold reveal"><span class="text-[var(--color-gold)]">★ ★ ★ ★ ★</span> Plateforme d'apprentissage d'excellence</div></div><div class="w-full lg:w-[45%] relative min-h-[400px] lg:min-h-0 bg-gray-200"><img src="Gemini_Generated_Image_pymdofpymdofpymd.png" alt="Formateur" class="absolute inset-0 w-full h-full object-cover object-center lg:object-right"><div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[var(--color-bg-light)]/40 via-transparent to-transparent"></div></div></section><section class="py-24 bg-white overflow-hidden"><div class="max-w-7xl mx-auto px-6"><div class="text-center mb-12 reveal"><span class="text-[var(--color-gold)] font-bold uppercase tracking-widest text-xs">Catalogue</span><h2 class="serif-title text-3xl lg:text-5xl text-[#101b3b] mt-2">📚 Nos Cours Populaires</h2><div class="w-16 h-1 bg-[var(--color-gold)] mx-auto mt-4 rounded-full"></div></div><div class="swiper courseSwiper reveal"><div class="swiper-wrapper" id="coursesCarouselWrapper"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div></div></div></section></main>`; }
+function renderVideoCourses() { return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-12"><div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"><div><h1 class="serif-title text-4xl lg:text-5xl text-[#101b3b] font-bold">Video Courses Library</h1><p class="text-gray-500 mt-2 max-w-xl text-sm">Unlock your potential with our comprehensive collection of expert-led video lessons.</p></div><div class="w-full md:w-80 relative"><i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i><input type="text" placeholder="Search..." class="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm"></div></div><div class="flex flex-col lg:flex-row gap-8"><aside class="w-full lg:w-64 shrink-0 flex flex-col gap-6"><div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"><div class="mb-6"><h3 class="font-bold text-sm uppercase text-[#101b3b] mb-4">Subjects</h3><div class="space-y-3"><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="checkbox" checked class="custom-checkbox w-4 h-4 rounded"> Anglais</label><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="checkbox" checked class="custom-checkbox w-4 h-4 rounded"> Français</label></div></div><hr class="border-gray-100 my-4"><div><h3 class="font-bold text-sm uppercase text-[#101b3b] mb-4">Difficulty</h3><div class="space-y-3"><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" checked class="custom-checkbox w-4 h-4"> Débutant</label><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" class="custom-checkbox w-4 h-4"> Intermédiaire</label><label class="flex items-center gap-3 text-sm font-medium text-gray-600 cursor-pointer"><input type="radio" name="difficulty" class="custom-checkbox w-4 h-4"> Avancé</label></div></div></div></aside><div class="flex-1"><div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="videoGridContainer"></div></div></div></main>`; }
+function fillVideoGrid() { const container = document.getElementById('videoGridContainer'); if (!container) return; const videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS)) || []; container.innerHTML = videos.map(v => { const canAccess = canAccessContent(v); return `<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between group hover:border-[var(--color-gold)]/40 transition"><div class="relative aspect-video w-full bg-gray-900 overflow-hidden"><img src="${v.thumbnail||'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?w=500'}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-500" alt="${v.titre}">${!canAccess?'<div class="absolute inset-0 bg-black/40 flex items-center justify-center"><div class="text-center text-white"><i class="fa-solid fa-lock text-3xl mb-2"></i><p class="text-xs font-bold uppercase">Premium</p><button onclick="showPremiumModal()" class="mt-2 bg-[var(--color-gold)] text-[#101b3b] text-[10px] font-bold px-3 py-1.5 rounded-full">Débloquer</button></div></div>':''}</div><div class="p-5 flex-1 flex flex-col justify-between"><div><span class="bg-[#c9a03d]/10 text-[var(--color-gold)] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">${v.langue||''} ${renderAccessBadge(v)}</span><h2 class="font-bold text-[#101b3b] text-base mt-2.5 line-clamp-1">${v.titre}</h2></div><div class="mt-5 pt-4 border-t border-gray-50 flex items-center justify-end">${canAccess?`<a href="${v.url}" target="_blank" class="border border-[#101b3b] text-[#101b3b] hover:bg-[#101b3b] hover:text-white transition rounded-lg text-xs font-bold px-4 py-2">Regarder</a>`:`<button onclick="showPremiumModal()" class="bg-[var(--color-gold)] text-[#101b3b] hover:bg-[#b08b30] transition rounded-lg text-xs font-bold px-4 py-2 flex items-center gap-1"><i class="fa-solid fa-lock"></i> Premium</button>`}</div></div></div>`; }).join(''); }
+function renderLiveClass() { return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-10"><div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"><div class="lg:col-span-2 flex flex-col gap-6"><div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-lg group"><img src="https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?w=1000" class="w-full h-full object-cover opacity-80" alt="Live"><div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-between p-6"><div class="flex items-center justify-between"><span class="bg-red-500 text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-md">Live</span><span class="bg-black/60 text-white text-xs px-3 py-1.5 rounded-lg"><i class="fa-regular fa-eye"></i> 1,420 watching</span></div><div class="flex items-center justify-between text-white/90"><a href="https://meet.google.com/new" target="_blank" class="bg-[var(--color-gold)] text-[#101b3b] text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-[#b08b30] transition flex items-center gap-2"><i class="fa-solid fa-video"></i> Rejoindre</a></div></div></div><div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"><span class="bg-[#c9a03d]/10 text-[var(--color-gold)] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">Organic Chemistry</span><h1 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold mt-3">Advanced Molecular Bonding Theories</h1><p class="text-xs lg:text-sm text-gray-400 mt-2">Welcome to today's intensive session.</p></div></div><div class="bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col h-[560px] lg:h-[536px]"><div class="p-4 border-b border-gray-100"><h3 class="font-bold text-sm text-[#101b3b]">Live Community Chat</h3></div><div class="flex-1 p-4 overflow-y-auto space-y-4 chat-scroll bg-gray-50/40" id="chatMessages"></div><div class="p-3 border-t border-gray-100 bg-white rounded-b-2xl"><form id="chatForm" class="flex items-center gap-2 bg-gray-50 rounded-xl px-3 py-2 border"><input type="text" id="chatInput" placeholder="Message..." class="flex-1 bg-transparent text-xs"><button type="submit" class="text-[var(--color-gold)]"><i class="fa-solid fa-paper-plane"></i></button></form></div></div></div></main>`; }
+function renderResources() { return `<main><section class="bg-[#101b3b] text-white py-16 lg:py-20"><div class="max-w-7xl mx-auto px-6"><h1 class="serif-title text-4xl lg:text-6xl font-bold">Download Center</h1><p class="text-gray-300 mt-4">Access our comprehensive library.</p></div></section><div class="max-w-7xl mx-auto px-6 py-12"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="resourcesGrid"></div><section class="mt-20 rounded-3xl bg-gradient-to-r from-[#fae29f] via-[#f5cc6b] to-[#f3bd44] p-8 lg:p-12 shadow-lg"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8"><div><h2 class="serif-title text-[#101b3b] text-2xl lg:text-3xl font-bold">Never miss a new resource!</h2><p class="text-[#101b3b]/80 text-sm">Join our WhatsApp community.</p></div><a href="#" target="_blank" class="bg-[#101b3b] text-white font-bold px-8 py-4 rounded-xl text-sm"><i class="fa-brands fa-whatsapp text-xl"></i> Rejoindre</a></div></section></div></main>`; }
+function fillResourcesGrid() { const grid = document.getElementById('resourcesGrid'); if (!grid) return; const pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS)) || []; grid.innerHTML = pdfs.map(p => { const canAccess = canAccessContent(p); return `<div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"><div class="flex items-center justify-between"><span class="w-9 h-9 bg-orange-50 text-orange-500 rounded-xl flex items-center justify-center"><i class="fa-regular fa-file-pdf"></i></span><span class="text-[10px] font-mono bg-gray-100 text-gray-500 px-2 py-0.5 rounded">${p.taille||'PDF'}</span></div><h3 class="font-bold text-[#101b3b] text-base mt-4">${p.nom} ${renderAccessBadge(p)}</h3><div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-end">${canAccess?`<a href="${p.url}" target="_blank" class="text-[#101b3b] hover:text-[var(--color-gold)] font-bold text-xs">Download <i class="fa-solid fa-arrow-right"></i></a>`:`<button onclick="showPremiumModal()" class="text-[var(--color-gold)] font-bold text-xs"><i class="fa-solid fa-lock"></i> Premium</button>`}</div></div>`; }).join(''); }
+function renderMessages() { return `<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8 flex flex-col"><div class="bg-white rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row flex-1 overflow-hidden min-h-[600px] max-h-[750px]"><aside class="w-full md:w-80 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col shrink-0"><div class="p-4 border-b border-gray-50"><h3 class="font-bold text-sm text-[#101b3b]">Conversations</h3></div><div class="flex-1 overflow-y-auto custom-scroll divide-y divide-gray-50" id="conversationList"><div class="p-4 bg-gray-50/80 border-l-4 border-[var(--color-gold)] flex items-start gap-3 cursor-pointer" onclick="switchConversation('private')"><div class="relative shrink-0"><div class="w-9 h-9 rounded-xl bg-[#101b3b]/10 text-[#101b3b] flex items-center justify-center font-bold text-sm">AD</div></div><div class="flex-1 min-w-0"><h4 class="font-bold text-xs text-[#101b3b]">Admin Support Desk</h4><p class="text-[11px] text-gray-500">Discussion privée</p></div></div><div class="p-4 flex items-start gap-3 cursor-pointer" onclick="switchConversation('general')"><div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">🌐</div><div class="flex-1 min-w-0"><h4 class="font-bold text-xs text-[#101b3b]">Groupe Général</h4><p class="text-[11px] text-gray-500">Tous les membres</p></div></div></div></aside><section class="flex-1 flex flex-col bg-gray-50/30"><div class="p-4 bg-white border-b border-gray-100 flex items-center shrink-0" id="chatHeader"><div class="w-9 h-9 rounded-xl bg-[#101b3b] text-[var(--color-gold)] flex items-center justify-center font-bold text-xs" id="chatAvatar">AD</div><div><h3 class="font-bold text-xs lg:text-sm text-[#101b3b]" id="chatTitle">Admin Support Desk</h3><p class="text-[10px] text-green-500" id="chatStatus">En ligne</p></div></div><div class="flex-1 p-6 overflow-y-auto custom-scroll space-y-6" id="messageContainer"><p class="text-center text-sm text-gray-400 py-10">Sélectionnez une conversation</p></div><div class="p-4 bg-white border-t border-gray-100 shrink-0" id="messageInputArea" style="display:none;"><form id="messageForm" class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-2.5 border"><input type="text" id="messageInput" placeholder="Message..." class="flex-1 bg-transparent text-xs"><button type="submit" class="bg-[#101b3b] text-white w-8 h-8 rounded-lg"><i class="fa-solid fa-paper-plane"></i></button></form></div></section></div></main>`; }
 
-// ==================== DASHBOARD ADMIN ====================
-function renderAdminDashboard(user) {
-    return `<div class="flex min-h-screen"><aside class="w-72 bg-[#101b3b] text-slate-300 flex flex-col fixed h-full z-50 shadow-xl"><div class="p-6 text-center border-b border-[#1a2a56]"><h2 class="text-white font-bold text-lg">ATA SCHOOL</h2><p class="text-[#c9a03d] text-xs">YES WE CAN</p></div><nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto"><a href="#vue-ensemble" class="flex items-center gap-3 px-4 py-3 text-white bg-[#1a2a56] rounded-xl"><i class="fa-solid fa-chart-pie text-[#c9a03d]"></i> Vue d'ensemble</a><a href="#section-utilisateurs" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-users-gear text-slate-400"></i> Utilisateurs</a><a href="#section-cours" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-layer-group text-slate-400"></i> Cours</a><a href="#section-medias" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-clapperboard text-slate-400"></i> Vidéos</a><a href="#section-pdfs" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-file-zipper text-slate-400"></i> PDF</a><a href="#section-mediatheque" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-images text-slate-400"></i> Médiathèque</a><a href="#section-carousel" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-sliders text-slate-400"></i> Carrousel</a><a href="#section-evenements" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-presentation-screen text-slate-400"></i> Meet</a><a href="#section-stats-avancees" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-chart-bar text-slate-400"></i> Statistiques</a><a href="#section-demandes-premium" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-file-invoice-dollar text-slate-400"></i> Demandes Premium</a><a href="#section-parametres" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-gear text-slate-400"></i> Paramètres</a></nav></aside><main class="flex-1 ml-72 p-8 lg:p-10 max-w-[1600px]"><header class="flex justify-between items-center mb-10 pb-5 border-b border-slate-200"><div><h1 class="text-3xl font-extrabold text-[#101b3b]">Tableau de bord</h1></div></header><section id="vue-ensemble" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10" id="kpiContainer"></section><section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10"><div class="glass-card p-6"><h3>Inscriptions</h3><canvas id="chartLine"></canvas></div><div class="glass-card p-6"><h3>Téléchargements</h3><canvas id="chartBar"></canvas></div></section><div id="adminDynamicContent"></div></main></div>`;
-}
+// ==================== MODALE PROMOTION PREMIUM ====================
+function showPremiumModal() { const existing = document.getElementById('premiumPromoModal'); if (existing) existing.remove(); const accessLevel = getUserAccessLevel(); const modal = document.createElement('div'); modal.id = 'premiumPromoModal'; modal.className = 'modal active'; modal.style.zIndex = '150'; modal.innerHTML = `<div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-md w-full mx-4 relative"><button onclick="closePremiumModal()" class="absolute top-4 right-4 text-gray-400 hover:text-[#101b3b] text-xl z-10"><i class="fa-solid fa-xmark"></i></button><div class="bg-gradient-to-r from-[#101b3b] to-[#1a2a56] p-8 text-center text-white"><i class="fa-solid fa-crown text-5xl text-[var(--color-gold)] mb-4"></i><h2 class="serif-title text-2xl font-bold">${accessLevel==='visitor'?'Connectez-vous':'Passez à Premium'}</h2></div><div class="p-6 text-center"><p class="text-slate-600 text-sm mb-6">${accessLevel==='visitor'?'Connectez-vous pour accéder à ce contenu exclusif.':'Débloquez tous les contenus réservés aux membres Premium.'}</p><button onclick="${accessLevel==='visitor'?"openAuthModal('login')":"navigateTo('premium')"}" class="btn-premium px-8 py-3 rounded-full font-bold text-sm">${accessLevel==='visitor'?'Se connecter':'Voir les offres Premium'}</button></div></div>`; document.body.appendChild(modal); modal.addEventListener('click', e => { if (e.target === modal) closePremiumModal(); }); }
+function closePremiumModal() { const m = document.getElementById('premiumPromoModal'); if (m) m.remove(); }
 
-function initAdminDashboard() {
-    const dynamicContent = document.getElementById('adminDynamicContent');
-    if (dynamicContent) {
-        dynamicContent.innerHTML = `
-            <section id="section-utilisateurs" class="glass-card p-6 mb-10"><h2><i class="fa-solid fa-users-gear mr-2 text-[#c9a03d]"></i>Répertoire des utilisateurs</h2><table class="min-w-full"><thead><tr><th>Nom</th><th>Email</th><th>Premium</th><th>Rôle</th><th>Actions</th></tr></thead><tbody id="usersTableBody"></tbody></table><div id="usersPagination" class="pagination"></div></section>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-                <section id="section-cours" class="glass-card p-6"><h2><i class="fa-solid fa-layer-group mr-2 text-[#c9a03d]"></i>Cours</h2><div class="bg-slate-50 p-4 rounded-xl border mb-6"><div class="grid grid-cols-2 gap-3"><input id="newCourseTitle" placeholder="Titre" class="border bg-white rounded-xl p-2.5 text-sm"><input id="newCourseLang" placeholder="Langue" class="border bg-white rounded-xl p-2.5 text-sm"></div><div class="grid grid-cols-2 gap-3 mt-3"><input id="newCoursePrice" placeholder="Prix" class="border bg-white rounded-xl p-2.5 text-sm"><input id="newCourseDuration" placeholder="Durée" class="border bg-white rounded-xl p-2.5 text-sm"></div><div id="courseImageUploaderContainer" class="mt-3"></div><select id="newCourseAccessLevel" class="w-full border bg-white rounded-xl p-2.5 text-sm mt-3"><option value="public">Public</option><option value="members">Membres</option><option value="premium">Premium</option></select><button id="addCourseBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm mt-3">Ajouter</button></div><div id="coursesList" class="space-y-2 max-h-72 overflow-y-auto"></div></section>
-                <section id="section-medias" class="glass-card p-6"><h2><i class="fa-solid fa-clapperboard mr-2 text-[#c9a03d]"></i>Vidéos</h2><div class="bg-slate-50 p-4 rounded-xl border mb-6"><input id="newVideoTitle" placeholder="Titre" class="w-full border bg-white rounded-xl p-2.5 text-sm mb-3"><input id="newVideoUrl" placeholder="URL YouTube" class="w-full border bg-white rounded-xl p-2.5 text-sm mb-3"><div id="videoImageUploaderContainer" class="mt-3"></div><select id="newVideoAccessLevel" class="w-full border bg-white rounded-xl p-2.5 text-sm mt-3"><option value="public">Public</option><option value="members">Membres</option><option value="premium">Premium</option></select><button id="addVideoBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm mt-3">Publier</button></div><div id="videosList" class="space-y-2 max-h-72 overflow-y-auto"></div></section>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-                <section id="section-pdfs" class="glass-card p-6"><h2><i class="fa-solid fa-file-zipper mr-2 text-[#c9a03d]"></i>PDF</h2><div class="bg-slate-50 p-4 rounded-xl border mb-6"><input id="newPdfName" placeholder="Nom" class="w-full border bg-white rounded-xl p-2.5 text-sm mb-3"><input id="newPdfUrl" placeholder="Lien cloud" class="w-full border bg-white rounded-xl p-2.5 text-sm mb-3"><div id="pdfImageUploaderContainer" class="mt-3"></div><select id="newPdfAccessLevel" class="w-full border bg-white rounded-xl p-2.5 text-sm mt-3"><option value="public">Public</option><option value="members">Membres</option><option value="premium">Premium</option></select><button id="addPdfBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm mt-3">Ajouter</button></div><div id="pdfsList" class="space-y-2 max-h-72 overflow-y-auto"></div></section>
-                <section id="section-evenements" class="glass-card p-6"><h2><i class="fa-solid fa-presentation-screen mr-2 text-[#c9a03d]"></i>Meet</h2><input id="confTitle" placeholder="Sujet" class="w-full border bg-white rounded-xl p-2.5 text-sm mb-3"><input type="datetime-local" id="confDate" class="w-full border bg-white rounded-xl p-2.5 text-sm mb-3"><input id="confLink" placeholder="Lien Google Meet" class="w-full border bg-white rounded-xl p-2.5 text-sm mb-3"><button id="addConfBtn" class="btn-navy w-full py-2.5 rounded-xl font-bold text-sm">Planifier</button><div id="confsList" class="space-y-2 max-h-72 overflow-y-auto"></div></section>
-            </div>
-            <section id="section-mediatheque" class="glass-card p-6 mb-10"><h2><i class="fa-solid fa-images mr-2 text-[#c9a03d]"></i>Médiathèque</h2><input id="mediaSearch" placeholder="Rechercher..." class="border bg-white rounded-xl px-3 py-2 text-sm w-48 mr-3"><select id="mediaFilter" class="border bg-white rounded-xl px-3 py-2 text-sm"><option value="all">Tous</option><option value="courses">Cours</option><option value="videos">Vidéos</option><option value="pdfs">PDF</option></select><div id="mediaGrid" class="grid grid-cols-4 gap-4 mt-4"></div></section>
-            <section id="section-carousel" class="glass-card p-6 mb-10"><h2><i class="fa-solid fa-sliders mr-2 text-[#c9a03d]"></i>Carrousel</h2><button onclick="window.addCarouselSlide()" class="btn-navy px-4 py-2 rounded-xl font-bold text-xs mb-4"><i class="fa-solid fa-plus"></i> Nouvelle slide</button><div id="carouselSlidesList" class="space-y-3"></div></section>
-            <section id="section-stats-avancees" class="glass-card p-6 mb-10"><h2><i class="fa-solid fa-chart-bar mr-2 text-[#c9a03d]"></i>Statistiques avancées</h2><div class="grid grid-cols-2 gap-8 mb-8"><div><h3>Top Cours</h3><div id="topCoursesList"></div></div><div><h3>Top PDF</h3><div id="topPdfsList"></div></div></div><div class="h-64"><canvas id="chartPremiumEvo"></canvas></div><h3 class="mt-8">Journal d'activité</h3><div id="activityLogList" class="space-y-2 max-h-64 overflow-y-auto"></div></section>
-            <section id="section-demandes-premium" class="glass-card p-6 mb-10"><h2><i class="fa-solid fa-file-invoice-dollar mr-2 text-[#c9a03d]"></i>Demandes Premium</h2><div id="paymentRequestsList" class="space-y-4"></div></section>
-            <section id="section-parametres" class="glass-card p-6 mb-10"><h2><i class="fa-solid fa-gear mr-2 text-[#c9a03d]"></i>Paramètres</h2><div class="grid grid-cols-2 gap-4"><input id="omSettingsNumber" placeholder="N° Orange Money" class="border bg-white rounded-xl p-2.5 text-sm"><input id="omSettingsName" placeholder="Nom bénéficiaire" class="border bg-white rounded-xl p-2.5 text-sm"><input id="settingsFacebook" placeholder="Facebook URL" class="border bg-white rounded-xl p-2.5 text-sm"><input id="settingsTwitter" placeholder="Twitter URL" class="border bg-white rounded-xl p-2.5 text-sm"><input id="settingsLinkedin" placeholder="LinkedIn URL" class="border bg-white rounded-xl p-2.5 text-sm"><input id="settingsInstagram" placeholder="Instagram URL" class="border bg-white rounded-xl p-2.5 text-sm"><input id="settingsWhatsapp" placeholder="WhatsApp (261...)" class="border bg-white rounded-xl p-2.5 text-sm"></div><button onclick="window.saveAllSettings()" class="btn-navy px-6 py-2.5 rounded-xl font-bold text-sm mt-4">Enregistrer</button></section>
-        `;
-    }
-
-    let courses = JSON.parse(localStorage.getItem(STORAGE_COURSES)) || [];
-    let videos = JSON.parse(localStorage.getItem(STORAGE_VIDEOS)) || [];
-    let pdfs = JSON.parse(localStorage.getItem(STORAGE_PDFS)) || [];
-    let conferences = JSON.parse(localStorage.getItem(STORAGE_CONFERENCES)) || [];
-    let carouselSlides = JSON.parse(localStorage.getItem(STORAGE_CAROUSEL)) || [];
-    function saveAll() { localStorage.setItem(STORAGE_COURSES, JSON.stringify(courses)); localStorage.setItem(STORAGE_VIDEOS, JSON.stringify(videos)); localStorage.setItem(STORAGE_PDFS, JSON.stringify(pdfs)); localStorage.setItem(STORAGE_CONFERENCES, JSON.stringify(conferences)); localStorage.setItem(STORAGE_CAROUSEL, JSON.stringify(carouselSlides)); }
-
-    document.getElementById('courseImageUploaderContainer').innerHTML = imageUploaderHTML('newCourse');
-    document.getElementById('videoImageUploaderContainer').innerHTML = imageUploaderHTML('newVideo');
-    document.getElementById('pdfImageUploaderContainer').innerHTML = imageUploaderHTML('newPdf');
-
-    window.addCourse = () => { const titre = document.getElementById('newCourseTitle').value; if(!titre) return showToast('Titre obligatoire','error'); courses.push({ id:Date.now(), titre, langue:document.getElementById('newCourseLang').value||'Général', niveau:'Débutant', duree:document.getElementById('newCourseDuration').value||'8 sem', prix:document.getElementById('newCoursePrice').value||'Gratuit', image:getImageUrl('newCourse'), accessLevel:document.getElementById('newCourseAccessLevel').value, views:0 }); saveAll(); refreshAll(); logActivity('Cours ajouté', titre); };
-    window.deleteCourse = (id) => { courses = courses.filter(c=>c.id!==id); saveAll(); refreshAll(); logActivity('Cours supprimé', id); };
-    window.addVideo = () => { const titre = document.getElementById('newVideoTitle').value; if(!titre) return; videos.push({ id:Date.now(), titre, url:document.getElementById('newVideoUrl').value||'#', thumbnail:getImageUrl('newVideo'), accessLevel:document.getElementById('newVideoAccessLevel').value }); saveAll(); refreshAll(); logActivity('Vidéo ajoutée', titre); };
-    window.deleteVideo = (id) => { videos = videos.filter(v=>v.id!==id); saveAll(); refreshAll(); };
-    window.addPdf = () => { const nom = document.getElementById('newPdfName').value; if(!nom) return; pdfs.push({ id:Date.now(), nom, url:document.getElementById('newPdfUrl').value||'#', image:getImageUrl('newPdf'), accessLevel:document.getElementById('newPdfAccessLevel').value, downloads:0, taille:'4.8 MB' }); saveAll(); refreshAll(); };
-    window.deletePdf = (id) => { pdfs = pdfs.filter(p=>p.id!==id); saveAll(); refreshAll(); };
-    window.addConference = () => { const titre = document.getElementById('confTitle').value, date = document.getElementById('confDate').value, link = document.getElementById('confLink').value; if(titre&&date&&link) { conferences.push({ id:Date.now(), titre, date, link }); saveAll(); refreshAll(); } };
-    window.deleteConf = (id) => { conferences = conferences.filter(c=>c.id!==id); saveAll(); refreshAll(); };
-    window.approvePayment = (id) => { const payments = JSON.parse(localStorage.getItem('ata_payment_requests'))||[]; const p = payments.find(p=>p.id===id); if(p){ p.status='approved'; localStorage.setItem('ata_payment_requests', JSON.stringify(payments)); const users = getUsers(); const u = users.find(u=>u.email===p.email); if(u){ u.subscription = { status:'active', plan:p.plan, startDate:new Date().toISOString(), endDate:new Date(Date.now()+30*24*3600*1000).toISOString() }; saveUsers(users); } refreshAll(); logActivity('Paiement approuvé', p.email); } };
-    window.rejectPayment = (id) => { const payments = JSON.parse(localStorage.getItem('ata_payment_requests'))||[]; const p = payments.find(p=>p.id===id); if(p){ p.status='rejected'; localStorage.setItem('ata_payment_requests', JSON.stringify(payments)); refreshAll(); } };
-    window.saveAllSettings = () => { const s = { orangeMoneyNumber:document.getElementById('omSettingsNumber').value, orangeMoneyName:document.getElementById('omSettingsName').value, facebook:document.getElementById('settingsFacebook').value, twitter:document.getElementById('settingsTwitter').value, linkedin:document.getElementById('settingsLinkedin').value, instagram:document.getElementById('settingsInstagram').value, whatsapp:document.getElementById('settingsWhatsapp').value }; localStorage.setItem(STORAGE_SETTINGS, JSON.stringify(s)); updateFooterLinks(); showToast('Paramètres enregistrés'); };
-
-    function refreshKPIs() { const users = getUsers(); const kpi = document.getElementById('kpiContainer'); if(kpi) kpi.innerHTML = `<div class="glass-card p-6">Total Étudiants : ${users.length}</div><div class="glass-card p-6">Premium : ${users.filter(u=>u.subscription?.status==='active').length}</div><div class="glass-card p-6">Cours : ${courses.length}</div><div class="glass-card p-6">PDF : ${pdfs.length}</div>`; }
-    function refreshUsersTable() { const users = getUsers(); const tbody = document.getElementById('usersTableBody'); if(tbody) tbody.innerHTML = users.map(u=>`<tr><td>${u.name}</td><td>${u.email}</td><td>${u.subscribed?'⭐':''}</td><td>${u.role}</td><td><button onclick="window.deleteUser(${u.id})">🗑</button></td></tr>`).join(''); }
-    window.deleteUser = (id) => { const users = getUsers().filter(u=>u.id!==id); saveUsers(users); refreshAll(); };
-    function refreshCoursesList() { document.getElementById('coursesList').innerHTML = courses.map(c=>`<div class="flex justify-between"><span>${c.titre} ${c.accessLevel}</span><button onclick="window.deleteCourse(${c.id})">🗑</button></div>`).join(''); }
-    function refreshVideosList() { document.getElementById('videosList').innerHTML = videos.map(v=>`<div class="flex justify-between"><span>${v.titre} ${v.accessLevel}</span><button onclick="window.deleteVideo(${v.id})">🗑</button></div>`).join(''); }
-    function refreshPdfsList() { document.getElementById('pdfsList').innerHTML = pdfs.map(p=>`<div class="flex justify-between"><span>${p.nom} ${p.accessLevel}</span><button onclick="window.deletePdf(${p.id})">🗑</button></div>`).join(''); }
-    function refreshConferencesList() { document.getElementById('confsList').innerHTML = conferences.map(c=>`<div class="flex justify-between"><span>${c.titre}</span><button onclick="window.deleteConf(${c.id})">🗑</button></div>`).join(''); }
-    function refreshMediaLibrary() {
-        const grid = document.getElementById('mediaGrid');
-        if (!grid) return;
-        const search = (document.getElementById('mediaSearch')?.value || '').toLowerCase();
-        const filter = document.getElementById('mediaFilter')?.value || 'all';
-        let items = [];
-        if (filter === 'all' || filter === 'courses') courses.forEach(c => { if (c.image) items.push({ type: 'Cours', name: c.titre, url: c.image, source: 'courses', id: c.id }); });
-        if (filter === 'all' || filter === 'videos') videos.forEach(v => { if (v.thumbnail) items.push({ type: 'Vidéo', name: v.titre, url: v.thumbnail, source: 'videos', id: v.id }); });
-        if (filter === 'all' || filter === 'pdfs') pdfs.forEach(p => { if (p.image) items.push({ type: 'PDF', name: p.nom, url: p.image, source: 'pdfs', id: p.id }); });
-        if (search) items = items.filter(i => i.name.toLowerCase().includes(search));
-        grid.innerHTML = items.map(i => `<div class="relative group bg-white border rounded-xl overflow-hidden"><img src="${i.url}" class="w-full h-24 object-cover"><div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-2"><button onclick="navigator.clipboard.writeText('${i.url}')" class="bg-white p-1.5 rounded-lg"><i class="fa-solid fa-copy text-xs"></i></button><button onclick="window.deleteMediaImage('${i.source}',${i.id})" class="bg-white p-1.5 rounded-lg"><i class="fa-solid fa-trash-can text-xs text-red-500"></i></button></div></div>`).join('');
-    }
-    window.deleteMediaImage = (source, id) => { if (source === 'courses') { const c = courses.find(c=>c.id===id); if(c) c.image=''; } else if (source === 'videos') { const v = videos.find(v=>v.id===id); if(v) v.thumbnail=''; } else if (source === 'pdfs') { const p = pdfs.find(p=>p.id===id); if(p) p.image=''; } saveAll(); refreshAll(); };
-    function refreshCarouselSlides() { const list = document.getElementById('carouselSlidesList'); if(list) list.innerHTML = carouselSlides.map(s=>`<div class="flex justify-between bg-white p-3 rounded-xl"><span>${s.title} ${s.enabled?'✅':'❌'}</span><button onclick="window.deleteCarouselSlide(${s.id})">🗑</button></div>`).join(''); }
-    window.addCarouselSlide = () => { carouselSlides.push({ id:Date.now(), title:'Nouvelle slide', image:'', description:'', buttonText:'Découvrir', buttonLink:'#', enabled:true, order:carouselSlides.length }); saveAll(); refreshCarouselSlides(); };
-    window.deleteCarouselSlide = (id) => { carouselSlides = carouselSlides.filter(s=>s.id!==id); saveAll(); refreshCarouselSlides(); };
-    function refreshPaymentRequests() { const container = document.getElementById('paymentRequestsList'); if(!container) return; const payments = JSON.parse(localStorage.getItem('ata_payment_requests'))||[]; container.innerHTML = payments.map(p=>`<div class="bg-white p-4 rounded-xl border"><p>${p.name} - ${p.amount} - ${p.status}</p>${p.status==='pending'?`<button onclick="window.approvePayment(${p.id})">✅</button><button onclick="window.rejectPayment(${p.id})">❌</button>`:''}</div>`).join(''); }
-    function loadAllSettings() { const s = JSON.parse(localStorage.getItem(STORAGE_SETTINGS))||{}; document.getElementById('omSettingsNumber').value = s.orangeMoneyNumber||''; document.getElementById('omSettingsName').value = s.orangeMoneyName||''; document.getElementById('settingsFacebook').value = s.facebook||''; document.getElementById('settingsTwitter').value = s.twitter||''; document.getElementById('settingsLinkedin').value = s.linkedin||''; document.getElementById('settingsInstagram').value = s.instagram||''; document.getElementById('settingsWhatsapp').value = s.whatsapp||''; }
-    function logActivity(action, details='') { const logs = JSON.parse(localStorage.getItem('ata_activity_log'))||[]; logs.unshift({ timestamp:new Date().toISOString(), action, details }); if(logs.length>100) logs.pop(); localStorage.setItem('ata_activity_log', JSON.stringify(logs)); }
-    function loadActivityLog() { const container = document.getElementById('activityLogList'); if(!container) return; const logs = JSON.parse(localStorage.getItem('ata_activity_log'))||[]; container.innerHTML = logs.slice(0,20).map(l=>`<div class="text-xs">${new Date(l.timestamp).toLocaleString()} - ${l.action} ${l.details}</div>`).join(''); }
-    function refreshCharts() {
-        const users = getUsers();
-        const lineCtx = document.getElementById('chartLine')?.getContext('2d');
-        const barCtx = document.getElementById('chartBar')?.getContext('2d');
-        const premiumCtx = document.getElementById('chartPremiumEvo')?.getContext('2d');
-        if (lineCtx) {
-            const months = ['Jan','Fév','Mar','Avr','Mai','Juin'];
-            const data = [0,0,0,0,0,0];
-            users.forEach(u => { const m = new Date(u.createdAt).getMonth(); if(m>=0 && m<6) data[m]++; });
-            new Chart(lineCtx, { type:'line', data:{ labels:months, datasets:[{ label:'Nouveaux élèves', data, borderColor:'#101b3b', backgroundColor:'rgba(16,27,59,0.05)', tension:0.3 }] }, options:{ responsive:true, maintainAspectRatio:false });
-        }
-        if (barCtx) {
-            const coursDownloads = pdfs.filter(p=>p.categorie==='Cours').reduce((a,b)=>a+(b.downloads||0),0);
-            const guidesDownloads = pdfs.filter(p=>p.categorie==='Guides').reduce((a,b)=>a+(b.downloads||0),0);
-            const exosDownloads = pdfs.filter(p=>p.categorie==='Exercices').reduce((a,b)=>a+(b.downloads||0),0);
-            new Chart(barCtx, { type:'bar', data:{ labels:['Cours PDF','Guides','Exercices'], datasets:[{ label:'Téléchargements', data:[coursDownloads,guidesDownloads,exosDownloads], backgroundColor:['#c9a03d','#101b3b','#64748b'] }] }, options:{ responsive:true, maintainAspectRatio:false });
-        }
-        if (premiumCtx) {
-            const payments = JSON.parse(localStorage.getItem('ata_payment_requests'))||[];
-            const approved = payments.filter(p=>p.status==='approved');
-            const months = ['Jan','Fév','Mar','Avr','Mai','Juin'];
-            const data = [0,0,0,0,0,0];
-            approved.forEach(p => { const m = new Date(p.date).getMonth(); if(m>=0 && m<6) data[m]++; });
-            new Chart(premiumCtx, { type:'line', data:{ labels:months, datasets:[{ label:'Abonnements Premium', data, borderColor:'#c9a03d', backgroundColor:'rgba(201,160,61,0.1)', tension:0.3 }] }, options:{ responsive:true, maintainAspectRatio:false });
-        }
-        // Top cours / PDF
-        const topCoursesContainer = document.getElementById('topCoursesList');
-        if (topCoursesContainer) {
-            const sorted = [...courses].sort((a,b)=>(b.views||0)-(a.views||0)).slice(0,5);
-            topCoursesContainer.innerHTML = sorted.map((c,i)=>`<div class="flex justify-between text-xs"><span>${i+1}. ${c.titre}</span><span>${c.views||0} vues</span></div>`).join('');
-        }
-        const topPdfsContainer = document.getElementById('topPdfsList');
-        if (topPdfsContainer) {
-            const sorted = [...pdfs].sort((a,b)=>(b.downloads||0)-(a.downloads||0)).slice(0,5);
-            topPdfsContainer.innerHTML = sorted.map((p,i)=>`<div class="flex justify-between text-xs"><span>${i+1}. ${p.nom}</span><span>${p.downloads||0} téléch.</span></div>`).join('');
-        }
-    }
-
-    function refreshAll() { refreshKPIs(); refreshUsersTable(); refreshCoursesList(); refreshVideosList(); refreshPdfsList(); refreshConferencesList(); refreshMediaLibrary(); refreshCarouselSlides(); refreshPaymentRequests(); loadAllSettings(); loadActivityLog(); refreshCharts(); }
-
-    document.getElementById('addCourseBtn')?.addEventListener('click', window.addCourse);
-    document.getElementById('addVideoBtn')?.addEventListener('click', window.addVideo);
-    document.getElementById('addPdfBtn')?.addEventListener('click', window.addPdf);
-    document.getElementById('addConfBtn')?.addEventListener('click', window.addConference);
-    document.getElementById('mediaSearch')?.addEventListener('input', refreshMediaLibrary);
-    document.getElementById('mediaFilter')?.addEventListener('change', refreshMediaLibrary);
-    refreshAll();
-}
+// ==================== DASHBOARD ADMIN (simplifié mais fonctionnel) ====================
+function renderAdminDashboard() { return `<div class="flex min-h-screen"><aside class="w-72 bg-[#101b3b] text-slate-300 flex flex-col fixed h-full z-50 shadow-xl"><div class="p-6 text-center border-b border-[#1a2a56]"><h2 class="text-white font-bold text-lg">ATA SCHOOL</h2><p class="text-[#c9a03d] text-xs">YES WE CAN</p></div><nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto"><a href="#vue-ensemble" class="flex items-center gap-3 px-4 py-3 text-white bg-[#1a2a56] rounded-xl"><i class="fa-solid fa-chart-pie text-[#c9a03d]"></i> Vue d'ensemble</a><a href="#section-utilisateurs" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-users-gear text-slate-400"></i> Utilisateurs</a><a href="#section-cours" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-layer-group text-slate-400"></i> Cours</a><a href="#section-medias" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-clapperboard text-slate-400"></i> Vidéos</a><a href="#section-pdfs" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-file-zipper text-slate-400"></i> PDF</a><a href="#section-parametres" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#1a2a56] hover:text-white"><i class="fa-solid fa-gear text-slate-400"></i> Paramètres</a></nav></aside><main class="flex-1 ml-72 p-8 lg:p-10 max-w-[1600px]"><header class="flex justify-between items-center mb-10 pb-5 border-b border-slate-200"><div><h1 class="text-3xl font-extrabold text-[#101b3b]">Tableau de bord</h1></div></header><section id="vue-ensemble" class="grid grid-cols-4 gap-6 mb-10" id="kpiContainer"></section><div id="adminDynamicContent"></div></main></div>`; }
+function initAdminDashboard() { const dynamicContent = document.getElementById('adminDynamicContent'); if (dynamicContent) dynamicContent.innerHTML = `<section id="section-utilisateurs" class="glass-card p-6 mb-10"><h2>Utilisateurs</h2><table class="min-w-full"><thead><tr><th>Nom</th><th>Email</th><th>Rôle</th><th>Actions</th></tr></thead><tbody id="usersTableBody"></tbody></table></section><section id="section-cours" class="glass-card p-6 mb-10"><h2>Cours</h2><input id="newCourseTitle" placeholder="Titre" class="border p-2 rounded-xl text-sm mb-3 w-full"><input id="newCourseImage" placeholder="URL image" class="border p-2 rounded-xl text-sm mb-3 w-full"><select id="newCourseAccessLevel" class="border p-2 rounded-xl text-sm mb-3 w-full"><option value="public">Public</option><option value="members">Membres</option><option value="premium">Premium</option></select><button id="addCourseBtn" class="btn-navy px-4 py-2 rounded-xl text-sm">Ajouter</button><div id="coursesList" class="mt-4 space-y-2"></div></section><section id="section-parametres" class="glass-card p-6 mb-10"><h2>Paramètres</h2><div class="grid grid-cols-2 gap-4"><input id="settingsFacebook" placeholder="Facebook URL" class="border p-2 rounded-xl text-sm"><input id="settingsWhatsapp" placeholder="WhatsApp" class="border p-2 rounded-xl text-sm"></div><button onclick="window.saveAllSettings()" class="btn-navy px-6 py-2.5 rounded-xl text-sm mt-4">Enregistrer</button></section>`; let courses = JSON.parse(localStorage.getItem(STORAGE_COURSES)) || []; function saveAll() { localStorage.setItem(STORAGE_COURSES, JSON.stringify(courses)); } window.addCourse = () => { const titre = document.getElementById('newCourseTitle').value; if (!titre) return; courses.push({ id: Date.now(), titre, image: document.getElementById('newCourseImage').value, accessLevel: document.getElementById('newCourseAccessLevel').value, views: 0 }); saveAll(); refreshAll(); }; function refreshAll() { document.getElementById('usersTableBody').innerHTML = getUsers().map(u => `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.role}</td><td><button onclick="window.deleteUser(${u.id})">🗑</button></td></tr>`).join(''); document.getElementById('coursesList').innerHTML = courses.map(c => `<div class="flex justify-between"><span>${c.titre}</span><button onclick="window.deleteCourse(${c.id})">🗑</button></div>`).join(''); document.getElementById('kpiContainer').innerHTML = `<div class="glass-card p-6">Utilisateurs : ${getUsers().length}</div>`; } window.deleteUser = (id) => { saveUsers(getUsers().filter(u => u.id !== id)); refreshAll(); }; window.deleteCourse = (id) => { courses = courses.filter(c => c.id !== id); saveAll(); refreshAll(); }; window.saveAllSettings = () => { const s = { facebook: document.getElementById('settingsFacebook').value, whatsapp: document.getElementById('settingsWhatsapp').value }; localStorage.setItem(STORAGE_SETTINGS, JSON.stringify(s)); updateFooterLinks(); showToast('Paramètres enregistrés'); }; document.getElementById('addCourseBtn')?.addEventListener('click', window.addCourse); refreshAll(); }
 
 // ==================== UPDATE FOOTER ====================
-function updateFooterLinks() {
-    const settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS)) || {};
-    const container = document.getElementById('footerSocialLinks');
-    if (!container) return;
-    const links = [];
-    if (settings.facebook) links.push({ href: settings.facebook, icon: 'fa-brands fa-facebook-f' });
-    if (settings.twitter) links.push({ href: settings.twitter, icon: 'fa-brands fa-twitter' });
-    if (settings.linkedin) links.push({ href: settings.linkedin, icon: 'fa-brands fa-linkedin-in' });
-    if (settings.instagram) links.push({ href: settings.instagram, icon: 'fa-brands fa-instagram' });
-    if (settings.whatsapp) links.push({ href: `https://wa.me/${settings.whatsapp.replace(/\D/g,'')}`, icon: 'fa-brands fa-whatsapp' });
-    container.innerHTML = links.length ? links.map(l => `<a href="${l.href}" target="_blank" rel="noopener noreferrer" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="${l.icon}"></i></a>`).join('') : '<span class="text-xs text-gray-500">Suivez-nous bientôt</span>';
-}
+function updateFooterLinks() { const settings = JSON.parse(localStorage.getItem(STORAGE_SETTINGS)) || {}; const container = document.getElementById('footerSocialLinks'); if (!container) return; const links = []; if (settings.facebook) links.push({ href: settings.facebook, icon: 'fa-brands fa-facebook-f' }); if (settings.whatsapp) links.push({ href: `https://wa.me/${settings.whatsapp.replace(/\D/g,'')}`, icon: 'fa-brands fa-whatsapp' }); container.innerHTML = links.length ? links.map(l => `<a href="${l.href}" target="_blank" rel="noopener noreferrer" class="text-[var(--color-gold)] hover:text-white transition text-lg"><i class="${l.icon}"></i></a>`).join('') : '<span class="text-xs text-gray-500">Suivez-nous bientôt</span>'; }
 
 // ==================== MODALE AUTH ====================
-function openAuthModal(mode) {
-    const modal = document.getElementById('authModal');
-    const formContainer = document.getElementById('authFormContainer');
-    const decorContainer = document.getElementById('authDecor');
-    modal.classList.add('active');
-    if (mode === 'login') {
-        formContainer.innerHTML = `<div class="my-auto py-6 max-w-sm w-full mx-auto"><h1 class="text-2xl font-bold text-[#101b3b] text-center">Connexion</h1><button onclick="signInWithGoogle()" class="w-full mt-6 flex items-center justify-center gap-3 bg-white border border-gray-200 hover:bg-gray-50 transition py-3 rounded-xl text-sm font-semibold shadow-sm"><i class="fa-brands fa-google"></i> Se connecter avec Google</button><div class="relative flex py-5 items-center"><div class="flex-grow border-t border-gray-100"></div><span class="flex-shrink mx-4 text-[10px] font-bold text-gray-300 uppercase">ou email</span><div class="flex-grow border-t border-gray-100"></div></div><form id="loginForm" class="space-y-4"><input type="email" id="loginEmail" placeholder="Email" class="w-full px-4 py-2.5 border rounded-xl text-xs" required><input type="password" id="loginPassword" placeholder="Mot de passe" class="w-full px-4 py-2.5 border rounded-xl text-xs" required><button type="submit" class="w-full bg-[#101b3b] text-white py-3 rounded-xl font-bold text-xs">Se connecter</button></form><p class="text-center text-xs text-gray-400 mt-6">Pas encore de compte ? <a href="#" onclick="openAuthModal('signup')" class="text-[#c9a03d] font-bold">Créer un compte</a></p></div>`;
-        decorContainer.innerHTML = `<div class="text-center"><i class="fa-solid fa-graduation-cap text-5xl text-[#c9a03d] mb-4"></i><h2 class="text-2xl font-bold">Bienvenue</h2></div>`;
-        document.getElementById('loginForm').addEventListener('submit', handleLogin);
-    } else {
-        formContainer.innerHTML = `<div class="my-auto py-6 max-w-sm w-full mx-auto"><h1 class="text-2xl font-bold text-[#101b3b]">Inscription</h1><form id="signupForm" class="space-y-4 mt-6"><input type="text" id="signupName" placeholder="Nom complet" class="w-full px-4 py-2.5 border rounded-xl text-xs" required><input type="email" id="signupEmail" placeholder="Email" class="w-full px-4 py-2.5 border rounded-xl text-xs" required><input type="password" id="signupPassword" placeholder="Mot de passe" class="w-full px-4 py-2.5 border rounded-xl text-xs" required><button type="submit" class="w-full bg-[#101b3b] text-white py-3 rounded-xl font-bold text-xs">S'inscrire</button></form></div>`;
-        decorContainer.innerHTML = `<div class="text-center"><i class="fa-solid fa-user-plus text-5xl text-[#c9a03d] mb-4"></i><h2 class="text-2xl font-bold">Rejoignez-nous</h2></div>`;
-        document.getElementById('signupForm').addEventListener('submit', handleSignup);
-    }
-}
+function openAuthModal(mode) { document.getElementById('authModal').classList.add('active'); document.getElementById('authFormContainer').innerHTML = `<div class="my-auto py-6 max-w-sm w-full mx-auto"><h1 class="text-2xl font-bold text-[#101b3b] text-center">Connexion</h1><form id="loginForm" class="space-y-4"><input type="email" id="loginEmail" placeholder="Email" class="w-full px-4 py-2.5 border rounded-xl text-xs" required><input type="password" id="loginPassword" placeholder="Mot de passe" class="w-full px-4 py-2.5 border rounded-xl text-xs" required><button type="submit" class="w-full bg-[#101b3b] text-white py-3 rounded-xl font-bold text-xs">Se connecter</button></form></div>`; document.getElementById('loginForm').addEventListener('submit', handleLogin); }
 function closeAuthModal() { document.getElementById('authModal').classList.remove('active'); }
 document.getElementById('closeModal').addEventListener('click', closeAuthModal);
-document.getElementById('authModal').addEventListener('click', e => { if(e.target===document.getElementById('authModal')) closeAuthModal(); });
-function handleLogin(e) {
-    e.preventDefault();
-    const email = document.getElementById('loginEmail').value.trim().toLowerCase();
-    const password = document.getElementById('loginPassword').value;
-    const users = getUsers();
-    const user = users.find(u => u.email === email);
-    if (!user) return alert('Aucun compte trouvé.');
-    if (user.firebaseUid && !user.password) return alert('Utilisez Google.');
-    if (user.password !== password) return alert('Mot de passe incorrect.');
-    setCurrentUser({ fullName: user.name, email: user.email, role: user.role, photo: user.photo, subscription: user.subscription });
-    closeAuthModal(); currentPage = 'home'; renderApp();
-}
-function handleSignup(e) {
-    e.preventDefault();
-    const name = document.getElementById('signupName').value.trim();
-    const email = document.getElementById('signupEmail').value.trim().toLowerCase();
-    const password = document.getElementById('signupPassword').value;
-    if (password.length < 8) return alert('8 caractères minimum.');
-    const users = getUsers();
-    if (users.find(u => u.email === email)) return alert('Email déjà utilisé.');
-    const newUser = { id: Date.now(), name, email, password, role: 'student', subscribed: false, photo: '', subscription: { status: 'none' }, createdAt: new Date().toISOString() };
-    users.push(newUser); saveUsers(users);
-    setCurrentUser({ fullName: name, email, role: 'student', photo: '', subscription: { status: 'none' } });
-    closeAuthModal(); currentPage = 'home'; renderApp(); alert('Inscription réussie !');
-}
+document.getElementById('authModal').addEventListener('click', e => { if (e.target === document.getElementById('authModal')) closeAuthModal(); });
+function handleLogin(e) { e.preventDefault(); const email = document.getElementById('loginEmail').value.trim().toLowerCase(); const password = document.getElementById('loginPassword').value; const user = getUsers().find(u => u.email === email); if (!user) return alert('Aucun compte trouvé.'); if (user.password !== password) return alert('Mot de passe incorrect.'); setCurrentUser({ fullName: user.name, email: user.email, role: user.role, subscription: user.subscription }); closeAuthModal(); currentPage = 'home'; renderApp(); }
 
 // ==================== SWIPER ====================
 let swiperInstance = null;
-function initSwiper() {
-    const mode = getCarouselMode();
-    const container = document.getElementById('coursesCarouselWrapper');
-    if (!container) return;
-    let slidesHTML = '';
-    if (mode === 'custom') {
-        const slides = JSON.parse(localStorage.getItem(STORAGE_CAROUSEL)) || [];
-        slidesHTML = slides.filter(s=>s.enabled).sort((a,b)=>a.order-b.order).map(s=>`<div class="swiper-slide"><img src="${s.image}" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/70 p-6 flex flex-col justify-end text-white"><h3>${s.title}</h3><p>${s.description}</p><a href="${s.buttonLink}" class="bg-[var(--color-gold)] text-[#101b3b] text-xs font-bold px-4 py-2 rounded-full w-fit">${s.buttonText}</a></div></div>`).join('');
-    } else {
-        const courses = JSON.parse(localStorage.getItem(STORAGE_COURSES)) || [];
-        slidesHTML = courses.map(c=>`<div class="swiper-slide"><img src="${c.image}" class="w-full h-48 object-cover">${c.premium?'<span class="absolute top-3 right-3 bg-[#c9a03d] text-[#101b3b] text-[10px] font-bold px-3 py-1 rounded-full">Premium</span>':''}<div class="p-5"><h3>${c.titre} ${renderAccessBadge(c)}</h3><p>${c.prix} - ${c.duree}</p>${canAccessContent(c)?'<button class="btn-premium rounded-full px-4 py-2 text-xs mt-3">Découvrir</button>':'<button onclick="showPremiumModal()" class="bg-[var(--color-gold)] text-[#101b3b] rounded-full px-4 py-2 text-xs mt-3"><i class="fa-solid fa-lock"></i> Premium</button>'}</div></div>`).join('');
-    }
-    container.innerHTML = slidesHTML;
-    if (swiperInstance) { swiperInstance.destroy(true, true); swiperInstance = null; }
-    swiperInstance = new Swiper('.courseSwiper', { effect:'coverflow', grabCursor:true, centeredSlides:true, slidesPerView:'auto', loop:true, coverflowEffect:{ rotate:20, stretch:0, depth:100, modifier:1.4 }, navigation:{ nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev' }, pagination:{ el:'.swiper-pagination', clickable:true }, autoplay:{ delay:1000, disableOnInteraction:false } });
-}
-function initReveal() { document.querySelectorAll('.reveal').forEach(el=>{ new IntersectionObserver(e=>{ if(e[0].isIntersecting) e[0].target.classList.add('visible'); },{threshold:0.15}).observe(el); }); }
-function initHeaderScroll() {
-    const header = document.getElementById('mainHeader');
-    const backBtn = document.getElementById('backToTop');
-    let lastScroll = window.scrollY;
-    window.onscroll = () => {
-        const y = window.scrollY;
-        if (y > 10) header.classList.add('scrolled'); else header.classList.remove('scrolled');
-        if (y > lastScroll && y > 60) header.classList.add('hide-nav');
-        else if (y < lastScroll) header.classList.remove('hide-nav');
-        lastScroll = y;
-        backBtn.classList.toggle('show', y > 300);
-    };
-    backBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+function initSwiper() { const courses = JSON.parse(localStorage.getItem(STORAGE_COURSES)) || []; const container = document.getElementById('coursesCarouselWrapper'); if (!container) return; container.innerHTML = courses.map(c => `<div class="swiper-slide"><img src="${c.image}" class="w-full h-48 object-cover">${c.accessLevel==='premium'?'<span class="absolute top-3 right-3 bg-[#c9a03d] text-[#101b3b] text-[10px] font-bold px-3 py-1 rounded-full">Premium</span>':''}<div class="p-5"><h3>${c.titre} ${renderAccessBadge(c)}</h3>${canAccessContent(c)?'<button class="btn-premium rounded-full px-4 py-2 text-xs mt-3">Découvrir</button>':'<button onclick="showPremiumModal()" class="bg-[var(--color-gold)] text-[#101b3b] rounded-full px-4 py-2 text-xs mt-3"><i class="fa-solid fa-lock"></i> Premium</button>'}</div></div>`).join(''); if (swiperInstance) { swiperInstance.destroy(true, true); swiperInstance = null; } swiperInstance = new Swiper('.courseSwiper', { effect:'coverflow', grabCursor:true, centeredSlides:true, slidesPerView:'auto', loop:true, coverflowEffect:{ rotate:20, stretch:0, depth:100, modifier:1.4 }, navigation:{ nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev' }, pagination:{ el:'.swiper-pagination', clickable:true }, autoplay:{ delay:1000, disableOnInteraction:false } }); }
+function initReveal() { document.querySelectorAll('.reveal').forEach(el => { new IntersectionObserver(e => { if (e[0].isIntersecting) e[0].target.classList.add('visible'); }, { threshold: 0.15 }).observe(el); }); }
+function initHeaderScroll() { const header = document.getElementById('mainHeader'); const backBtn = document.getElementById('backToTop'); let lastScroll = window.scrollY; window.onscroll = () => { const y = window.scrollY; if (y > 10) header.classList.add('scrolled'); else header.classList.remove('scrolled'); if (y > lastScroll && y > 60) header.classList.add('hide-nav'); else if (y < lastScroll) header.classList.remove('hide-nav'); lastScroll = y; backBtn.classList.toggle('show', y > 300); }; backBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 // ==================== MESSAGERIE ====================
 let currentConversation = 'private';
 window.switchConversation = (conv) => { currentConversation = conv; initMessaging(); };
-function initMessaging() {
-    document.getElementById('messageInputArea').style.display = 'block';
-    const titles = { private:{title:'Admin Support Desk',avatar:'AD'}, general:{title:'Groupe Général',avatar:'🌐'}, premium:{title:'Groupe Premium',avatar:'⭐'} };
-    const info = titles[currentConversation];
-    document.getElementById('chatTitle').textContent = info.title;
-    document.getElementById('chatAvatar').textContent = info.avatar;
-    document.getElementById('messageForm').onsubmit = e => {
-        e.preventDefault();
-        const text = document.getElementById('messageInput').value.trim();
-        if (!text) return;
-        const user = getCurrentUser();
-        const messages = JSON.parse(localStorage.getItem(`chat_${currentConversation}`)||'[]');
-        messages.push({ sender: user?.fullName||'Anonyme', text, time: new Date().toLocaleTimeString() });
-        localStorage.setItem(`chat_${currentConversation}`, JSON.stringify(messages));
-        document.getElementById('messageInput').value = '';
-        displayMessages(messages);
-    };
-    const messages = JSON.parse(localStorage.getItem(`chat_${currentConversation}`)||'[]');
-    displayMessages(messages);
-}
-function displayMessages(messages) {
-    const container = document.getElementById('messageContainer');
-    if (!container) return;
-    container.innerHTML = messages.map(m=>`<div class="flex ${m.sender===getCurrentUser()?.fullName?'justify-end':'justify-start'}"><div class="max-w-[80%] p-3 rounded-2xl ${m.sender===getCurrentUser()?.fullName?'bg-[#101b3b] text-white':'bg-white border'}"><p class="text-xs">${m.text}</p><span class="text-[9px] text-gray-400">${m.time}</span></div></div>`).join('');
-    container.scrollTop = container.scrollHeight;
-}
+function initMessaging() { document.getElementById('messageInputArea').style.display = 'block'; document.getElementById('messageForm').onsubmit = e => { e.preventDefault(); const text = document.getElementById('messageInput').value.trim(); if (!text) return; const user = getCurrentUser(); const messages = JSON.parse(localStorage.getItem(`chat_${currentConversation}`)||'[]'); messages.push({ sender: user?.fullName||'Anonyme', text, time: new Date().toLocaleTimeString() }); localStorage.setItem(`chat_${currentConversation}`, JSON.stringify(messages)); document.getElementById('messageInput').value = ''; displayMessages(messages); }; displayMessages(JSON.parse(localStorage.getItem(`chat_${currentConversation}`)||'[]')); }
+function displayMessages(messages) { const container = document.getElementById('messageContainer'); if (!container) return; container.innerHTML = messages.map(m => `<div class="flex ${m.sender===getCurrentUser()?.fullName?'justify-end':'justify-start'}"><div class="max-w-[80%] p-3 rounded-2xl ${m.sender===getCurrentUser()?.fullName?'bg-[#101b3b] text-white':'bg-white border'}"><p class="text-xs">${m.text}</p><span class="text-[9px] text-gray-400">${m.time}</span></div></div>`).join(''); container.scrollTop = container.scrollHeight; }
+
+// ==================== MODE SOMBRE ====================
+function toggleDarkMode() { document.documentElement.classList.toggle('dark'); localStorage.setItem('ata_dark_mode', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); }
+(function initDarkMode() { if (localStorage.getItem('ata_dark_mode') === 'dark' || (!localStorage.getItem('ata_dark_mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark'); })();
 
 // ==================== LANCEMENT ====================
-(function() {
-    const user = getCurrentUser();
-    currentPage = 'home';
-    renderApp();
-})();
+(function() { currentPage = 'home'; renderApp(); })();
 </script>
 </body>
 </html>
